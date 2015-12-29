@@ -1,0 +1,18 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: MOSKitt4Me Product Support Plug-in
+Bundle-SymbolicName: moskitt4me.projectmanager.productsupport
+Bundle-Version: 1.0.0.qualifier
+Require-Bundle: org.eclipse.epf.uma,
+ org.eclipse.core.resources,
+ org.eclipse.core.runtime,
+ org.eclipse.ui,
+ org.eclipse.core.filesystem,
+ org.eclipse.ui.ide,
+ org.eclipse.update.configurator,
+ org.eclipse.update.core,
+ es.cv.gvcase.trmanager.ui
+Export-Package: moskitt4me.projectmanager.productsupport,
+ moskitt4me.projectmanager.productsupport.util
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-Vendor: PROS Research Center
