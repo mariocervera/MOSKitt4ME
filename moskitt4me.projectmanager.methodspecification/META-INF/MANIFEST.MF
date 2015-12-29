@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: MOSKitt4Me Method Specification Plug-in
+Bundle-SymbolicName: moskitt4me.projectmanager.methodspecification
+Bundle-Version: 1.0.0.qualifier
+Require-Bundle: org.eclipse.epf.uma,
+ org.eclipse.emf.ecore.xmi,
+ org.activiti.designer.model,
+ org.eclipse.epf.library
+Export-Package: moskitt4me.projectmanager.methodspecification
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-Vendor: PROS Research Center
