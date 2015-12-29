@@ -1,0 +1,26 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: MOSKitt4Me Process Support Plug-in
+Bundle-SymbolicName: moskitt4me.projectmanager.processsupport;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.ui,
+ org.eclipse.epf.uma,
+ org.eclipse.core.resources
+Export-Package: moskitt4me.projectmanager.processsupport,
+ moskitt4me.projectmanager.processsupport.util
+Bundle-ClassPath: .,
+ libs/activation-1.1.jar,
+ libs/activiti-engine-5.5-sources.jar,
+ libs/activiti-engine-5.5.jar,
+ libs/commons-email-1.2.jar,
+ libs/commons-logging-1.1.1.jar,
+ libs/h2-1.2.132.jar,
+ libs/livetribe-jsr223-2.0.6.jar,
+ libs/mail-1.4.1.jar,
+ libs/mybatis-3.0.4.jar,
+ libs/spring-asm-3.0.3.RELEASE.jar,
+ libs/spring-beans-3.0.3.RELEASE.jar,
+ libs/spring-core-3.0.3.RELEASE.jar
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-Vendor: PROS Research Center
