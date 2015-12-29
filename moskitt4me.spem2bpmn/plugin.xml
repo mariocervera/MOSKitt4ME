@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            adaptable="false"
+            id="moskitt4me.spem2bpmn.deliveryProcessContribution"
+            objectClass="org.eclipse.epf.uma.DeliveryProcess">
+         <action
+               class="moskitt4me.spem2bpmn.actions.OpenBPMN2DiagramAction"
+               enablesFor="1"
+               icon="icons/Activiti.png"
+               id="moskitt4me.spem2bpmn.OpenBPMN2DiagramAction"
+               label="Open BPMN 2.0 Diagram"
+               menubarPath="Dia&amp;grams/diagrams">
+         </action>
+         <action
+               class="moskitt4me.spem2bpmn.actions.DeleteBPMN2DiagramAction"
+               enablesFor="1"
+               icon="icons/Delete.gif"
+               id="moskitt4me.spem2bpmn.DeleteBPMN2DiagramAction"
+               label="Delete BPMN 2.0 Diagram"
+               menubarPath="Dia&amp;grams/deletions">
+         </action>
+      </objectContribution>
+   </extension>
+
+</plugin>
