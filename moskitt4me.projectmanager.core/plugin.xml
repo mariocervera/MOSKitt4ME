@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension-point id="moskitt4me.projectmanager.core.methodlibraryprovider" name="MethodLibraryProvider" schema="schema/methodlibraryprovider.exsd"/>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="moskitt4me.projectmanager.core.perspectives.MethodExecutionPerspective"
+            icon="icons/full/obj16/Process.gif"
+            id="moskitt4me.projectmanager.core.perspective"
+            name="Method Execution">
+      </perspective>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            id="moskitt4me.projectmanager.core.viewcategory"
+            name="Method Execution">
+      </category>
+      <view
+            allowMultiple="false"
+            category="moskitt4me.projectmanager.core.viewcategory"
+            class="moskitt4me.projectmanager.core.views.ProductExplorerView"
+            icon="icons/full/obj16/Products.gif"
+            id="moskitt4me.projectmanager.core.views.productExplorerView"
+            name="MOSKitt4ME - Product Explorer">
+      </view>
+      <view
+            allowMultiple="false"
+            category="moskitt4me.projectmanager.core.viewcategory"
+            class="moskitt4me.projectmanager.core.views.ProcessView"
+            icon="icons/full/obj16/Process.gif"
+            id="moskitt4me.projectmanager.core.views.processView"
+            name="MOSKitt4ME - Process">
+      </view>
+      <view
+            allowMultiple="false"
+            category="moskitt4me.projectmanager.core.viewcategory"
+            class="moskitt4me.projectmanager.core.views.GuidesView"
+            icon="icons/full/obj16/Guides.gif"
+            id="moskitt4me.projectmanager.core.views.guidesView"
+            name="MOSKitt4ME - Guides">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            class="moskitt4me.projectmanager.core.pages.MOSKitt4MEPreferencePage"
+            id="moskitt4me.projectmanager.core.page1"
+            name="MOSKitt4ME">
+      </page>
+   </extension>
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <category
+            id="moskitt4me.projectmanager.core.projectcategory"
+            name="MOSKitt4ME">
+      </category>
+      <wizard
+            category="moskitt4me.projectmanager.core.projectcategory"
+            class="moskitt4me.projectmanager.core.wizards.NewMOSKitt4MEProjectWizard"
+            finalPerspective="moskitt4me.projectmanager.core.perspective"
+            icon="icons/full/24x24/moskitt4meProject.png"
+            id="moskitt4me.projectmanager.core.newprojectwizard"
+            name="MOSKitt4ME Project"
+            project="true">
+      </wizard>
+   </extension>
+   <extension
+         id="id1"
+         point="org.eclipse.core.resources.natures">
+      <runtime>
+         <run
+               class="moskitt4me.projectmanager.core.natures.MOSKitt4MEProjectNature">
+         </run>
+      </runtime>
+   </extension>
+   <extension
+         point="org.eclipse.ui.decorators">
+      <decorator
+            adaptable="true"
+            icon="icons/full/ovr16/decorator.png"
+            id="moskitt4me.projectmanager.core.decorator"
+            label="Resource Decorator"
+            lightweight="true"
+            location="BOTTOM_LEFT"
+            state="true">
+         <enablement>
+            <and>
+               <objectClass
+                     name="org.eclipse.core.resources.IProject">
+               </objectClass>
+               <objectState
+                     name="projectNature"
+                     value="moskitt4me.projectmanager.core.natures.MOSKitt4MEProjectNature">
+               </objectState>
+            </and>
+         </enablement>
+      </decorator>
+   </extension>
+
+</plugin>

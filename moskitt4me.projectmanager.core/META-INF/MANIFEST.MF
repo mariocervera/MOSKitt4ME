@@ -1,0 +1,26 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: MOSKitt4Me ProjectManager Plug-in
+Bundle-SymbolicName: moskitt4me.projectmanager.core;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: moskitt4me.projectmanager.core.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.ui.navigator,
+ org.eclipse.emf.edit,
+ org.eclipse.ui.ide,
+ org.eclipse.emf.transaction,
+ org.eclipse.ui.views.properties.tabbed,
+ org.eclipse.emf.edit.ui,
+ org.eclipse.epf.uma,
+ org.eclipse.core.filesystem,
+ moskitt4me.projectmanager.methodspecification,
+ moskitt4me.projectmanager.processsupport,
+ moskitt4me.projectmanager.productsupport,
+ org.eclipse.ui.cheatsheets,
+ org.eclipse.help,
+ org.eclipse.epf.library,
+ org.eclipse.epf.authoring.ui
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-Vendor: PROS Research Center
