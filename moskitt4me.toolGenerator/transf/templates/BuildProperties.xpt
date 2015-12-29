@@ -1,0 +1,75 @@
+«EXTENSION transf::extensions::SPEM2ProductDefinition»
+
+«REM» This template is in charge of the generation of the build.properties files «ENDREM»
+
+«DEFINE buildProperties FOR uma::MethodLibrary-»
+«FILE "build.properties" genPath-»
+bin.includes = META-INF/,\
+               .,\
+               plugin.xml«EXPAND windowImages FOR this-»
+«EXPAND aboutImage FOR this-»
+«EXPAND splash FOR this-»
+«EXPAND preferenceCustomization FOR this-»
+«ENDFILE»
+«ENDDEFINE»
+
+«DEFINE buildPropertiesForMethodDefinition FOR uma::MethodLibrary-»
+«FILE "build.properties" genPath2-»
+bin.includes = META-INF/,\
+               .,\
+               plugin.xml,\
+               lib/
+«ENDFILE»
+«ENDDEFINE»
+
+«DEFINE featureBuildProperties FOR uma::MethodLibrary-»
+«FILE "build.properties" genPath3-»
+bin.includes = feature.xml
+«ENDFILE»
+«ENDDEFINE»
+
+«DEFINE featureBuildPropertiesForDependencies FOR uma::MethodLibrary-»
+«FILE "build.properties" genPath4-»
+bin.includes = feature.xml
+«ENDFILE»
+«ENDDEFINE»
+
+«DEFINE featureBuildPropertiesForMethodDefinition FOR uma::MethodLibrary-»
+«FILE "build.properties" genPath5-»
+bin.includes = feature.xml
+«ENDFILE»
+«ENDDEFINE»
+
+«DEFINE featureBuildPropertiesForTechnicalFragments FOR uma::MethodLibrary-»
+«FILE "build.properties" genPath6-»
+bin.includes = feature.xml
+«ENDFILE»
+«ENDDEFINE»
+
+«DEFINE windowImages FOR uma::MethodLibrary-»
+«windowImagesForBuildProperties()-»
+«ENDDEFINE»
+
+«DEFINE aboutImage FOR uma::MethodLibrary-»
+«LET aboutImage() AS image-»
+«IF image != ""-»
+,\
+«image-»
+«ENDIF-»
+«ENDLET-»
+«ENDDEFINE»
+
+«DEFINE splash FOR uma::MethodLibrary-»
+«IF splashLocation() != ""-»
+,\
+splash.bmp«ENDIF-»
+«ENDDEFINE»
+
+«DEFINE preferenceCustomization FOR uma::MethodLibrary-»
+«LET preferenceCustomization() AS preference-»
+«IF preference != ""-»
+,\
+«preference-»
+«ENDIF-»
+«ENDLET-»
+«ENDDEFINE»

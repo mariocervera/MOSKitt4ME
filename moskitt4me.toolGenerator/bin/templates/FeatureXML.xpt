@@ -1,0 +1,83 @@
+«EXTENSION transf::extensions::SPEM2ProductDefinition»
+
+«REM» This template is in charge of the generation of the feature.xml file «ENDREM»
+
+«DEFINE featureXML FOR uma::MethodLibrary-»
+«FILE "feature.xml" genPath3-»
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="«definingBundleName()».feature"
+      label="Product Feature"
+      version="«EXPAND version FOR this-»">
+
+   <plugin
+         id="«definingBundleName()»"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>
+«ENDFILE»
+«ENDDEFINE»
+
+«DEFINE featureXMLForDependencies FOR uma::MethodLibrary-»
+«FILE "feature.xml" genPath4-»
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="«definingBundleName()».dependencies.feature"
+      label="Product Dependencies Feature"
+      version="1.0.0.qualifier">
+
+«FOREACH pluginDependencies() AS plugin-»
+<plugin id="«plugin»" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+«ENDFOREACH-»
+
+</feature>
+«ENDFILE»
+«ENDDEFINE»
+
+«DEFINE version FOR uma::MethodLibrary-»
+«LET productVersion() AS version-»
+«IF version != null && version != ""-»
+«version-»
+«ELSE-»
+1.0.0.qualifier
+«ENDIF-»
+«ENDLET-»
+«ENDDEFINE»
+
+«DEFINE featureXMLForMethodDefinition FOR uma::MethodLibrary-»
+«FILE "feature.xml" genPath5-»
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="«methodDefinitionBundleName()».feature"
+      label="Method Definition Feature"
+     version="1.0.0.qualifier">
+
+   <plugin
+         id="«methodDefinitionBundleName()»"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>
+«ENDFILE»
+«ENDDEFINE»
+
+«DEFINE featureXMLForTechnicalFragments FOR uma::MethodLibrary-»
+«FILE "feature.xml" genPath6-»
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="«technicalFragmentsFeatureName()»"
+      label="Tech Feature"
+     version="1.0.0.qualifier">
+
+«FOREACH technicalFragmentFeatures() AS feature-»
+<includes id="«feature»" version="0.0.0"/>
+«ENDFOREACH-»
+
+</feature>
+«ENDFILE»
+«ENDDEFINE»

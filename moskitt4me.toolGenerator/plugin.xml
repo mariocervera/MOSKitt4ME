@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <viewerContribution
+            id="moskitt4me.toolGenerator.libraryViewContribution"
+            targetID="org.eclipse.epf.authoring.ui.views.LibraryView">
+         <action
+               class="moskitt4me.toolgenerator.actions.ToolGenerationAction"
+               icon="icons/CASETool.gif"
+               id="moskitt4me.toolGenerator.ToolGenerationAction"
+               label="Generate CASE Tool"
+               menubarPath="fixed-additions">
+         </action>
+      </viewerContribution>
+   </extension>
+
+</plugin>

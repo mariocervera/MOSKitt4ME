@@ -1,0 +1,62 @@
+String productName () :
+	JAVA moskitt4me.toolgenerator.util.TemplatesUtil.productName();
+	
+String productId () :
+	JAVA moskitt4me.toolgenerator.util.TemplatesUtil.productId();
+	
+String productApplication () :
+	JAVA moskitt4me.toolgenerator.util.TemplatesUtil.productApplication();
+	
+String productVersion () :
+	JAVA moskitt4me.toolgenerator.util.TemplatesUtil.productVersion();
+	
+String aboutImage () :
+	JAVA moskitt4me.toolgenerator.util.TemplatesUtil.aboutImage();
+	
+String aboutText () :
+	JAVA moskitt4me.toolgenerator.util.TemplatesUtil.aboutText();
+	
+String windowImages () :
+	JAVA moskitt4me.toolgenerator.util.TemplatesUtil.windowImages();
+	
+String windowImagesForProductFile () :
+	JAVA moskitt4me.toolgenerator.util.TemplatesUtil.windowImagesForProductFile();
+	
+String windowImagesForBuildProperties () :
+	JAVA moskitt4me.toolgenerator.util.TemplatesUtil.windowImagesForBuildProperties();	
+	
+String splashLocation () :
+	JAVA moskitt4me.toolgenerator.util.TemplatesUtil.splashLocation();
+
+String startupProgressRect () :
+	JAVA moskitt4me.toolgenerator.util.TemplatesUtil.startupProgressRect();
+
+String startupMessageRect () :
+	JAVA moskitt4me.toolgenerator.util.TemplatesUtil.startupMessageRect();
+	
+String startupForegroundColor () :
+	JAVA moskitt4me.toolgenerator.util.TemplatesUtil.startupForegroundColor();
+	
+String definingBundleName () :
+	JAVA moskitt4me.toolgenerator.util.TemplatesUtil.definingBundleName();
+	
+String appName () :
+	JAVA moskitt4me.toolgenerator.util.TemplatesUtil.appName();
+	
+String preferenceCustomization () :
+	JAVA moskitt4me.toolgenerator.util.TemplatesUtil.preferenceCustomization();
+	
+List[String] pluginDependencies () :
+	JAVA moskitt4me.toolgenerator.util.DependenciesUtil.pluginDependencies();
+	
+String methodDefinitionBundleName () :
+	JAVA moskitt4me.toolgenerator.util.TemplatesUtil.methodDefinitionBundleName();
+	
+String technicalFragmentsFeatureName () :
+	JAVA moskitt4me.toolgenerator.util.TemplatesUtil.technicalFragmentsFeatureName();	
+	
+List[String] technicalFragmentFeatures () :
+	JAVA moskitt4me.toolgenerator.util.TemplatesUtil.technicalFragmentFeatures();
+	
+String libraryPath () :
+	JAVA moskitt4me.toolgenerator.util.TemplatesUtil.libraryPath();

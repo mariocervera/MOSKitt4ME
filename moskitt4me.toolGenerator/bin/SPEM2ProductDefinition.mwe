@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<workflow>
+	
+	<property name='inputModelFile' value='...'/> 
+	<property name='srcGenPath' value='...'/>
+	<property name='srcGenPath2' value='...'/>
+	<property name='srcGenPath3' value='...'/>
+	<property name='srcGenPath4' value='...'/>
+	<property name='srcGenPath5' value='...'/>
+	<property name='srcGenPath6' value='...'/>
+	
+	<component id="xmiParser" class="org.eclipse.xtend.typesystem.emf.XmiReader">
+		<modelFile value="${inputModelFile}" />
+		<metaModelPackage value="org.eclipse.epf.uma.UmaPackage" />
+		<outputSlot value="model" />
+		<firstElementOnly value="false" />
+	</component>
+
+	<component id="generator" class="org.eclipse.xpand2.Generator">
+		<metaModel id="mmEMF" class="org.eclipse.xtend.typesystem.emf.EmfMetaModel">
+			<metaModelPackage value="org.eclipse.emf.ecore.EcorePackage"/>
+		</metaModel>
+		<metaModel id="mmUma" class="org.eclipse.xtend.typesystem.emf.EmfMetaModel">
+			<metaModelPackage value="org.eclipse.epf.uma.UmaPackage" />
+		</metaModel>
+		<metaModel id="mmResourceManager" class="org.eclipse.xtend.typesystem.emf.EmfMetaModel">
+			<metaModelPackage value="org.eclipse.epf.resourcemanager.ResourcemanagerPackage" />
+		</metaModel>
+		
+		<expand value="transf::templates::RootTemplate::Root FOR model" />
+		<outlet path="${srcGenPath}" />
+		<outlet name="genPath" path="${srcGenPath}" overwrite='true' append='true' />
+		<outlet name="genPath2" path="${srcGenPath2}" overwrite='true' append='true' />
+		<outlet name="genPath3" path="${srcGenPath3}" overwrite='true' append='true' />
+		<outlet name="genPath4" path="${srcGenPath4}" overwrite='true' append='true' />
+		<outlet name="genPath5" path="${srcGenPath5}" overwrite='true' append='true' />
+		<outlet name="genPath6" path="${srcGenPath6}" overwrite='true' append='true' />
+	</component> 
+	
+</workflow>

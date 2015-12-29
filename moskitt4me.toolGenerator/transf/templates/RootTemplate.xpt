@@ -1,0 +1,43 @@
+«REM»********** Root **********«ENDREM»
+
+«DEFINE Root FOR List-»
+«FOREACH this AS rootElem-»
+«EXPAND rootElement FOR rootElem-»
+«ENDFOREACH-»
+«ENDDEFINE»
+
+«REM»********** ResourceManager **********«ENDREM»
+
+«DEFINE rootElement FOR resourcemanager::ResourceManager-»
+«EXPAND resourceDescriptor FOREACH this.resourceDescriptors-»
+«ENDDEFINE»
+
+«DEFINE resourceDescriptor FOR resourcemanager::ResourceDescriptor-»
+«ENDDEFINE»
+
+«REM»********** MethodLibrary **********«ENDREM»
+
+«DEFINE rootElement FOR uma::MethodLibrary-»
+
+«EXPAND Manifest::manifest FOR this-»
+«EXPAND ProductConfiguration::productConfiguration FOR this-»
+«EXPAND PluginXML::pluginXML FOR this-»
+«EXPAND BuildProperties::buildProperties FOR this-»
+
+«EXPAND Manifest::manifestForMethodDefinition FOR this-»
+«EXPAND PluginXML::pluginXMLForMethodDefinition FOR this-»
+«EXPAND BuildProperties::buildPropertiesForMethodDefinition FOR this-»
+
+«EXPAND FeatureXML::featureXML FOR this-»
+«EXPAND BuildProperties::featureBuildProperties FOR this-»
+
+«EXPAND FeatureXML::featureXMLForDependencies FOR this-»
+«EXPAND BuildProperties::featureBuildPropertiesForDependencies FOR this-»
+
+«EXPAND FeatureXML::featureXMLForMethodDefinition FOR this-»
+«EXPAND BuildProperties::featureBuildPropertiesForMethodDefinition FOR this-»
+
+«EXPAND FeatureXML::featureXMLForTechnicalFragments FOR this-»
+«EXPAND BuildProperties::featureBuildPropertiesForTechnicalFragments FOR this-»
+
+«ENDDEFINE»

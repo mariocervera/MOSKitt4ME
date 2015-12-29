@@ -1,0 +1,139 @@
+«EXTENSION transf::extensions::SPEM2ProductDefinition»
+
+«REM» This template is in charge of the generation of the plugin.xml file «ENDREM»
+
+«DEFINE pluginXML FOR uma::MethodLibrary-»
+«FILE "plugin.xml" genPath-»
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+   <extension
+         id="products"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="«productApplication()»"
+            name="«productName()»">
+         «EXPAND windowImages FOR this-»
+         «EXPAND aboutText FOR this-»
+         «EXPAND aboutImage FOR this-»
+         «EXPAND appName FOR this-»
+         «EXPAND startupForegroundColor FOR this-»
+         «EXPAND startupMessageRect FOR this-»
+         «EXPAND startupProgressRect FOR this-»
+         «EXPAND preferenceCustomization FOR this-»
+      </product>
+   </extension>
+</plugin>
+«ENDFILE»
+«ENDDEFINE»
+
+«DEFINE pluginXMLForMethodDefinition FOR uma::MethodLibrary-»
+«FILE "plugin.xml" genPath2-»
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="moskitt4me.projectmanager.core.methodlibraryprovider">
+      «EXPAND libraryPath FOR this-»
+   </extension>
+</plugin>
+
+«ENDFILE»
+«ENDDEFINE»
+
+«DEFINE windowImages FOR uma::MethodLibrary-»
+«LET windowImages() AS images-»
+«IF images != null && images != ""-»
+<property
+	name="windowImages"
+	value="«images»">
+</property>
+«ENDIF-»
+«ENDLET-»
+«ENDDEFINE»
+
+«DEFINE aboutText FOR uma::MethodLibrary-»
+«LET aboutText() AS text-»
+«IF text != null && text != ""-»
+<property
+	name="aboutText"
+	value="«text»">
+</property>
+«ENDIF-»
+«ENDLET-»
+«ENDDEFINE»
+
+«DEFINE aboutImage FOR uma::MethodLibrary-»
+«LET aboutImage() AS image-»
+«IF image != null && image != ""-»
+<property
+	name="aboutImage"
+	value="«image»">
+</property>
+«ENDIF-»
+«ENDLET-»
+«ENDDEFINE»
+
+«DEFINE appName FOR uma::MethodLibrary-»
+«LET appName() AS name-»
+«IF name != null && name != ""-»
+<property
+	name="appName"
+	value="«name»">
+</property>
+«ENDIF-»
+«ENDLET-»
+«ENDDEFINE»
+
+«DEFINE startupForegroundColor FOR uma::MethodLibrary-»
+«LET startupForegroundColor() AS color-»
+«IF color != null && color != ""-»
+<property
+	name="startupForegroundColor"
+	value="«color»">
+</property>
+«ENDIF-»
+«ENDLET-»
+«ENDDEFINE»
+
+«DEFINE startupMessageRect FOR uma::MethodLibrary-»
+«LET startupMessageRect() AS rect-»
+«IF rect != null && rect != ""-»
+<property
+	name="startupMessageRect"
+	value="«rect»">
+</property>
+«ENDIF-»
+«ENDLET-»
+«ENDDEFINE»
+
+«DEFINE startupProgressRect FOR uma::MethodLibrary-»
+«LET startupProgressRect() AS rect-»
+«IF rect != null && rect != ""-»
+<property
+	name="startupProgressRect"
+	value="«rect»">
+</property>
+«ENDIF-»
+«ENDLET-»
+«ENDDEFINE»
+
+«DEFINE preferenceCustomization FOR uma::MethodLibrary-»
+«LET preferenceCustomization() AS preference-»
+«IF preference != null && preference != ""-»
+<property
+	name="preferenceCustomization"
+	value="«preference»">
+</property>
+«ENDIF-»
+«ENDLET-»
+«ENDDEFINE»
+
+«DEFINE libraryPath FOR uma::MethodLibrary-»
+«LET libraryPath() AS path-»
+«IF path != null && path != ""-»
+<libraryContribution path="«path»">
+</libraryContribution>
+«ENDIF-»
+«ENDLET-»
+«ENDDEFINE»

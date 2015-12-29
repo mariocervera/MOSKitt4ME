@@ -1,0 +1,141 @@
+«EXTENSION transf::extensions::SPEM2ProductDefinition»
+
+«REM» This template is in charge of the generation of the product configuration file «ENDREM»
+
+«DEFINE productConfiguration FOR uma::MethodLibrary-»
+«FILE "productConfiguration.product" genPath-»
+<?xml version="1.0" encoding="UTF-8"?>
+<?pde version="3.5"?>
+
+<product «EXPAND productName FOR this-» «EXPAND productID FOR this-» «EXPAND productApplication FOR this-» «EXPAND productVersion FOR this-» useFeatures="true" includeLaunchers="true">
+
+   «EXPAND aboutInfo FOR this-»
+
+   <configIni use="default">
+   </configIni>
+
+   <launcherArgs>
+      <programArgs>-perspective moskitt4me.projectmanager.core.perspective</programArgs>
+      <vmArgs>-Xms128m -Xmx768m -XX:PermSize=128m -XX:MaxPermSize=512m</vmArgs>
+      <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts</vmArgsMac>
+   </launcherArgs>
+
+   «EXPAND windowImages FOR this-»
+
+   «EXPAND splash FOR this-»
+
+   <features>
+   «EXPAND fixedFeatures FOR this-»
+   </features>
+
+</product>
+«ENDFILE»
+«ENDDEFINE»
+
+«REM»********** Product Configuration File rules **********«ENDREM»
+
+«DEFINE productName FOR uma::MethodLibrary-»
+«LET productName() AS name-»
+«IF name != null && name != ""-»
+name="«name»"
+«ENDIF-»
+«ENDLET-»
+«ENDDEFINE»
+
+«DEFINE productID FOR uma::MethodLibrary-»
+«LET productId() AS id-»
+«IF id != null && id != ""-»
+id="«id»"
+«ENDIF-»
+«ENDLET-»
+«ENDDEFINE»
+
+«DEFINE productApplication FOR uma::MethodLibrary-»
+«LET productApplication() AS app-»
+«IF app != null && app != ""-»
+application="«app»"
+«ENDIF-»
+«ENDLET-»
+«ENDDEFINE»
+
+«DEFINE productVersion FOR uma::MethodLibrary-»
+«LET productVersion() AS version-»
+«IF version != null && version != ""-»
+version="«version»"
+«ENDIF-»
+«ENDLET-»
+«ENDDEFINE»
+
+«DEFINE aboutInfo FOR uma::MethodLibrary-»
+«LET aboutImage() AS image-»
+«LET aboutText() AS text-»
+«IF image != "" || text != ""-»
+<aboutInfo>
+«IF image != ""-»
+<image path="«image»"/>
+«ENDIF-»
+«IF text != ""-»
+<text>
+«text»
+</text>
+«ENDIF-»
+</aboutInfo>
+«ENDIF-»
+«ENDLET-»
+«ENDLET-»
+«ENDDEFINE»
+
+«DEFINE windowImages FOR uma::MethodLibrary-»
+«LET windowImagesForProductFile() AS images-»
+«IF images != ""-»
+<windowImages «images»/>
+«ENDIF-»
+«ENDLET-»
+«ENDDEFINE»
+
+«DEFINE splash FOR uma::MethodLibrary-»
+«LET splashLocation() AS location-»
+«LET startupProgressRect() AS progressRectangle-»
+«LET startupMessageRect() AS messageRectangle-»
+«LET startupForegroundColor() AS foregroundColor-»
+«IF location != "" || progressRectangle != "" || messageRectangle != "" || foregroundColor != ""-»
+<splash
+«IF location != ""-»
+location="«location»"
+«ENDIF-»
+«IF progressRectangle != ""-»
+startupProgressRect="«progressRectangle»"
+«ENDIF-»
+«IF messageRectangle != ""-»
+startupMessageRect="«messageRectangle»"
+«ENDIF-»
+«IF foregroundColor != ""-»
+startupForegroundColor="«foregroundColor»"
+«ENDIF-»
+/>
+«ENDIF-»
+«ENDLET-»
+«ENDLET-»
+«ENDLET-»
+«ENDLET-»
+«ENDDEFINE»
+ 
+«DEFINE fixedFeatures FOR uma::MethodLibrary-»
+<feature id="«definingBundleName()».feature" version="«EXPAND productDefinitionFeatureVersion FOR this-»"/>
+<feature id="«definingBundleName()».dependencies.feature" version="1.0.0.qualifier"/>
+<feature id="«technicalFragmentsFeatureName()»" version="1.0.0.qualifier"/>
+<feature id="es.cv.gvcase.features.moskitt4me.runtime" version="1.0.0.qualifier"/>
+<feature id="org.eclipse.graphiti.feature" version="1.0.0.qualifier"/>
+<feature id="es.cv.gvcase.features.trmanager" version="1.3.3.qualifier"/>
+<feature id="«methodDefinitionBundleName()».feature" version="1.0.0.qualifier"/>
+«ENDDEFINE»
+
+«DEFINE productDefinitionFeatureVersion FOR uma::MethodLibrary-»
+«LET productVersion() AS version-»
+«IF version != null && version != ""-»
+«version-»
+«ELSE-»
+1.0.0.qualifier
+«ENDIF-»
+«ENDLET-»
+«ENDDEFINE»

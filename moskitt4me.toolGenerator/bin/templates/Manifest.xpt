@@ -1,0 +1,62 @@
+«EXTENSION transf::extensions::SPEM2ProductDefinition»
+
+«REM» This template is in charge of the generation of the MANIFEST.MF file «ENDREM»
+
+«DEFINE manifest FOR uma::MethodLibrary-»
+«FILE "/META-INF/MANIFEST.MF" genPath-»
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+«EXPAND bundleName FOR this-»
+«EXPAND bundleSymbolicName FOR this-»
+«EXPAND bundleVersion FOR this-»
+Bundle-ActivationPolicy: lazy
+«ENDFILE»
+«ENDDEFINE»
+
+«DEFINE manifestForMethodDefinition FOR uma::MethodLibrary-»
+«FILE "/META-INF/MANIFEST.MF" genPath2-»
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Method Definitions
+«EXPAND bundleSymbolicNameForMethodDefinition FOR this-»
+Bundle-Version: 1.0.0.qualifier
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ moskitt4me.projectmanager.core
+Bundle-ActivationPolicy: lazy
+«ENDFILE»
+«ENDDEFINE»
+
+«DEFINE bundleName FOR uma::MethodLibrary-»
+«LET productName() AS name-»
+«IF name != null && name != ""-»
+Bundle-Name: «name»
+«ELSE-»
+Bundle-Name: Generated RCP
+«ENDIF-»
+«ENDLET-»
+«ENDDEFINE»
+
+«DEFINE bundleSymbolicName FOR uma::MethodLibrary-»
+«LET definingBundleName() AS name-»
+«IF name != null && name != ""-»
+Bundle-SymbolicName: «name»;singleton:=true
+«ENDIF-»
+«ENDLET-»
+«ENDDEFINE»
+
+«DEFINE bundleSymbolicNameForMethodDefinition FOR uma::MethodLibrary-»
+«LET methodDefinitionBundleName() AS name-»
+«IF name != null && name != ""-»
+Bundle-SymbolicName: «name»;singleton:=true
+«ENDIF-»
+«ENDLET-»
+«ENDDEFINE»
+
+«DEFINE bundleVersion FOR uma::MethodLibrary-»
+«LET productVersion() AS version-»
+«IF version != null && version != ""-»
+Bundle-Version: «version»
+«ENDIF-»
+«ENDLET-»
+«ENDDEFINE»
