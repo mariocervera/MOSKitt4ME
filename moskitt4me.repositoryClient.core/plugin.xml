@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            allowMultiple="false"
+            category="org.eclipse.epf.ui.views.category"
+            class="moskitt4me.repositoryClient.core.views.RepositoriesView"
+            icon="icons/full/obj16/Repositories.gif"
+            id="repositoryClient.views.repositoriesView"
+            name="Repositories"
+            restorable="true">
+      </view>
+   </extension>
+
+</plugin>

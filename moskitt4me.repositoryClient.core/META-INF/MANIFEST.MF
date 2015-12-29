@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: MOSKitt4ME Repository Client Plug-in
+Bundle-SymbolicName: moskitt4me.repositoryClient.core;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Require-Bundle: org.eclipse.ui.navigator,
+ org.eclipse.emf.edit.ui,
+ org.eclipse.epf.library,
+ moskitt4me.repositoryClient.fragmentIntegration,
+ org.eclipse.jdt.core,
+ org.eclipse.ui.ide
+Bundle-Activator: moskitt4me.repositoryClient.core.Activator
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Export-Package: moskitt4me.repositoryClient.core.util
