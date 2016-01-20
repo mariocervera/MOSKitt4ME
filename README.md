@@ -1,4 +1,4 @@
-# Moskitt4me
+# Moskitt4ME
 
 This repository contains the Eclipse plug-ins that implement MOSKitt4ME, a Computer-Aided
 Method Engineering (CAME) environment. MOSKitt4ME supports the design of software development
