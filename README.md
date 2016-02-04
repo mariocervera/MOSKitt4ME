@@ -6,7 +6,7 @@ The following playlist provides a brief introduction to MOSKitt4ME:
 
 https://www.youtube.com/watch?v=h6qFqNLZLj4&list=PLf_PcMBAdMOBZiaqopMzwqNXrpcoGj44c
 
-For an extensive description of the tool, I refer the reader to Chapter 5 of my PhD thesis:
+A more extensive description of the tool can be found in Chapter 5 of my PhD thesis:
 
 https://riunet.upv.es/handle/10251/53931
 
