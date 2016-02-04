@@ -17,3 +17,12 @@ http://dblp.uni-trier.de/pers/hd/c/Cervera:Mario
 MOSKitt4ME website (installation instructions and user manual):
 
 http://users.dsic.upv.es/~mcervera/moskitt4me/
+
+Alternatively, MOSKitt4ME can be downloaded from:
+
+https://www.dropbox.com/s/vtrtaqyeya9bpcl/MOSKitt4ME.zip?dl=0
+
+The reusable assets that are used in the video demonstration mentioned above can be downloaded from:
+
+https://www.dropbox.com/s/rt14kw0hp861dug/Assets.zip?dl=0
+
