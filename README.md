@@ -6,23 +6,15 @@ The following playlist provides an introduction to MOSKitt4ME:
 
 https://www.youtube.com/watch?v=h6qFqNLZLj4&list=PLf_PcMBAdMOBZiaqopMzwqNXrpcoGj44c
 
-A more extensive description of the tool can be found in Chapter 5 of my PhD thesis:
+A more extensive description of the tool (along with some illustrative screenshots) can be found in Chapter 5 of my PhD thesis:
 
 https://riunet.upv.es/handle/10251/53931
 
-Some of the screenshots that are shown in this chapter can be downloaded from:
-
-https://www.dropbox.com/s/809oefvyeokzvxk/screenshotsMOSKitt4ME.zip?dl=0
-
-A complete list of my publications about MOSKitt4ME can be found here:
-
-http://dblp.uni-trier.de/pers/hd/c/Cervera:Mario
-
-MOSKitt4ME website (installation instructions and user manual):
+MOSKitt4ME website (installation instructions, user manual, and list of publications):
 
 http://users.dsic.upv.es/~mcervera/moskitt4me/
 
-Alternatively, MOSKitt4ME can be downloaded from:
+Alternatively, a pre-configured Windows version of MOSKitt4ME can be downloaded from:
 
 https://www.dropbox.com/s/vtrtaqyeya9bpcl/MOSKitt4ME.zip?dl=0
 
