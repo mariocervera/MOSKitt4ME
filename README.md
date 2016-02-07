@@ -10,6 +10,10 @@ A more extensive description of the tool can be found in Chapter 5 of my PhD the
 
 https://riunet.upv.es/handle/10251/53931
 
+Some of the screenshots that are shown in this chapter can be downloaded from:
+
+https://www.dropbox.com/s/809oefvyeokzvxk/screenshotsMOSKitt4ME.zip?dl=0
+
 A complete list of my publications about MOSKitt4ME can be found here:
 
 http://dblp.uni-trier.de/pers/hd/c/Cervera:Mario
