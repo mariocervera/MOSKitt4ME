@@ -18,6 +18,6 @@ Alternatively, a pre-configured Windows version of MOSKitt4ME can be downloaded 
 
 https://www.dropbox.com/s/vtrtaqyeya9bpcl/MOSKitt4ME.zip?dl=0
 
-The reusable assets that are used in the video demo can be downloaded from:
+P.S: The reusable assets that are used in the videos of MOSKitt4ME can be downloaded from:
 
 https://www.dropbox.com/s/rt14kw0hp861dug/Assets.zip?dl=0
