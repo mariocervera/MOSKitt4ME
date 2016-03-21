@@ -20,6 +20,11 @@ import org.eclipse.osgi.service.resolver.State;
 import org.eclipse.osgi.util.ManifestElement;
 import org.osgi.framework.Bundle;
 
+/*
+* This class is in charge of automatically managing all the software dependency issues that
+* arise between plug-ins during the CASE generation process. This is done by accessing the
+* MANIFEST.MF files of the plug-ins.
+*/
 public class DependenciesUtil {
 	
 	private static State state = Platform.getPlatformAdmin().getState();
@@ -87,7 +92,7 @@ public class DependenciesUtil {
 	
 	private static List<String> getPluginProjectDependencies(List<String> checkedBundles) {
 		
-		//Add dependencies of plugin projects in the workspace
+		//Add dependencies of Plug-in projects in the workspace
 		
 		List<String> result = new ArrayList<String>();
 		
