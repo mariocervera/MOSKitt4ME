@@ -21,6 +21,10 @@ import org.eclipse.ui.IViewActionDelegate;
 import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.PlatformUI;
 
+/*
+* This is the main action of the moskitt4me.toolGenerator plug-in. It is in charge of invoking the
+* generation of the CASE environment.
+*/ 
 public class ToolGenerationAction implements IViewActionDelegate {
 	
 	public void run(IAction action) {
@@ -30,6 +34,9 @@ public class ToolGenerationAction implements IViewActionDelegate {
 		GeneratorUtil.internalPlugins.clear();
 		
 		Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
+		
+		// Open a dialog that allows the user to specify destionation folder
+		// and name of the CASE environment
 		
 		ToolGenerationDialog tgd = new ToolGenerationDialog(shell);
 		tgd.open();
@@ -67,6 +74,7 @@ public class ToolGenerationAction implements IViewActionDelegate {
 				if(dto.getResult() == 0) {
 					
 					// Invoke export product (do not open wizard)
+					// This functionality is provided by the Eclipse PDE
 					
 					ToolGenerationWizard wizard = new ToolGenerationWizard(destination, productRoot);
 					wizard.init(PlatformUI.getWorkbench(),
@@ -88,6 +96,9 @@ public class ToolGenerationAction implements IViewActionDelegate {
 						.getMessage() != null ? e.getMessage() : e.toString());
 			}
 			finally {
+				
+				//Delete the projects that have been imported into the workspace
+				
 				DeleteProjectsOperation dpo = new DeleteProjectsOperation(
 						exportJob, temporalFolder, temporalFolder2, temporalFolder3,
 						destination, productRoot);
