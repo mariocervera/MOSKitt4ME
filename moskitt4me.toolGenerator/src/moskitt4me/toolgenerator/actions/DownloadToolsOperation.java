@@ -33,10 +33,11 @@ import com.ibm.icu.util.StringTokenizer;
 
 /*
 * This class is in charge of generating/downloading/importing into the workspace all the
-* Plug-in Projects that are necesary to automatically build the CASE environment supporting
-* the method. This CASE environment will be an Eclipse reconfiguration that only contains the
-* tools that are strictly necessary to support the method. These tools will be the plug-ins
-* imported into the workspace during the execution of the code that is contained in this class.
+* Plug-in Projects that must be included in the CASE environment that will be generated to
+* support the method defined using MOSKitt4ME. The generated CASE environment will be an
+* Eclipse reconfiguration that only contains the tools that are strictly necessary to
+* support the method. These tools will be the plug-ins imported into the workspace during
+* the execution of the code that is contained in this class.
 */
 public class DownloadToolsOperation implements IRunnableWithProgress {
 
