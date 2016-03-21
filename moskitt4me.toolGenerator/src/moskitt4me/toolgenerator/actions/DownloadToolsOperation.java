@@ -31,6 +31,13 @@ import org.osgi.framework.Bundle;
 import com.ibm.icu.text.DecimalFormat;
 import com.ibm.icu.util.StringTokenizer;
 
+/*
+* This class is in charge of generating/downloading/importing into the workspace all the
+* Plug-in Projects that are necesary to automatically build the CASE environment supporting
+* the method. This CASE environment will be an Eclipse reconfiguration that only contains the
+* tools that are strictly necessary to support the method. These tools will be the plug-ins
+* imported into the workspace during the execution of the code that is contained in this class.
+*/
 public class DownloadToolsOperation implements IRunnableWithProgress {
 
 	private Shell shell;
@@ -249,7 +256,7 @@ public class DownloadToolsOperation implements IRunnableWithProgress {
 	}
 	
 	/*
-	 * This method generates the plug-in defining the eclipse product, the feature containing
+	 * This method generates the plug-in defining the Eclipse product, the feature containing
 	 * this plug-in, the feature containing the dependencies, the plug-in containing the
 	 * method library, and the feature containing this plug-in.
 	 */
