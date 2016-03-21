@@ -26,6 +26,11 @@ import org.eclipse.pde.internal.ui.wizards.exports.BaseExportWizard;
 import org.eclipse.pde.internal.ui.wizards.product.SynchronizationOperation;
 import org.eclipse.ui.progress.IProgressConstants;
 
+/*
+* This class is used by the "ToolGenerationAction" only to invoke the functionality that is provided
+* by the Eclipse PDE, which enables  the automatic generation of the CASE environment. This environment
+* is an Eclipse RCP product. The wizard is never opened.
+*/
 public class ToolGenerationWizard extends BaseExportWizard {
 
 	private static final String STORE_SECTION = "ProductExportWizard"; //$NON-NLS-1$
