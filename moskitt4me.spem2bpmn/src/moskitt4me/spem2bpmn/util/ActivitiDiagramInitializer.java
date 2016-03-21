@@ -37,12 +37,14 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.FileEditorInput;
 
 /*
- * This class provides a method for initializing the graphical elements of an Activiti model
+ * This class provides a method for initializing the graphical elements of an (BPMN 2.0) Activiti model
  */
 public class ActivitiDiagramInitializer {
 
 	private static int x;
 	private static int y;
+	
+	//These attributes are used to position the graphical elements in the canvas
 	
 	private static final int X_INITIAL_VALUE;
 	private static final int Y_INITIAL_VALUE;
@@ -52,7 +54,6 @@ public class ActivitiDiagramInitializer {
 	private static final String activitiEditorID = "org.activiti.designer.editor.multiPageEditor";
 	
 	static {
-		
 		X_INITIAL_VALUE = 30;
 		Y_INITIAL_VALUE = 75;
 		X_INCREMENT = 160;
@@ -77,9 +78,9 @@ public class ActivitiDiagramInitializer {
 		
 		preprocessActivitiModel(resource, flowNodes, sequenceFlows);
 		
-		/********************
-		 **** FLOW NODES ****
-		 ********************/
+		/*****************************************************************
+		 **** Generate the Flow Nodes (the yellow boxes of the model) ****
+		 *****************************************************************/
 		
 		int i = 0;
 		
@@ -103,9 +104,9 @@ public class ActivitiDiagramInitializer {
 		x = X_INITIAL_VALUE;
 		y = Y_INITIAL_VALUE;
 		
-		/*************************
-		 ***** SEQUENCE FLOWS ****
-		 *************************/
+		/*********************************************************
+		 ***** Generate the Sequence Flows (the black arrows) ****
+		 *********************************************************/
 		
 		for(EObject eobj : resource.getContents()) {
 			
