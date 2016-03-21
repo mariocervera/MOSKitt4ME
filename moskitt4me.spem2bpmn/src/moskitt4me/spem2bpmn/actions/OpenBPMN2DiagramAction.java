@@ -19,12 +19,27 @@ import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.ui.IActionDelegate;
 import org.eclipse.ui.PlatformUI;
 
+/*
+ * This action (which can be executed by means of the popup menu of the delivery processes)
+ * allows the user to invoke a Model-to-Model transformation that obtains a BPMN 2.0 model
+ * (in terms of the Activiti Designer) from a specific SPEM 2.0 process. This process is
+ * defined by means of the EPF Composer.
+ */
 public class OpenBPMN2DiagramAction implements IActionDelegate {
 	
+	/*
+	 * The process that is the input of the transformation
+	 */
 	private DeliveryProcess selectedDeliveryProcess;
 	
+	/*
+	 * The folder where the output of the transformation will be stored (relative)
+	 */
 	private String relativeOutputFolder;
 	
+	/*
+	 * The folder where the output of the transformation will be stored (absolute)
+	 */
 	private String absoluteOutputFolder;
 	
 	public void run(IAction action) {
@@ -46,7 +61,9 @@ public class OpenBPMN2DiagramAction implements IActionDelegate {
 						"New Diagram File",
 						"No Activiti Designer diagram exists for this process. Do you want to create a new one?");
 				
-				if(result) { //Automatically generate the Activiti Designer file
+				if(result) {
+					
+					//Automatically generate the Activiti Designer files (only the process content)
 
 					String errorMessage = DeliveryProcessValidator.checkPrecedenceRelationships(selectedDeliveryProcess);
 					
