@@ -7,9 +7,9 @@ import org.eclipse.emf.mwe.core.WorkflowRunner;
 import org.eclipse.emf.mwe.core.monitor.NullProgressMonitor;
 
 /*
- * This class invokes the Workflow that is in charge of launching the Xpand transformations
- * that will generate the plug-ins to be imported into the workspace. These plug-ins
- * are required during the CASE generation process.
+ * This class invokes the Workflow that launches the Xpand transformations that will
+ * generate the plug-ins to be imported into the workspace. These plug-ins are required
+ * during the CASE generation process.
  */
 public class PluginsGenerator {
 
