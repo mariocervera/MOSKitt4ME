@@ -11,6 +11,13 @@ import org.eclipse.epf.uma.VariabilityType;
 import org.eclipse.epf.uma.WorkBreakdownElement;
 import org.eclipse.epf.uma.WorkOrder;
 
+/*
+* This class checks whether a SPEM 2.0 delivery process is properly defined and can, therefore, be
+* used as input of the SPEM-to-BPMN model transformation.
+*
+* The validator checks the following constraint: precedence relationships must be established between
+* elements within the same parent activity.
+*/
 public class DeliveryProcessValidator {
 	
 	public static String checkPrecedenceRelationships(Activity actv) {
