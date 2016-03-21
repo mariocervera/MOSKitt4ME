@@ -31,16 +31,36 @@ import org.eclipse.epf.uma.VariabilityType;
 import org.eclipse.epf.uma.WorkBreakdownElement;
 import org.eclipse.epf.uma.WorkOrder;
 
+/*
+* This class implements a Model-to-Model transformation that obtains a BPMN 2.0 representation
+* (in terms of the Activiti Designer) of a SPEM 2.0 delivery process (defined by means of the
+* EPF Composer).
+*/
 public class SPEM2BPMNTransformation {
 
+	/*
+	* Number of BPMN 2.0 tasks that have been generated
+	*/
 	private int userTaskCounter;
 	
+	/*
+	* Number of BPMN 2.0 sequence flows that have been generated
+	*/
 	private int sequenceFlowCounter;
 	
+	/*
+	* Number of BPMN 2.0 call activities that have been generated
+	*/
 	private int callActivityCounter;
 	
+	/*
+	* The root of the BPMN 2.0 model
+	*/
 	private Activity rootActivity;
 	
+	/*
+	* The folder where the output model will be stored
+	*/
 	private String outputFolder;
 	
 	private List<String> generatedCapabilityPatterns;
@@ -59,6 +79,9 @@ public class SPEM2BPMNTransformation {
 		this.generatedCapabilityPatterns = generatedCapabilityPatterns;
 	}
 	
+	/*
+	* This method generates the content of the BPMN 2.0 model (not the graphical representations)
+	*/
 	public int generateBPMNModelContent() throws Exception {
 		
 		ProcessPackage rootElement = SPEM2BPMNUtil.getProcessPackage(rootActivity);
@@ -227,9 +250,9 @@ public class SPEM2BPMNTransformation {
 		return userTaskCounter;
 	}
 	
-	// ---------------------------------------
-	// ----------- Private methods -----------
-	// ---------------------------------------
+	// ------------------------------------------------------------------------------------------------
+	// Private methods (generate the different BPMN 2.0 elements: start event, end event, tasks, etc.)
+	// ------------------------------------------------------------------------------------------------
 	
 	private Process generateRootProcess(Activity activity) {
 		
