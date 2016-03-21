@@ -52,19 +52,25 @@ public class CreateConceptualFragmentAction extends Action {
 			RepositoryLocation location = getSelectedLocation(repositoriesView);
 			
 			if(location != null) {
-				//Dialog to create a Conceptual Fragment
+				
+				//Open the dialog to create a Conceptual Fragment
+				
 				CreateConceptualFragmentDialog dialog = new CreateConceptualFragmentDialog(repositoriesView.getSite().getShell(), library.getMethodPlugins().toArray());				
 				
 				if( dialog.open() == Window.OK ) {
-					//this boolean indicated if the check button of the dialog was enabled
-					//if it is enabled the references to other elements will be included
+					
+					// This boolean indicates whether the check button of the dialog was enabled.
+					// If so, the references to other elements will be included.
+					
 					integrateReferences=dialog.getIntegrateReferences();
 					
-					//It creates the ConceptualFragment object
+					//Create the ConceptualFragment object
+					
 					ConceptualFragment result = new ConceptualFragment(dialog.getName(), dialog.getType(), 
 							dialog.getOrigin(), dialog.getObjective());
 					
 					//List of content elements selected
+					
 					List<Object> listElements = dialog.getElements();
 					String tempDir = "";
 					String eclipseInstallationDirectory = Platform.getInstallLocation().getURL().getPath();
@@ -77,9 +83,12 @@ public class CreateConceptualFragmentAction extends Action {
 						fos = new FileOutputStream(assetLocation);
 						zos = new ZipOutputStream(fos);
 						
-						//Create ras file (Fragment data)
+						//Create RAS file (Fragment data)
+						
 						createAssets(result, tempDir);
+						
 						//Create fragment file (Content elements and relationships)
+						
 						createElements(result, listElements, tempDir);
 						
 						uploadAssets(location, tempDir);
@@ -102,17 +111,17 @@ public class CreateConceptualFragmentAction extends Action {
 	}
 	
 	private void createElements(ConceptualFragment result, List<Object> listElements, String tempDir) {
-		// TODO Auto-generated method stub
+		
 		createFragmentFile(result, listElements, tempDir);
 	}
 
 	private void createFragmentFile(ConceptualFragment result, List<Object> listElements, String tempDir) {
-		// TODO Auto-generated method stub
 		
 		String manifestPath = "";
 		
 		try {
 			//The FragmentWriter creates the XMI file for the conceptual fragment
+		
 			manifestPath = FragmentWriter.createConceptualFragmentXMLFile(result, listElements, tempDir, integrateReferences);
 			File f = new File(manifestPath);
 			if(f.exists()) {
