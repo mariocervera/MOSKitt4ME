@@ -11,6 +11,11 @@ import org.eclipse.jface.viewers.ColumnLabelProvider;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
 
+/*
+* Provides labels and icons for the elements of the Dependencies Tree of the "Create Technical Fragment Dialog".
+*
+* @author Mario Cervera
+*/
 public class DependenciesTreeLabelProvider extends ColumnLabelProvider {
 
 	@Override
