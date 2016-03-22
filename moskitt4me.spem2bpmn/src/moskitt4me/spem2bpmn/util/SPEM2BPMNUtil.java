@@ -22,6 +22,9 @@ import org.eclipse.epf.uma.ProcessPackage;
 import org.eclipse.epf.uma.WorkBreakdownElement;
 import org.eclipse.epf.uma.WorkOrder;
 
+/*
+* @author Mario Cervera
+*/
 public class SPEM2BPMNUtil {
 
 	public static String replaceLastSegment(String uri, String newSegment) {
