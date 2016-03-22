@@ -14,6 +14,14 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 
+/*
+* A dialog that allows the user to add Repository Locations to the Repositories view. 
+* A repository location is a graphical element that points to a FTP repository that contains
+* reusable assets. To create a new repository location, the user needs to specify host,
+* repository path, username, and password.
+*
+* @author Mario Cervera
+*/
 public class AddRepositoryLocationDialog extends Dialog {
 
     private String host;
