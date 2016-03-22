@@ -31,16 +31,25 @@ import org.eclipse.ui.PlatformUI;
 import org.osgi.framework.Bundle;
 
 /*
- * This class provides an API for accessing the underlying Activiti engine
+ * This class implements a facade that facilitates the access to the API of the
+ * Activiti process engine.
+ *
+ * @author Mario Cervera
  */
 public class Engine {
 
+	/*
+	* Each project has a different instance of the engine associated to it.
+	*/
 	private static Map<IProject, ProcessEngine> engines = new HashMap<IProject, ProcessEngine>();
 	
+	/*
+	* To support capability patterns.
+	*/
 	private static Map<String, String> mapProcessInstanceToCpId = new HashMap<String, String>();
 	
 	/*
-	 * This method sets up the engine
+	 * This method sets up the engine.
 	 */
 	public static void setUp(DeliveryProcess dp, IProject project) throws Exception {
 		
@@ -72,7 +81,7 @@ public class Engine {
 			}
 		}
 		
-		// BPMN process deployment
+		// BPMN 2.0 process deployment
 		
 		if (activitiEngine.getRepositoryService().createDeploymentQuery()
 				.deploymentName(dp.getGuid() + ".bar").count() <= 0) {
@@ -111,7 +120,9 @@ public class Engine {
 				if(inputStream != null) {
 					inputStream.close();
 				}
+				
 				//Delete business archive
+				
 				File f = new File(barFilePath);
 				if(f.exists()) {
 					f.delete();
@@ -143,8 +154,7 @@ public class Engine {
 	}
 	
 	/*
-	 * This method executes a task given its id and the id of the 
-	 * current process instance
+	 * This method executes a task given its id and the id of the current process instance
 	 */
 	public static void executeTask(String taskId, String processInstanceId,
 			IProject project) {
@@ -278,6 +288,10 @@ public class Engine {
 		return variables;
 	}
 	
+	/*
+	* To deploy a process model in the Activiti engine, a business archive (.bar) must be created.
+	* A BAR file is a ZIP file that encapsulates the process model.
+	*/
 	private static void createBusinessArchive(String activitiFolder, 
 			String barFilePath, List<String> guids) throws Exception {
 
