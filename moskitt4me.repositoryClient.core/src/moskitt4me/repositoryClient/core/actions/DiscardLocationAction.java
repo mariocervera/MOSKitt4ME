@@ -10,6 +10,11 @@ import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
 
+/*
+* This action allows the user to delete Repository Locations from the Repositories view.
+*
+* @author Mario Cervera
+*/
 public class DiscardLocationAction extends Action {
 	
 	@Override
