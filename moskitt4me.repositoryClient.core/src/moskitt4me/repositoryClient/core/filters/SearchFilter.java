@@ -5,19 +5,24 @@ import moskitt4me.repositoryClient.core.providers.MethodFragmentItemProvider;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 
+/*
+* This filter is applied when search criteria are specified by means of the Search Dialog.
+*
+* @author Mario Cervera
+*/
 public class SearchFilter extends ViewerFilter {
 
 	private String type;
-    private String origin;
-    private String objective;
-    private String input;
-    private String output;
+	private String origin;
+	private String objective;
+	private String input;
+	private String output;
     
-    public SearchFilter() {
+    	public SearchFilter() {
 		this("","","","","");
 	}
     
-    public SearchFilter(String type, String origin, String objective, String input, String output) {
+    	public SearchFilter(String type, String origin, String objective, String input, String output) {
 		this.type = type;
 		this.origin = origin;
 		this.objective = objective;
