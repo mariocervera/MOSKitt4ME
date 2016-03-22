@@ -1,34 +1,41 @@
 package moskitt4me.repositoryClient.core.util;
 
+/*
+* A class for repository locations. A repository location points to a FTP repository that, in the
+* context of MOSKitt4ME, contains reusable assets that are stored as ZIP files according to the
+* Reusable Asset Specification (RAS) standard.
+*
+*  @author Mario Cervera
+*/
 public class RepositoryLocation {
 
 	private String host;
-    private String repositoryPath;
-    private String user;
-    private String password;
+	private String repositoryPath;
+	private String user;
+    	private String password;
 
-    private String type; //Empty, Conceptual, or Technical
+    	private String type; //Empty, Conceptual, or Technical
     
-    public RepositoryLocation() {
+    	public RepositoryLocation() {
     	
-    	this.host = "";
-    	this.repositoryPath = "";
-    	this.user = "";
-    	this.password = "";
-    	
-    	this.type = "";
-    }
+	    	this.host = "";
+	    	this.repositoryPath = "";
+	    	this.user = "";
+	    	this.password = "";
+	    	
+	    	this.type = "";
+	}
     
-    public RepositoryLocation(String host, String repositoryPath, String user,
+    	public RepositoryLocation(String host, String repositoryPath, String user,
 			String password) {
     	
-    	this.host = host;
-    	this.repositoryPath = repositoryPath;
-    	this.user = user;
-    	this.password = password;
-    	
-    	this.type = "";
-    }
+		this.host = host;
+		this.repositoryPath = repositoryPath;
+		this.user = user;
+		this.password = password;
+		
+		this.type = "";
+	}
     
 	public void setHost(String host) {
 		this.host = host;
@@ -61,12 +68,12 @@ public class RepositoryLocation {
 		return password;
 	}
 
-    public String getType() {
-    	return type;
-    }
-    
-    public void setType(String type) {
-    	this.type = type;
-    }
+	public String getType() {
+	    return type;
+	}
+	
+	public void setType(String type) {
+	    this.type = type;
+	}
     
 }
