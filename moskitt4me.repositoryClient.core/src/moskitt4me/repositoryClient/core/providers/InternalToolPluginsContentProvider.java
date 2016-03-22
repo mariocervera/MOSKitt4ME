@@ -7,6 +7,11 @@ import java.util.List;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 
+/*
+* A content provider for the composite of the "Define Internal Tool Dialog".
+*
+* @author Mario Cervera
+*/
 public class InternalToolPluginsContentProvider extends ArrayContentProvider implements ITreeContentProvider {
 
 	public Object[] getElements(Object inputElement) {
