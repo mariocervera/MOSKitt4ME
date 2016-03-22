@@ -15,7 +15,11 @@ import org.apache.commons.net.ftp.FTPFile;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 
-
+/*
+* Provides content for the main interface of the Repositories View.
+*
+* @author Mario Cervera
+*/
 @SuppressWarnings("unchecked")
 public class RepositoriesContentProvider extends AdapterFactoryContentProvider {
 	
@@ -35,6 +39,9 @@ public class RepositoriesContentProvider extends AdapterFactoryContentProvider {
 		return super.getElements(object);
 	}
 	
+	/*
+	* Calculates whether a given element has children or not
+	*/
 	@Override
 	public boolean hasChildren(Object object) {
 		
@@ -53,6 +60,9 @@ public class RepositoriesContentProvider extends AdapterFactoryContentProvider {
 		return super.hasChildren(object);
 	}
 	
+	/*
+	* Calculates the children of a given element
+	*/
 	@Override
 	public Object[] getChildren(Object object) {
 		
