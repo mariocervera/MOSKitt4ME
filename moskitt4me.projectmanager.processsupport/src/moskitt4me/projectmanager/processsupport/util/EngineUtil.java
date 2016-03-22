@@ -16,6 +16,12 @@ import org.activiti.engine.history.HistoricActivityInstance;
 import org.activiti.engine.runtime.ProcessInstance;
 import org.eclipse.core.resources.IProject;
 
+/*
+* A class that provides a set of methods that facilitate the implementation of the thrid phase
+* of the Method Engineering lifecycle (i.e., the phase of method execution).
+*
+* @author Mario Cervera
+*/
 public class EngineUtil {
 
 	public static void fillPatternInstances(Map<String, String> mapProcessInstanceToCpId,
