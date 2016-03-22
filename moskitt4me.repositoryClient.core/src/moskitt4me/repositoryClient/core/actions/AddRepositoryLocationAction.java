@@ -16,11 +16,11 @@ import org.eclipse.ui.PlatformUI;
 
 /*
 * This action allows the user to add a new repository location to the Repositories view. A
-* repository location is a graphical element that represents a FTP repository that contains
-* reusable assets.
+* repository location is a graphical element that points to a FTP repository that contains
+* reusable assets. To create a new repository location, the user needs to specify host,
+repository path, username, and password.
 *
-* To create a new repository location, the user needs to specify host, repository path, username,
-* and password.
+* @author Mario Cervera
 */
 public class AddRepositoryLocationAction extends Action implements IAction {
 
