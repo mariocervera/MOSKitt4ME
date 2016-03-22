@@ -124,6 +124,10 @@ public class ImportTechnicalFragmentDialog extends Dialog {
 								" Do you want to proceed?");
 			
 			if(result) {
+				
+				//The OK button has been pressed. Import the selected technical fragment into
+				//the dependencies tree (and its plug-ins into the workspace, if necesssary)
+				
 				boolean imported = importAsset(selectedFragment, null);
 				if(imported) {
 					this.result = selectedFragment;
@@ -147,6 +151,9 @@ public class ImportTechnicalFragmentDialog extends Dialog {
 			String eclipseInstallationDirectory = Platform.getInstallLocation().getURL().getPath();
 			tempDir = RepositoryClientUtil.createFolder(eclipseInstallationDirectory + "tmp", 0);
 			
+			//Download the technical fragment from the repository and extract the ZIP file into
+			//a temporal folder
+			
 			RepositoryClientUtil.downloadFragment(location, fileName, tempDir);
 			RepositoryClientUtil.extractZipFile(tempDir, fileName);
 			
@@ -160,7 +167,7 @@ public class ImportTechnicalFragmentDialog extends Dialog {
 			
 			tf.setImported(true);
 			
-			//Import projects into workspace
+			//Import projects into workspace, if necessary
 			
 			File tempDirFile = new File(tempDir);
 			File[] files = tempDirFile.listFiles();
