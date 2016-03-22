@@ -21,6 +21,12 @@ import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.window.Window;
 import org.eclipse.ui.PlatformUI;
 
+/*
+* In a similar way to the class "CreateTechnicalFragmentAction", this class implements an action that
+* enables the creation of technical fragments. The difference is that this class enables the creation of
+* technical fragments of type "External Tool". An external tool is a tool that is not implemented as Eclipse
+* plug-ins, and, therefore, cannot be integrated in the generated CASE environment.
+*/ 
 public class DefineExternalToolAction extends Action {
 
 	@Override
@@ -33,6 +39,9 @@ public class DefineExternalToolAction extends Action {
 			RepositoryLocation location = getSelectedLocation(repositoriesView);
 
 			if (location != null) {
+				
+				//Open the creation dialog
+				
 				DefineExternalToolDialog dialog = new DefineExternalToolDialog(
 						repositoriesView.getSite().getShell());
 				
@@ -45,8 +54,16 @@ public class DefineExternalToolAction extends Action {
 
 					try {
 						tempDir = RepositoryClientUtil.createFolder(eclipseInstallationDirectory + "tmp", 0);
+						
+						// Create the asset as a RAS file
+						
 						createRasFile(result, tempDir);
+						
+						//Upload the asset to the FTP repository
+						
 						uploadAsset(location, tempDir, result);
+						
+						//The repository is now a location for technical (not conceptual) method fragments
 						
 						location.setType("Technical");
 					}
