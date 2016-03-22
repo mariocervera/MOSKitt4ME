@@ -24,6 +24,11 @@ import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.window.Window;
 import org.eclipse.ui.PlatformUI;
 
+/*
+* This class implementes the creation of technical fragments. A technical fragment contains a tool (for example,
+* a graphical editor or a code generator) implemented as Eclipse plug-ins. These fragments are .zip files that
+* are compliant with the Reusable Asset Specification (RAS) standard.
+*/
 public class CreateTechnicalFragmentAction extends Action {
 
 	@Override
@@ -36,6 +41,9 @@ public class CreateTechnicalFragmentAction extends Action {
 			RepositoryLocation location = getSelectedLocation(repositoriesView);
 			
 			if(location != null) {
+				
+				//Open the creation dialog
+				
 				CreateTechnicalFragmentDialog dialog = new CreateTechnicalFragmentDialog(
 						repositoriesView.getSite().getShell(), location);
 				
@@ -48,8 +56,17 @@ public class CreateTechnicalFragmentAction extends Action {
 
 					try {
 						tempDir = RepositoryClientUtil.createFolder(eclipseInstallationDirectory + "tmp", 0);
+						
+						// Create the reusable assets in a temporal folder
+						
 						createAssets(result, tempDir);
+						
+						// Upload the assets to the FTP repository
+						
 						uploadAssets(location, tempDir);
+						
+						// Set the repository as a container of technical fragments (not conceptual fragments)
+						
 						location.setType("Technical");
 					}
 					catch(Exception e) {
@@ -66,6 +83,9 @@ public class CreateTechnicalFragmentAction extends Action {
 		}
 	}
 	
+	/*
+	* This method obtains the Repository Location that is selected in the Repositories view
+	*/
 	private RepositoryLocation getSelectedLocation(RepositoriesView repositoriesView) {
 		
 		ISelection sel = repositoriesView.getCommonViewer().getSelection();
