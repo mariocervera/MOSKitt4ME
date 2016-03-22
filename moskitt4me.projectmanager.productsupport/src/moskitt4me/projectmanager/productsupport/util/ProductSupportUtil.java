@@ -42,8 +42,17 @@ import org.eclipse.ui.wizards.IWizardDescriptor;
 
 import es.cv.gvcase.trmanager.ui.TransformationUIManager;
 
+/*
+* A class that provides a set of methods that facilitate the implementation of the thrid phase
+* of the Method Engineering lifecycle (i.e., the phase of method execution).
+*
+* @author Mario Cervera
+*/
 public class ProductSupportUtil {
 
+	/*
+	* Checks whether a given task is automatic.
+	*/
 	public static boolean isAutomatic(TaskDescriptor td, List<Task> tasks) {
 		
 		if (td != null) {
@@ -67,6 +76,9 @@ public class ProductSupportUtil {
 		return false;
 	}
 	
+	/*
+	* Checks whether a given product has already been created.
+	*/
 	public static boolean existsProduct(WorkProduct product, IProject project) {
 		
 		boolean exists = false;
@@ -156,6 +168,10 @@ public class ProductSupportUtil {
 		}
 	}
 	
+	/*
+	* Invokes the execution of a model transformation. This method uses the Transformation 
+	* Manager of the MOSKitt tool.
+	*/
 	public static boolean launchTransformation(String transfId, IProject project,
 			WorkProduct product) {
 		
@@ -181,6 +197,9 @@ public class ProductSupportUtil {
 		return false;
 	}
 	
+	/*
+	* Opens the wizard that enables the creation of a given product.
+	*/
 	public static boolean launchWizard(String wizardId, IProject project,
 			WorkProduct product) {
 		
