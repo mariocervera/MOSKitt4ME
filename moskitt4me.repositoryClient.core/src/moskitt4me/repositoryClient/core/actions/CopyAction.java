@@ -12,7 +12,10 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
 
 /*
-* An action that allows the user to copy technical fragments in the "CreateTechnicalFragmentDialog"
+* An action that allows the user to copy technical fragments within
+* the "CreateTechnicalFragmentDialog".
+*
+* @author Mario Cervera
 */
 public class CopyAction extends Action {
 
