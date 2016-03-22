@@ -38,6 +38,9 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+/*
+* @author Mario Cervera
+*/
 public class GeneratorUtil {
 
 	public static List<IProject> projects = new ArrayList<IProject>();
