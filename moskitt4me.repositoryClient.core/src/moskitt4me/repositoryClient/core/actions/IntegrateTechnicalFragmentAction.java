@@ -24,9 +24,17 @@ import org.eclipse.epf.uma.WorkProduct;
 import org.eclipse.jface.window.Window;
 import org.eclipse.ui.PlatformUI;
 
+/*
+* This action allows the user to associate technical fragments with conceptual elements of
+* the method under construction (e.g., tasks, roles, and products).
+*
+* @author Mario Cervera
+*/
 public class IntegrateTechnicalFragmentAction extends IntegrateFragmentAction {
 
 	protected int performFragmentIntegration(MethodFragmentItemProvider fragment) {
+		
+		//Obtain an element of the method by means of the ContentElementSelectionDialog
 		
 		ContentElement contentElement = getContentElement();
 		
@@ -39,10 +47,15 @@ public class IntegrateTechnicalFragmentAction extends IntegrateFragmentAction {
 			
 			LibraryModificationHelper helper = new LibraryModificationHelper();
 			
+			//Create an element of type Tool Mentor. Tool Mentor is a SPEM 2.0 primitive. We use
+			//it as a representation of a technical fragment. 
+			
 			ToolMentor tool = getToolMentor(fragment.getToolId(), toolName,
 					fragment.getFileName(), fragment.getLocation(), 
 					fragment.getDescription(), fragment.getType(),
 					parent, helper);
+			
+			//Associate the tool mentor with the selected method element
 			
 			associateToolWithContentElement(contentElement, tool, fragment, helper);
 			
