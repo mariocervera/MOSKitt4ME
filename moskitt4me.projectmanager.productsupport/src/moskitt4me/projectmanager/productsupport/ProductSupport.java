@@ -18,7 +18,7 @@ import org.eclipse.ui.browser.IWebBrowser;
 
 /*
 * This class offers a set of methods that enable the execution of the method tasks. The performance
-* of these tasks will vary depending of their output products.
+* of these tasks will vary depending on their output products.
 *
 * @author Mario Cervera
 */
