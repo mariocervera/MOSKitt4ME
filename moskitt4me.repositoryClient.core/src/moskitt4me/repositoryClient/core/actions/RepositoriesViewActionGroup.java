@@ -8,6 +8,11 @@ import org.eclipse.ui.actions.ActionGroup;
 import org.eclipse.ui.navigator.CommonViewer;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
+/*
+* This action fills the Action Bars of the Repositories view
+*
+* @author Mario Cervera
+*/
 public class RepositoriesViewActionGroup extends ActionGroup {
 
 	private final CommonViewer commonViewer;
