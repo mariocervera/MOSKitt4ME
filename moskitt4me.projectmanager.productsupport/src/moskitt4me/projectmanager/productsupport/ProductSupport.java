@@ -16,6 +16,12 @@ import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.browser.IWebBrowser;
 
+/*
+* This class offers a set of methods that enable the execution of the method tasks. The performance
+* of these tasks will vary depending of their output products.
+*
+* @author Mario Cervera
+*/
 public class ProductSupport {
 
 	public static boolean launchTask(TaskDescriptor td, IProject project,
@@ -39,6 +45,10 @@ public class ProductSupport {
 		return productCreated;
 	}
 	
+	/*
+	* In the case of automatic tasks, the output products are obtained automatically by means
+	* of a model transformation (either M2T or M2M).
+	*/
 	private static boolean performAutomaticTask(TaskDescriptor td, IProject project,
 			List<WorkProduct> products, List<Task> tasks, List<String> cpIds) {
 		
@@ -74,8 +84,13 @@ public class ProductSupport {
 		return false;
 	}
 	 
+	 /*
+	 * Manual tasks are carried out by means of tools such as graphical or tree-based editors.
+	 */
 	private static boolean performManualTask(TaskDescriptor td, IProject project,
 			List<WorkProduct> products, List<String> cpIds) {
+		
+		//First, open the input products of the task
 		
 		List<WorkProductDescriptor> inputs = new ArrayList<WorkProductDescriptor>();
 		if(td.getMandatoryInput() != null) {
@@ -100,10 +115,13 @@ public class ProductSupport {
 					product = ProductSupportUtil.getWorkProduct(product, products);
 				}
 				
-				//Open files
+				//Open input files
+				
 				ProductSupportUtil.existsProduct(product, project);
 			}
 		}
+		
+		// For each output product ...
 		
 		for(WorkProductDescriptor wpd : outputs) {
 			
@@ -113,6 +131,8 @@ public class ProductSupport {
 				if(product.eIsProxy()) {
 					product = ProductSupportUtil.getWorkProduct(product, products);
 				}
+				
+				// Create the product. The tool (e.g., a graphical editor) is automatically opened.
 				
 				if(td.getIsRepeatable() && 
 						ProductSupportUtil.isRestarted(td.getGuid(), cpIds, project)) {
