@@ -22,9 +22,11 @@ import org.eclipse.ui.IActionDelegate;
 import org.eclipse.ui.PlatformUI;
 
 /*
- * This action (which can be executed by means of the popup menu of the delivery processes)
+ * This action (which can be executed by means of the popup menu of the SPEM delivery processes)
  * allows the user to delete the BPMN 2.0 diagrams (.activiti files) that have been generated
  * for a specific SPEM 2.0 process.
+ *
+ * @author Mario Cervera
  */
 public class DeleteBPMN2DiagramAction implements IActionDelegate {
 
