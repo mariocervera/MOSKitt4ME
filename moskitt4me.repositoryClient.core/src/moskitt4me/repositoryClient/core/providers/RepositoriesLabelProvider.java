@@ -12,7 +12,11 @@ import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
 
-
+/*
+* Provides labels and icons for the graphical elements of the Repositories View.
+*
+* @author Mario Cervera
+*/
 public class RepositoriesLabelProvider extends LabelProvider {
 
 	@Override
