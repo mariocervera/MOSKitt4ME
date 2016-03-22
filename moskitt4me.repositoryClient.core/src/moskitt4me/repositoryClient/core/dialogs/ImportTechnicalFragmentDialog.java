@@ -29,6 +29,12 @@ import org.eclipse.ui.PlatformUI;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 
+/*
+* A dialog for importing technical fragments into the dependencies tree of another technical fragment.
+* This dialog can be opened within the Create Technical Fragment Dialog.
+*
+* @author Mario Cervera
+*/
 public class ImportTechnicalFragmentDialog extends Dialog {
 	
 	private RepositoryLocation location;
@@ -57,32 +63,36 @@ public class ImportTechnicalFragmentDialog extends Dialog {
         
 		super.configureShell(shell);
         
-        shell.setText("Import Technical Fragment");
-    }
+        	shell.setText("Import Technical Fragment");
+		
+	}
 	
+	/*
+	* Create graphical elements (Grid layout)
+	*/
 	protected Control createDialogArea(Composite parent) {
 
 		Composite composite = (Composite) super.createDialogArea(parent);
-        GridLayout compositeLayout = new GridLayout(1, false);
-        composite.setLayout(compositeLayout);
-        
-        repositoryAssetsLabel = new Label(composite, SWT.NONE);
-        repositoryAssetsLabel.setText("Repository fragments");
-        GridData gd = new GridData(GridData.HORIZONTAL_ALIGN_BEGINNING);
-        repositoryAssetsLabel.setLayoutData(gd);
-        
-        repositoryAssetsTree = new Tree(composite, SWT.BORDER | SWT.SINGLE);
-        GridData gd2 = new GridData(GridData.FILL_BOTH);
-        gd2.widthHint = 250;
-        gd2.heightHint = 250;
-        repositoryAssetsTree.setLayoutData(gd2);
-		
-        repositoryAssetsTreeViewer = new TreeViewer(repositoryAssetsTree);
-        repositoryAssetsTreeViewer.setContentProvider(new RepositoryAssetsContentProvider());
-        repositoryAssetsTreeViewer.setLabelProvider(new DependenciesTreeLabelProvider());
-        repositoryAssetsTreeViewer.setInput(this.location);
-        
-        return composite;
+	        GridLayout compositeLayout = new GridLayout(1, false);
+	        composite.setLayout(compositeLayout);
+	        
+	        repositoryAssetsLabel = new Label(composite, SWT.NONE);
+	        repositoryAssetsLabel.setText("Repository fragments");
+	        GridData gd = new GridData(GridData.HORIZONTAL_ALIGN_BEGINNING);
+	        repositoryAssetsLabel.setLayoutData(gd);
+	        
+	        repositoryAssetsTree = new Tree(composite, SWT.BORDER | SWT.SINGLE);
+	        GridData gd2 = new GridData(GridData.FILL_BOTH);
+	        gd2.widthHint = 250;
+	        gd2.heightHint = 250;
+	        repositoryAssetsTree.setLayoutData(gd2);
+			
+	        repositoryAssetsTreeViewer = new TreeViewer(repositoryAssetsTree);
+	        repositoryAssetsTreeViewer.setContentProvider(new RepositoryAssetsContentProvider());
+	        repositoryAssetsTreeViewer.setLabelProvider(new DependenciesTreeLabelProvider());
+	        repositoryAssetsTreeViewer.setInput(this.location);
+	        
+	        return composite;
 	}
 	
 	private TechnicalFragment getSelectedFragment() {
