@@ -8,6 +8,13 @@ import java.util.Set;
 
 import org.eclipse.core.resources.IProject;
 
+/*
+* A class for technical fragments. 
+*
+* Subclasses: ExternalToolFragment and InternalToolFragment.
+*
+* @author Mario Cervera
+*/
 public class TechnicalFragment {
 
 	private String name;
@@ -139,6 +146,11 @@ public class TechnicalFragment {
 		this.isImported = isImported;
 	}
 	
+	/*
+	* Calculates whether the fragment contains errors. This is necessary in the "Create Technical Fragment Dialog".
+	* An error may be, for example, that the user has not specified the fragment name or a software dependency
+	* is unsatisfied.
+	*/
 	public void resolve() {
 		
 		boolean resolved = true;
@@ -200,6 +212,7 @@ public class TechnicalFragment {
 	private Map<IProject, List<IProject>> getUnsatisfiedDependencies() {
 		
 		// Project of the fragment - List of its unsatisfied dependencies 
+		
 		Map<IProject, List<IProject>> unsatisfiedDependencies = new HashMap<IProject, List<IProject>>();
 		
 		for(IProject project : plugins) {
@@ -227,11 +240,18 @@ public class TechnicalFragment {
 		}
 	}
 	
+	/*
+	* Checks whether the fragment is of type "Others" (i.e., it is not of one of the 
+	* types supported by MOSKitt4ME).
+	*/
 	private boolean isOthers() {
 		
 		return (this.type != null && this.type.equals("Others"));
 	}
 	
+	/*
+	* Duplicates the fragment. Useful for copy & paste.
+	*/
 	public TechnicalFragment duplicate() {
 		
 		TechnicalFragment clone = new TechnicalFragment();
