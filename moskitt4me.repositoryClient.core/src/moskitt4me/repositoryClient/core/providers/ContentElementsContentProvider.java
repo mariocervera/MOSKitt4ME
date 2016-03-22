@@ -12,6 +12,11 @@ import org.eclipse.epf.uma.MethodPlugin;
 import org.eclipse.epf.uma.Task;
 import org.eclipse.epf.uma.WorkProduct;
 
+/*
+* Provides content for the Content Element Selection Dialog.
+*
+* @author Mario Cervera
+*/
 public class ContentElementsContentProvider extends AdapterFactoryContentProvider {
 	
 	public ContentElementsContentProvider(AdapterFactory adapterFactory) {
@@ -29,6 +34,9 @@ public class ContentElementsContentProvider extends AdapterFactoryContentProvide
 		return super.getElements(inputElement);
 	}
 	
+	/*
+	* Calculates whether a given element has children
+	*/
 	public boolean hasChildren(Object element) {
 		
 		if (element instanceof MethodPlugin || element instanceof MethodPackage
@@ -41,6 +49,9 @@ public class ContentElementsContentProvider extends AdapterFactoryContentProvide
 		return false;
 	}
 	
+	/*
+	* Calculates the children of a given element
+	*/
 	public Object[] getChildren(Object parentElement) {
 		
 		List<Object> result = new ArrayList<Object>();
