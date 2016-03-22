@@ -39,23 +39,37 @@ import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Tree;
 
+/*
+* A dialog for creating technical fragments. It allows the user to specify the fragment content and also to
+* establish its dependencies with other technical fragments.
+*
+* @author Mario Cervera
+*/
 public class CreateTechnicalFragmentDialog extends Dialog {
 
-	public static TechnicalFragment clipboard;
+	public static TechnicalFragment clipboard; // for copy and paste ...
 	
 	private RepositoryLocation location;
 	private Shell parentShell;
 	
+	// The dependencies of the technical fragment are defined by means of a dependency tree
+	
 	private Tree dependenciesTree;
 	private TreeViewer dependenciesTreeViewer;
+
+	// Edit, Add Dependency, Remove Dependency, and Import buttons
 
 	protected Button editButton;
 	protected Button addDependencyButton;
 	protected Button removeDependencyButton;
 	protected Button importButton;
 	
+	//Ok and Cancel buttons
+	
 	protected Button okButton;
 	protected Button cancelButton;
+	
+	// The technical fragment to be created and stored in the repository
 	
 	private TechnicalFragment result;
 	
@@ -80,7 +94,8 @@ public class CreateTechnicalFragmentDialog extends Dialog {
 		super.configureShell(shell);
         
         shell.setText("Create Technical Fragment");
-    }
+		
+	}
 	
 	protected void createButtonsForButtonBar(Composite parent) {
         
@@ -91,62 +106,66 @@ public class CreateTechnicalFragmentDialog extends Dialog {
     	
     	cancelButton = createButton(parent, IDialogConstants.CANCEL_ID,
                 IDialogConstants.CANCEL_LABEL, false);
-    }
+		
+	}
 	
+	/*
+	* Create the graphical elements (Grid layout)
+	*/
 	protected Control createDialogArea(Composite parent) {
 
 		Composite composite = (Composite) super.createDialogArea(parent);
-        GridLayout compositeLayout = new GridLayout(2, false);
-        composite.setLayout(compositeLayout);
-        
-        Label hostLabel = new Label(composite, SWT.NONE);
-        hostLabel.setText("Dependencies Tree");
-        GridData gd = new GridData(GridData.BEGINNING);
-        gd.horizontalSpan = 2;
-        hostLabel.setLayoutData(gd);
-        
-        dependenciesTree = new Tree(composite, SWT.BORDER | SWT.SINGLE);
-        GridData gd2 = new GridData(GridData.FILL_BOTH);
-        gd2.widthHint = 300;
-        gd2.heightHint = 250;
-        gd2.verticalSpan = 4;
-        dependenciesTree.setLayoutData(gd2);
+	        GridLayout compositeLayout = new GridLayout(2, false);
+	        composite.setLayout(compositeLayout);
+	        
+	        Label hostLabel = new Label(composite, SWT.NONE);
+	        hostLabel.setText("Dependencies Tree");
+	        GridData gd = new GridData(GridData.BEGINNING);
+	        gd.horizontalSpan = 2;
+	        hostLabel.setLayoutData(gd);
+	        
+	        dependenciesTree = new Tree(composite, SWT.BORDER | SWT.SINGLE);
+	        GridData gd2 = new GridData(GridData.FILL_BOTH);
+	        gd2.widthHint = 300;
+	        gd2.heightHint = 250;
+	        gd2.verticalSpan = 4;
+	        dependenciesTree.setLayoutData(gd2);
 		
-        dependenciesTreeViewer = new TreeViewer(dependenciesTree);
-        ColumnViewerToolTipSupport.enableFor(dependenciesTreeViewer,ToolTip.NO_RECREATE);
-        dependenciesTreeViewer.setContentProvider(new DependenciesTreeContentProvider());
-        dependenciesTreeViewer.setLabelProvider(new DependenciesTreeLabelProvider());
-        dependenciesTreeViewer.setInput(location);
+	        dependenciesTreeViewer = new TreeViewer(dependenciesTree);
+	        ColumnViewerToolTipSupport.enableFor(dependenciesTreeViewer,ToolTip.NO_RECREATE);
+	        dependenciesTreeViewer.setContentProvider(new DependenciesTreeContentProvider());
+	        dependenciesTreeViewer.setLabelProvider(new DependenciesTreeLabelProvider());
+	        dependenciesTreeViewer.setInput(location);
+	        
+	        editButton = new Button(composite, SWT.PUSH);
+	        editButton.setText("Edit");
+	        editButton.setFont(JFaceResources.getDialogFont());
+	        GridData gd3 = new GridData(GridData.VERTICAL_ALIGN_BEGINNING | GridData.FILL_HORIZONTAL);
+	        editButton.setLayoutData(gd3);
+	        
+	        addDependencyButton = new Button(composite, SWT.PUSH);
+	        addDependencyButton.setText("Add Dependency");
+	        addDependencyButton.setFont(JFaceResources.getDialogFont());
+	        GridData gd4 = new GridData(GridData.VERTICAL_ALIGN_BEGINNING | GridData.FILL_HORIZONTAL);
+	        addDependencyButton.setLayoutData(gd4);
         
-        editButton = new Button(composite, SWT.PUSH);
-        editButton.setText("Edit");
-        editButton.setFont(JFaceResources.getDialogFont());
-        GridData gd3 = new GridData(GridData.VERTICAL_ALIGN_BEGINNING | GridData.FILL_HORIZONTAL);
-        editButton.setLayoutData(gd3);
-        
-        addDependencyButton = new Button(composite, SWT.PUSH);
-        addDependencyButton.setText("Add Dependency");
-        addDependencyButton.setFont(JFaceResources.getDialogFont());
-        GridData gd4 = new GridData(GridData.VERTICAL_ALIGN_BEGINNING | GridData.FILL_HORIZONTAL);
-        addDependencyButton.setLayoutData(gd4);
-        
-        removeDependencyButton = new Button(composite, SWT.PUSH);
-        removeDependencyButton.setText("Remove Dependency");
-        removeDependencyButton.setFont(JFaceResources.getDialogFont());
-        GridData gd5 = new GridData(GridData.VERTICAL_ALIGN_BEGINNING | GridData.FILL_HORIZONTAL);
-        removeDependencyButton.setLayoutData(gd5);
-        
-        importButton = new Button(composite, SWT.PUSH);
-        importButton.setText("Import");
-        importButton.setFont(JFaceResources.getDialogFont());
-        GridData gd6 = new GridData(GridData.VERTICAL_ALIGN_BEGINNING | GridData.FILL_HORIZONTAL);
-        importButton.setLayoutData(gd6);
-        
-        createContextMenu();
-        
-        hookListeners();
-        
-        return composite;
+	        removeDependencyButton = new Button(composite, SWT.PUSH);
+	        removeDependencyButton.setText("Remove Dependency");
+	        removeDependencyButton.setFont(JFaceResources.getDialogFont());
+	        GridData gd5 = new GridData(GridData.VERTICAL_ALIGN_BEGINNING | GridData.FILL_HORIZONTAL);
+	        removeDependencyButton.setLayoutData(gd5);
+	        
+	        importButton = new Button(composite, SWT.PUSH);
+	        importButton.setText("Import");
+	        importButton.setFont(JFaceResources.getDialogFont());
+	        GridData gd6 = new GridData(GridData.VERTICAL_ALIGN_BEGINNING | GridData.FILL_HORIZONTAL);
+	        importButton.setLayoutData(gd6);
+	        
+	        createContextMenu();
+	        
+	        hookListeners();
+	        
+	        return composite;
 	}
 	
 	protected void createContextMenu() {
