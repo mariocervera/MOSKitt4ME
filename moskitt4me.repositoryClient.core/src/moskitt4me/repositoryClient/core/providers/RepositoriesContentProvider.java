@@ -68,7 +68,7 @@ public class RepositoriesContentProvider extends AdapterFactoryContentProvider {
 		
 		List<Object> result = new ArrayList<Object>();
 		
-		if(object instanceof RepositoryLocation) {
+		if(object instanceof RepositoryLocation) { // Children of the repository locations
 			
 			FTPClient client = null;
 			
@@ -138,7 +138,7 @@ public class RepositoriesContentProvider extends AdapterFactoryContentProvider {
 				}
 			}
 		}
-		else if(object instanceof MethodFragmentItemProvider) {
+		else if(object instanceof MethodFragmentItemProvider) { // Children of the method fragments
 			
 			MethodFragmentItemProvider fragment = (MethodFragmentItemProvider) object;
 			
@@ -148,7 +148,7 @@ public class RepositoriesContentProvider extends AdapterFactoryContentProvider {
 				result.add(new MethodFragmentPropertyItemProvider(adapterFactory, fragment, "Interface", ""));
 			}
 		}
-		else if(object instanceof MethodFragmentPropertyItemProvider) {
+		else if(object instanceof MethodFragmentPropertyItemProvider) { //Children of the method fragment properties
 			
 			MethodFragmentPropertyItemProvider property = (MethodFragmentPropertyItemProvider) object;
 			MethodFragmentItemProvider fragment = property.getMethodFragment();
