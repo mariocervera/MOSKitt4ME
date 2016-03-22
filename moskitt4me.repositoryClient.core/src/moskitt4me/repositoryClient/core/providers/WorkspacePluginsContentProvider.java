@@ -13,6 +13,11 @@ import org.eclipse.jdt.core.IJavaModelMarker;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 
+/*
+* A content provider for the composite of the "Define External Tool Dialog".
+*
+* @author Mario Cervera
+*/
 public class WorkspacePluginsContentProvider extends ArrayContentProvider implements ITreeContentProvider {
 
 	
@@ -50,6 +55,9 @@ public class WorkspacePluginsContentProvider extends ArrayContentProvider implem
 		return null;
 	}
 	
+	/*
+	* Gets the plug-in projects of the MOSKitt4ME workspace
+	*/
 	private List<IProject> getPluginProjects(List<IProject> projs) {
 		
 		List<IProject> pluginProjects = new ArrayList<IProject>();
@@ -72,6 +80,9 @@ public class WorkspacePluginsContentProvider extends ArrayContentProvider implem
 		return pluginProjects;
 	}
 	
+	/*
+	* Calculates whether a Plug-in project of the workspace has compilation errors
+	*/
 	private boolean hasErrors(IProject project) {
 
 		try {
