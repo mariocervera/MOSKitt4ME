@@ -9,7 +9,7 @@ import org.eclipse.ui.navigator.CommonViewer;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 /*
-* This action fills the Action Bars of the Repositories view
+* This class fills the Action Bars of the Repositories view.
 *
 * @author Mario Cervera
 */
