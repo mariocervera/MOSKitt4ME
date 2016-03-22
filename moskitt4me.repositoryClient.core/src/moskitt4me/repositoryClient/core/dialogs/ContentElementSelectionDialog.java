@@ -16,6 +16,12 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.ui.dialogs.SelectionDialog;
 
+/*
+* A dialog that allows the user to select a content element from the method model. 
+* This dialog is used by the Integrate Technical Fragment action.
+*
+* @author Mario Cervera
+*/
 public class ContentElementSelectionDialog extends SelectionDialog {
 
 	private int DEFAULT_DIALOG_WIDTH = 400;
