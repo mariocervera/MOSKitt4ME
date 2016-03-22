@@ -11,6 +11,11 @@ import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
 
+/*
+* A paste action that can be used within the Create Technical Fragment Dialog.
+*
+* @author Mario Cervera
+*/
 public class PasteAction extends Action {
 
 	private CreateTechnicalFragmentDialog dialog;
