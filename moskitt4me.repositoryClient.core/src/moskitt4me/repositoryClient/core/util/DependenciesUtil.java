@@ -14,6 +14,12 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.osgi.util.ManifestElement;
 
+/*
+* This class manages dependencies between Eclipse plug-ins. This functionality is required
+* in the Create Technical Fragment dialog.
+*
+* @author Mario Cervera
+*/ 
 public class DependenciesUtil {
 	
 	public static List<IProject> getDependencies(IProject project) {
