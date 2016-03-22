@@ -21,9 +21,11 @@ import org.eclipse.osgi.util.ManifestElement;
 import org.osgi.framework.Bundle;
 
 /*
-* This class is in charge of automatically managing all the software dependency issues that
-* arise between plug-ins during the CASE generation process. This is done by accessing the
-* MANIFEST.MF files of the plug-ins.
+* This class automatically manages all the software dependency issues that arise between
+* plug-ins during the CASE generation process. This is done by accessing the MANIFEST.MF
+* files of the plug-ins.
+*
+* @author Mario Cervera
 */
 public class DependenciesUtil {
 	
