@@ -48,12 +48,12 @@ import org.osgi.framework.Bundle;
 
 /*
 * This class facilitates the access to the elements of the method model during the method execution.
-* To do this, this class loads the method elements in memory and offers a set of convenient methods.
-* For example, this class offers methods for:
+* To do this, this class loads the method elements in memory and offers a set of convenient methods
+* for accessing them. For example, this class offers methods for:
 *
-* - Obtaining the graphical ID of a given element
-* - Obtaining the work products that are not contained in any category or domain
-* - Checking whether a given role is in charge of a given task
+* - Obtaining the graphical ID of a given element.
+* - Obtaining the work products that are not contained in any category or domain.
+* - Checking whether a given role is in charge of the performance of a given task.
 * - etc.
 *
 * @author Mario Cervera
