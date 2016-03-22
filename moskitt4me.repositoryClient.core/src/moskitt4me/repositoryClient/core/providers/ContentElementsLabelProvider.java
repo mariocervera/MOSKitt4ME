@@ -14,6 +14,11 @@ import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
 
+/*
+* Provides labels and icons for the elements of the "Content Element Selection Dialog".
+*
+* @author Mario Cervera
+*/
 public class ContentElementsLabelProvider extends LabelProvider {
 
 	@Override
