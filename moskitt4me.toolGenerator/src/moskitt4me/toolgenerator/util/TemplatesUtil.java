@@ -14,6 +14,8 @@ import org.osgi.framework.Version;
 
 /*
  * This class provides Java extensions for the Xpand templates
+ *
+ * @author Mario Cervera
  */
 public class TemplatesUtil {
 	
