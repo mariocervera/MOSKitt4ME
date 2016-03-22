@@ -46,6 +46,18 @@ import org.eclipse.epf.uma.VariabilityType;
 import org.eclipse.epf.uma.WorkProduct;
 import org.osgi.framework.Bundle;
 
+/*
+* This class facilitates the access to the elements of the method model during the method execution.
+* To do this, this class loads the method elements in memory and offers a set of convenient methods.
+* For example, this class offers methods for:
+*
+* - Obtaining the graphical ID of a given element
+* - Obtaining the work products that are not contained in any category or domain
+* - Checking whether a given role is in charge of a given task
+* - etc.
+*
+* @author Mario Cervera
+*/
 public class MethodElements {
 	
 	public static DeliveryProcess loadedDeliveryProcess;
@@ -84,6 +96,9 @@ public class MethodElements {
 	
 	private static Map<String, URI> mapCpGuidToURI = new HashMap<String,URI>();
 	
+	/*
+	* Loads the method model in memory
+	*/
 	public static void loadMethodDefinition(DeliveryProcess dp) {
 		
 		if(dp == null) {
@@ -426,6 +441,9 @@ public class MethodElements {
 		return null;
 	}
 	
+	/*
+	* Gets the work products that do not belong to any domain
+	*/
 	public static List<WorkProduct> getUncategorizedWorkProducts() {
 		
 		List<WorkProduct> result = new ArrayList<WorkProduct>();
@@ -449,6 +467,9 @@ public class MethodElements {
 		return result;
 	}
 	
+	/*
+	* Checks whether a given work product is contained in a given domain
+	*/
 	private static boolean isContainedInDomain(Domain d, WorkProduct wp) {
 		
 		if(d.getWorkProducts().contains(wp)) {
@@ -462,6 +483,9 @@ public class MethodElements {
 		return false;
 	}
 	
+	/*
+	* Checks whether a given role is in charge of the performance of a given task
+	*/
 	public static boolean performs(RoleDescriptor rd, TaskDescriptor td) {
 		
 		if(containsRole(td.getPerformedPrimarilyBy(), rd) ||
