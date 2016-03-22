@@ -44,7 +44,11 @@ import org.eclipse.ui.navigator.CommonNavigator;
 import org.eclipse.ui.navigator.CommonViewer;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
-
+/*
+* This class implements the Repositories view, which represents the Repository Client of MOSKitt4ME.
+*
+* @author Mario Cervera
+*/
 public class RepositoriesView extends CommonNavigator implements IMenuListener {
 
 	public static final String RepositoriesViewId = "repositoryClient.views.repositoriesView";
@@ -61,7 +65,7 @@ public class RepositoriesView extends CommonNavigator implements IMenuListener {
 		super.createPartControl(parent);
 		
 		if(getCommonViewer() != null) {
-			
+
 			getCommonViewer().setContentProvider(
 					new RepositoriesContentProvider(new ResourceItemProviderAdapterFactory()));
 			
@@ -82,6 +86,11 @@ public class RepositoriesView extends CommonNavigator implements IMenuListener {
 			throws PartInitException {
 		
 		super.init(aSite, aMemento);
+		
+		/*
+		* Memento design pattern. Applied to store Repository Locations when MOSKitt4ME is closed
+		* and restore them when MOSKitt4ME is opened.
+		*/
 		
 		if(aMemento != null && locations.size() == 0) {
 			int i = 0;
@@ -133,6 +142,10 @@ public class RepositoriesView extends CommonNavigator implements IMenuListener {
 		}
 	}
 	
+	/*
+	* Manages the enablement of two buttons of the Actions Bar: Integrate Conceptual Fragment and
+	* Integrate Technical Fragment.
+	*/
 	private void enableIntegrateFragmentButtons(Object selection) {
 		
 		IntegrateFragmentAction c_action = getIntegrateConceptualFragmentAction();
@@ -191,6 +204,10 @@ public class RepositoriesView extends CommonNavigator implements IMenuListener {
 		return LibraryService.getInstance().getCurrentMethodLibrary() != null;
 	}
 	
+	/*
+	* Memento design pattern. Applied to store Repository Locations when MOSKitt4ME is closed
+	* and restore them when MOSKitt4ME is opened.
+	*/
 	@Override
 	public void saveState(IMemento aMemento) {
 		
@@ -217,6 +234,9 @@ public class RepositoriesView extends CommonNavigator implements IMenuListener {
 		getSite().registerContextMenu(contextMenu, viewer);
 	}
 	
+	/*
+	* This method creates the contextual menu.
+	*/
 	public void menuAboutToShow(IMenuManager manager) {
 		
 		ISelection selection = this.getCommonViewer().getSelection();
