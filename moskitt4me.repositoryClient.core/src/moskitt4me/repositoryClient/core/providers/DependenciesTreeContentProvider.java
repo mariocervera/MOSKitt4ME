@@ -6,6 +6,11 @@ import moskitt4me.repositoryClient.core.util.TechnicalFragment;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.Viewer;
 
+/*
+* Provides content for the Dependencies Tree of the Create Technical Fragment Dialog.
+*
+* @author Mario Cervera
+*/
 public class DependenciesTreeContentProvider implements ITreeContentProvider {
 	
 	TechnicalFragment rootFragment;
@@ -48,6 +53,9 @@ public class DependenciesTreeContentProvider implements ITreeContentProvider {
 		return null;
 	}
 	
+	/*
+	* Calculates whether a given element has children
+	*/
 	public boolean hasChildren(Object element) {
 
 		if(element instanceof TechnicalFragment) {
@@ -58,6 +66,9 @@ public class DependenciesTreeContentProvider implements ITreeContentProvider {
 		return false;
 	}
 	
+	/*
+	* Calculates the children of a given element
+	*/
 	public Object[] getChildren(Object parentElement) {
 		
 		if(parentElement instanceof TechnicalFragment) {
