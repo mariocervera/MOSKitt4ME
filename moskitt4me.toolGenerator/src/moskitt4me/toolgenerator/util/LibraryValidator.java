@@ -15,12 +15,14 @@ import org.eclipse.epf.uma.ProcessComponent;
 import org.eclipse.epf.uma.ProcessPackage;
 
 /*
- * This class provides a method for validating the method library. Constraints:
+ * This class provides a method for validating the method library prior to the
+ * invokation of the CASE generation process. Constraints:
  * 
  * - The method library must define at least one delivery process
  * 
  * - Every delivery process must be associated to a BPMN 2.0 model
  * 
+ * @author Mario Cervera
  */
 public class LibraryValidator {
 
