@@ -24,6 +24,8 @@ import org.eclipse.ui.PlatformUI;
 /*
 * This is the main action of the moskitt4me.toolGenerator plug-in. It is in charge of invoking the
 * generation of the CASE environment.
+*
+* @author Mario Cervera
 */ 
 public class ToolGenerationAction implements IViewActionDelegate {
 	
