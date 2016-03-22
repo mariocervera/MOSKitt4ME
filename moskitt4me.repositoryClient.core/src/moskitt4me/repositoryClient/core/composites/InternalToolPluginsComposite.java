@@ -30,6 +30,12 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Tree;
 import org.osgi.framework.Bundle;
 
+/*
+* A graphical widget that is used in the Define Internal Tool Dialog. It allows the user to select plug-ins
+* that are installed in MOSKitt4ME and include them in the internal tool.
+*
+* @author Mario Cervera
+*/
 public class InternalToolPluginsComposite extends Composite {
 
 	private List<String> platformPlugins;
@@ -37,13 +43,19 @@ public class InternalToolPluginsComposite extends Composite {
 	
 	private Group pluginsGroup;
 	
+	// Tree viewer that shows the plug-ins installed in MOSKitt4ME
+	
 	private Label platformPluginsLabel;
 	private Tree platformPluginsTree; 
 	private TreeViewer platformPluginsTreeViewer;
 	
+	// Tree viewer that shows the plug-ins contained in the internal tool
+	
 	private Label fragmentPluginsLabel;
 	private Tree fragmentPluginsTree;
 	private TreeViewer fragmentPluginsTreeViewer;
+	
+	// Add and remove buttons
 	
 	private Button addButton;
 	private Button removeButton;
@@ -63,8 +75,10 @@ public class InternalToolPluginsComposite extends Composite {
 		
 		this.parentDialog = parentDialog;
 		
+		//Arrange the graphical elements of the composite (Grid layout)
+		
 		GridLayout compositeLayout = new GridLayout(1, false);
-        this.setLayout(compositeLayout);
+        	this.setLayout(compositeLayout);
 		
 		pluginsGroup = new Group(this, SWT.NONE);
 		pluginsGroup.setText("Plug-ins");
@@ -88,39 +102,39 @@ public class InternalToolPluginsComposite extends Composite {
 		GridData gd4 = new GridData(GridData.FILL_BOTH);
 		gd4.widthHint = 200;
 		gd4.heightHint = 225;
-        platformPluginsTree.setLayoutData(gd4);
-        
-        platformPluginsTreeViewer = new TreeViewer(platformPluginsTree);
-        platformPluginsTreeViewer.setContentProvider(platformPluginsProvider);
-        platformPluginsTreeViewer.setLabelProvider(new PlatformPluginsLabelProvider());
-        platformPluginsTreeViewer.setInput(this.platformPlugins);
-        
-        Composite c1 = new Composite(pluginsGroup, SWT.NONE);
+	        platformPluginsTree.setLayoutData(gd4);
+	        
+	        platformPluginsTreeViewer = new TreeViewer(platformPluginsTree);
+	        platformPluginsTreeViewer.setContentProvider(platformPluginsProvider);
+	        platformPluginsTreeViewer.setLabelProvider(new PlatformPluginsLabelProvider());
+	        platformPluginsTreeViewer.setInput(this.platformPlugins);
+	        
+	        Composite c1 = new Composite(pluginsGroup, SWT.NONE);
 		GridData gd5 = new GridData(GridData.FILL_BOTH);
 		gd5.heightHint = 225;
 		c1.setLayoutData(gd5);
 		FormLayout c1Layout = new FormLayout();
 		c1.setLayout(c1Layout);
         
-        addButton = new Button(c1, SWT.PUSH);
-        addButton.setText("Add -->");
-        addButton.setFont(JFaceResources.getDialogFont());
-        FormData fd = new FormData();
-        fd.left = new FormAttachment(0, 0);
-        fd.top = new FormAttachment(38, 0);
-        fd.right = new FormAttachment(100, 0);
-        addButton.setLayoutData(fd);
+	        addButton = new Button(c1, SWT.PUSH);
+	        addButton.setText("Add -->");
+	        addButton.setFont(JFaceResources.getDialogFont());
+	        FormData fd = new FormData();
+	        fd.left = new FormAttachment(0, 0);
+	        fd.top = new FormAttachment(38, 0);
+	        fd.right = new FormAttachment(100, 0);
+	        addButton.setLayoutData(fd);
         
-        removeButton = new Button(c1, SWT.PUSH);
-        removeButton.setText("<-- Remove");
-        removeButton.setFont(JFaceResources.getDialogFont());
-        FormData fd2 = new FormData();
-        fd2.left = new FormAttachment(0, 0);
-        fd2.top = new FormAttachment(52, 0);
-        fd2.right = new FormAttachment(100, 0);
-        removeButton.setLayoutData(fd2);
-        
-        fragmentPluginsTree = new Tree(pluginsGroup, SWT.BORDER | SWT.MULTI);
+	        removeButton = new Button(c1, SWT.PUSH);
+	        removeButton.setText("<-- Remove");
+	        removeButton.setFont(JFaceResources.getDialogFont());
+	        FormData fd2 = new FormData();
+	        fd2.left = new FormAttachment(0, 0);
+	        fd2.top = new FormAttachment(52, 0);
+	        fd2.right = new FormAttachment(100, 0);
+	        removeButton.setLayoutData(fd2);
+	        
+	        fragmentPluginsTree = new Tree(pluginsGroup, SWT.BORDER | SWT.MULTI);
 		GridData gd8 = new GridData(GridData.FILL_BOTH);
 		gd8.widthHint = 200;
 		gd8.heightHint = 225;
@@ -131,7 +145,7 @@ public class InternalToolPluginsComposite extends Composite {
 		fragmentPluginsTreeViewer.setLabelProvider(new PlatformPluginsLabelProvider());
 		fragmentPluginsTreeViewer.setInput(this.fragmentPlugins);
         
-        hookListeners();
+	        hookListeners();
 	}
 	
 	public List<String> getFragmentPlugins() {
