@@ -22,8 +22,10 @@ import org.eclipse.ui.PlatformUI;
 /*
  * This action (which can be executed by means of the popup menu of the delivery processes)
  * allows the user to invoke a Model-to-Model transformation that obtains a BPMN 2.0 model
- * (in terms of the Activiti Designer) from a specific SPEM 2.0 process. This process is
- * defined by means of the EPF Composer.
+ * (in terms of the Activiti Designer) from a specific SPEM 2.0 process. The SPEM 2.0 process
+ * must be defined by means of the EPF Composer.
+ *
+ * @author Mario Cervera
  */
 public class OpenBPMN2DiagramAction implements IActionDelegate {
 	
