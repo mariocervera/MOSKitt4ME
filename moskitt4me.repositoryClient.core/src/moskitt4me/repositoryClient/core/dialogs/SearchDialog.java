@@ -14,6 +14,12 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 
+/*
+* A dialog to filter the content of the Repositories view. The search criteria are the type
+* origin, objective, input, and output of the fragments.
+*
+* @author Mario Cervera
+*/
 public class SearchDialog extends Dialog {
 	
     private String type;
