@@ -1,5 +1,13 @@
 package moskitt4me.repositoryClient.core.util;
 
+/*
+* A class that represents a Technical Fragment of type "External Tool". An external tool is a
+* tool that is not implemented as Eclipse plug-ins, and, therefore, cannot be integrated in the
+* generated CASE environment. This type of fragments only contain textual information about the
+* external tool.
+*
+* @author Mario Cervera
+*/
 public class ExternalToolFragment extends TechnicalFragment {
 
 	private String fileExtension;
