@@ -14,6 +14,12 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 
+/*
+* This class provides functionality for accessing the content of technical fragments, which are stored in a
+* repository as ZIP files according to the Reusable Asset Specification (RAS) standard. 
+*
+* @author Mario Cervera
+*/ 
 public class RASAssetReader {
 	
 	private String assetFolder;
@@ -27,6 +33,9 @@ public class RASAssetReader {
 		this.asset_type = "";
 	}
 	
+	/*
+	* This method reads the fragment properties, which are stored in a manifest document in XML format.
+	*/
 	public Map<String, String> getProperties() {
 		
 		Map<String, String> result = new HashMap<String, String>();
@@ -113,6 +122,10 @@ public class RASAssetReader {
 		return result;
 	}
 	
+	/*
+	* Extracts the manifest file from the RAS asset and returns an instance
+	* of org.w3c.dom.Document
+	*/
 	private Document getManifestDocument() {
 		
 		File manifest = null;
@@ -122,6 +135,7 @@ public class RASAssetReader {
 			File zipFile = new File(assetFolder + "/" + assetName);
 			
 			if(zipFile.exists()) {
+				
 				//Extract manifest file
 				
 				String manifestPath = extractManifest(zipFile, assetFolder);
