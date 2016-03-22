@@ -11,9 +11,10 @@ import org.eclipse.core.runtime.Platform;
  * must be created. This class provides methods for creating this file and deleting it.
  * 
  * This file could have been just copied into a folder within the 
- * "moskitt4me.projectmanager.processsupport" plugin.
- * The problem of this approach is that you are not able to create the H2 database
- * within the project ".method" folder.
+ * "moskitt4me.projectmanager.processsupport" plugin. The problem of this approach is that
+ * it does not enable the creation of the H2 database within the ".method" folder of the projects.
+ *
+ * @author Mario Cervera
  */
 public class EngineConfiguration {
 
