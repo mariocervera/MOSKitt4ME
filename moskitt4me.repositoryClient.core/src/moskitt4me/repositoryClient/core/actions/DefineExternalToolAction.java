@@ -25,7 +25,10 @@ import org.eclipse.ui.PlatformUI;
 * In a similar way to the class "CreateTechnicalFragmentAction", this class implements an action that
 * enables the creation of technical fragments. The difference is that this class enables the creation of
 * technical fragments of type "External Tool". An external tool is a tool that is not implemented as Eclipse
-* plug-ins, and, therefore, cannot be integrated in the generated CASE environment.
+* plug-ins, and, therefore, cannot be integrated in the generated CASE environment. This type of fragments
+* only contain textual information about the external tool.
+*
+* @author Mario Cervera
 */ 
 public class DefineExternalToolAction extends Action {
 
