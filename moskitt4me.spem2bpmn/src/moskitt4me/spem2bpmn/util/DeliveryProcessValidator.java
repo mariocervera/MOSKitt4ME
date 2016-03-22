@@ -17,6 +17,8 @@ import org.eclipse.epf.uma.WorkOrder;
 *
 * The validator checks the following constraint: precedence relationships must be established between
 * elements within the same parent activity.
+*
+* @author Mario Cervera
 */
 public class DeliveryProcessValidator {
 	
