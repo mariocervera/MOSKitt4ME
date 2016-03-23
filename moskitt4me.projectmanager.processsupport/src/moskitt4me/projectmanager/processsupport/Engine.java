@@ -32,7 +32,9 @@ import org.osgi.framework.Bundle;
 
 /*
  * This class implements a facade that facilitates the access to the API of the
- * Activiti process engine.
+ * Activiti process engine. This facade offers a set of convenient methods that
+ * implement commonly recurring tasks that involve the use of the engine in
+ * MOSKitt4ME.
  *
  * @author Mario Cervera
  */
