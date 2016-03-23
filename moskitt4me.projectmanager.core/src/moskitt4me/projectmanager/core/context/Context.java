@@ -15,6 +15,13 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.epf.uma.RoleDescriptor;
 import org.eclipse.epf.uma.TaskDescriptor;
 
+/*
+* This class provides variables and methods that store and manipulate contextual information, such as
+* the project that is selected in the Project Manager Component or the identifier of the running
+* process instance.
+*
+* @author Mario Cervera
+*/
 public class Context {
 
 	/*
