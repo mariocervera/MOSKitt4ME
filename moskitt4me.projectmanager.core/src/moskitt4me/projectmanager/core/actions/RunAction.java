@@ -28,7 +28,13 @@ import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.PlatformUI;
 
-
+/*
+* The Run Action (which is shown as a button in the Action Bar of the Process view) allows the
+* user to set a task as executed. When a task is set as executed, the Project Manager Component
+* notifies the Activiti Engine, which takes the process instance to its next state.
+*
+* @author Mario Cervera
+*/
 public class RunAction extends Action implements IAction {
 
 	public RunAction() {
@@ -40,6 +46,8 @@ public class RunAction extends Action implements IAction {
 	@Override
 	public void run() {
 
+		// Get the Process View object
+
 		IViewPart viewPart = PlatformUI.getWorkbench()
 				.getActiveWorkbenchWindow().getActivePage().findView(
 						ProcessView.ProcessViewId);
@@ -50,13 +58,15 @@ public class RunAction extends Action implements IAction {
 
 			if (processView.getViewer().getSelection() instanceof StructuredSelection) {
 				
+				// Get the selected elements
+				
 				StructuredSelection selection = (StructuredSelection) processView
 						.getViewer().getSelection();
 				
 				Object[] selectedObjects = selection.toArray();
 				
 				for(int i = 0; i < selectedObjects.length; i++) {
-					if (selectedObjects[i] instanceof TaskDescriptor) {
+					if (selectedObjects[i] instanceof TaskDescriptor) { //A task is selected ...
 					
 						TaskDescriptor td = (TaskDescriptor) selectedObjects[i];
 						List<String> cpIds = null;
@@ -66,7 +76,7 @@ public class RunAction extends Action implements IAction {
 						}
 						executeTask(td, cpIds);
 					}
-					else if(selectedObjects[i] instanceof CapabilityPattern) {
+					else if(selectedObjects[i] instanceof CapabilityPattern) { // A Capability Pattern is selected ...
 						CapabilityPattern cp = (CapabilityPattern) selectedObjects[i];
 						List<String> cpIds = null;
 						if(cp instanceof CapabilityPatternCP) {
@@ -75,7 +85,7 @@ public class RunAction extends Action implements IAction {
 						}
 						executeActivity(cp, cpIds);
 					}
-					else if(selectedObjects[i] instanceof Activity) {
+					else if(selectedObjects[i] instanceof Activity) { // An Activity is selected ...
 						
 						Activity actv = (Activity) selectedObjects[i];
 						List<String> cpIds = null;
@@ -91,6 +101,8 @@ public class RunAction extends Action implements IAction {
 					EngineUtil.addSeparator(Context.selectedProject);
 				}
 				
+				// Enable Undo action and refresh the Process view
+				
 				processView.enableUndoButton();
 				processView.refreshViewer();
 				
@@ -104,6 +116,9 @@ public class RunAction extends Action implements IAction {
 		}
 	}
 	
+	/*
+	* This method sets a given task as executed by communicating with the Activiti Engine
+	*/
 	private boolean executeTask(TaskDescriptor td, List<String> cpIds) {
 		
 		if(Context.isPerformedByCurrentRole(td)) {
@@ -129,6 +144,11 @@ public class RunAction extends Action implements IAction {
 		return false;
 	}
 	
+	/*
+	* This method executes a given Acitivity. This execution involves setting as executed
+	* all the nested tasks. For executing the nested activities, this method invokes itself
+	* recursively.
+	*/
 	private boolean executeActivity(Activity actv, List<String> cpIds) {
 		
 		boolean taskExecuted = false;
