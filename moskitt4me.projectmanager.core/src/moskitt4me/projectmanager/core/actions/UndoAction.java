@@ -18,15 +18,17 @@ import org.eclipse.ui.PlatformUI;
 
 /*
 * The Undo Action (which is shown as a button in the Action Bar of the Process view) allows the
-* user to go back in the process execution. When the Undo Action is invoked, the tasks that were 
-* previously set as "executed" will be set as "non-executed" in reverse order as how they were
-* performed.
+* user to go back in the process execution. When the Undo Action is invoked, the last task that
+* was set as "executed" is set as "non-executed"; thus, the process instance returns to its
+* previous state.
 *
 * @author Mario Cervera
 */
 public class UndoAction extends Action implements IAction {
 	
 	public UndoAction() {
+		
+		// Initially, the Undo Action is disabled
 		
 		setEnabled(false);
 	}
