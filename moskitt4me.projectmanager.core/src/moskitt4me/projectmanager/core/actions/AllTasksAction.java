@@ -9,6 +9,14 @@ import org.eclipse.jface.action.IAction;
 import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.PlatformUI;
 
+/*
+* An action that is shown as a toggle button in the Action Bar of the Process view. When the button
+* is activated, the Process view displays all the tasks of the process under execution. When the 
+* button is deactivated, it only displays the tasks that are executable in the current state of the
+* process instance.
+*
+* @author Mario Cervera
+*/
 public class AllTasksAction extends Action implements IAction {
 	
 	public AllTasksAction() {
