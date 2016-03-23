@@ -5,8 +5,10 @@ import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.ui.IActionBars;
 
 /*
- * This class defines the actions that appear in the action bars of the Process view
- * and are not common to all the other views in the project manager
+ * This class defines the actions that appear in the Action Bar of the Process view
+ * and are not common to all the other views in the Project Manager Component.
+ *
+ * @author Mario Cervera
  */
 public class ProcessViewActionGroup extends ProjectManagerActionGroup {
 
