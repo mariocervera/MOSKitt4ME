@@ -107,6 +107,8 @@ public class RunAction extends Action implements IAction {
 				processView.enableUndoButton();
 				processView.refreshViewer();
 				
+				// Disable Run Action
+				
 				setEnabled(false);
 				
 				RunRepeatableAction runRepeatableAction = getRunRepeatableAction();
@@ -146,7 +148,7 @@ public class RunAction extends Action implements IAction {
 	}
 	
 	/*
-	* This method executes a given Acitivity. This execution involves setting as executed
+	* This method executes a given Activity. This execution involves setting as executed
 	* all the nested tasks. For executing the nested activities, this method invokes itself
 	* recursively.
 	*/
