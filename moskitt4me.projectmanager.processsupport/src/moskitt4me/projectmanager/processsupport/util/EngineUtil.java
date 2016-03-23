@@ -17,7 +17,7 @@ import org.activiti.engine.runtime.ProcessInstance;
 import org.eclipse.core.resources.IProject;
 
 /*
-* A class that provides a set of methods that facilitate the implementation of the thrid phase
+* A class that provides a set of methods that facilitate the implementation of the third phase
 * of the Method Engineering lifecycle (i.e., the phase of method execution).
 *
 * @author Mario Cervera
