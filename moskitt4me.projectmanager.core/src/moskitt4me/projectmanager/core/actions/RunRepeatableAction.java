@@ -26,6 +26,13 @@ import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.PlatformUI;
 
+/*
+* The Run Repeatable Action (which is shown as a button in the Action Bar of the Process view) allows the
+* user to execute a Task that is defined as repetable in the method model. Unlike the Run Action, the task
+* will not be marked as "executed"; therefore, it will be possible to execute the task more than once.
+*
+* @author Mario Cervera
+*/
 public class RunRepeatableAction extends Action implements IAction {
 
 	public RunRepeatableAction() {
