@@ -23,7 +23,14 @@ import org.eclipse.swt.SWT;
 import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.PlatformUI;
 
-
+/*
+* An action that is shown as a toggle button in the Action Bar of the Process view. When the button
+* is activated, the Process view only displays the tasks that are assigned to the selected role. When the 
+* button is deactivated, no filter is applied. To allow the user to select its role, the action opens a
+* Dialog when the button changes from its deactivated to its activated state.
+*
+* @author Mario Cervera
+*/
 public class RoleSelectionAction extends Action implements IAction {
 
 	public RoleSelectionAction() {
@@ -33,11 +40,16 @@ public class RoleSelectionAction extends Action implements IAction {
 	
 	@Override
 	public void run() {
-
+		
+		// Create the Role Selection Dialog.
+		
 		MOSKitt4MESelectionDialog roleSelectionDialog = new MOSKitt4MESelectionDialog(
 				PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
 				"Role selection", "Select the current role", MethodElements.roles.toArray(),
 				SWT.BORDER | SWT.MULTI);
+
+		// Set a Label Provider, Content Provider, and Filter so that the roles are
+		// properly displayed within the dialog.
 
 		roleSelectionDialog.setLabelProvider(new RolesLabelProvider());
 		roleSelectionDialog.setContentProvider(new RolesContentProvider());
@@ -46,6 +58,8 @@ public class RoleSelectionAction extends Action implements IAction {
 		List<EClass> types = new ArrayList<EClass>();
 		types.add(UmaPackage.eINSTANCE.getRoleDescriptor());
 		roleSelectionDialog.setEnablementTypes(types);
+		
+		// Show the Dialog
 		
 		if (roleSelectionDialog.open() == Window.OK) {
 			
