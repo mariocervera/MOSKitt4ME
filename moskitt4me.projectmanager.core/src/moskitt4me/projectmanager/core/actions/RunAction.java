@@ -30,8 +30,9 @@ import org.eclipse.ui.PlatformUI;
 
 /*
 * The Run Action (which is shown as a button in the Action Bar of the Process view) allows the
-* user to set a task as executed. When a task is set as executed, the Project Manager Component
-* notifies the Activiti Engine, which takes the process instance to its next state.
+* user to set a Task or an Activity as executed. When a task is set as executed, the Project
+* Manager Component notifies the Activiti Engine, which takes the process instance to its next
+* state.
 *
 * @author Mario Cervera
 */
