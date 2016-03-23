@@ -10,8 +10,10 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 
 /*
- * This class defines the actions that appear in the action bars of 
- * all the views of the project manager
+ * This class defines the actions that appear in the Action Bar of all the views
+ * of the Project Manager Component.
+ *
+ * @author Mario Cervera
  */
 public class ProjectManagerActionGroup extends ActionGroup {
 
