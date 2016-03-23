@@ -17,7 +17,7 @@ import org.eclipse.epf.uma.TaskDescriptor;
 
 /*
 * This class provides variables and methods that store and manipulate contextual information, such as
-* the project that is selected in the Project Manager Component or the identifier of the running
+* the project that is selected in the Project Manager Component and the identifier of the running
 * process instance.
 *
 * @author Mario Cervera
