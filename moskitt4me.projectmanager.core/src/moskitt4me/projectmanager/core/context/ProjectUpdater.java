@@ -38,6 +38,13 @@ import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
 
+/*
+* A listener that reacts to Selection Change events in the Resource Explorer view. In MOSKitt4ME,
+* when the selected project changes, the process instance that is running in the Activiti Engine
+* must be updated (since every project has a different process instance associated to it).
+*
+* @author Mario Cervera
+*/
 public class ProjectUpdater implements ISelectionListener {
 
 	public void selectionChanged(IWorkbenchPart part, ISelection selection) {
@@ -45,6 +52,8 @@ public class ProjectUpdater implements ISelectionListener {
 		if(selection instanceof StructuredSelection) {
 			
 			StructuredSelection sel = (StructuredSelection) selection;
+			
+			// Selection changed --> carry out an update of the selected project
 			
 			updateActiveProject(part, sel);
 		}
@@ -89,18 +98,26 @@ public class ProjectUpdater implements ISelectionListener {
 				ResourcesPlugin.getWorkspace().addResourceChangeListener(Context.resourceListener);
 			}
 			
+			// Get the URI of the process model that is associated to the new project
+			
 			String processModelUri = Context.getProcessModelURI(newProject);
 			
 			if(processModelUri != null) {
 				Context.selectedProject = newProject;
 				
+				// Get the Delivery Process (i.e., the root element of the process model)
+				
 				DeliveryProcess dp = MethodElements.getDeliveryProcess(processModelUri);
 				
 				if(dp != null) {
 					
+					// Load the process model in memory for easier access
+					
 					MethodElements.loadMethodDefinition(dp);
 					
 					try {
+						// The selected project has changed --> Update the Activiti Engine
+						
 						Engine.setUp(dp, Context.selectedProject);
 					}
 					catch(Exception e) {
