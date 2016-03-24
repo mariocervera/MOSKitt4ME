@@ -22,6 +22,14 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.ActionGroup;
 
+/**
+ * The Guides view provides MOSKitt4ME users with guidelines on the performance of the
+ * method tasks. Specifically, the Guides view shows the elements of type "Guidance" that
+ * are associated to the method task that is selected in the Process view. These elements
+ * are obtained from the method model at runtime.
+ * 
+ * @author Mario Cervera
+ */
 public class GuidesView extends ProjectManagerViewPart {
 
 	public static final String GuidesViewId = "moskitt4me.projectmanager.core.views.guidesView";
