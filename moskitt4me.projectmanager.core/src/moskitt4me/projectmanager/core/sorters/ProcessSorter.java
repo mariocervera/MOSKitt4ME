@@ -6,6 +6,12 @@ import org.eclipse.epf.uma.WorkBreakdownElement;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerSorter;
 
+/**
+ * A sorter for the Process view. It ensures that the elements of the process instances are
+ * shown in appropriate order.
+ * 
+ * @author Mario Cervera
+ */
 public class ProcessSorter extends ViewerSorter {
 
 	@Override
