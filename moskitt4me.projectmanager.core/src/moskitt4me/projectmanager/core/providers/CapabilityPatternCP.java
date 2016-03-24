@@ -7,6 +7,8 @@ import org.eclipse.epf.uma.UmaPackage;
 import org.eclipse.epf.uma.impl.CapabilityPatternImpl;
 
 /*
+* Class for capability patterns contained in capability patterns.
+* 
 * @author Mario Cervera
 */
 public class CapabilityPatternCP extends CapabilityPatternImpl {
