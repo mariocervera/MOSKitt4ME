@@ -17,8 +17,11 @@ import org.eclipse.ui.actions.ActionGroup;
 import org.eclipse.ui.part.ViewPart;
 
 /*
- * This class contains the common functionality of the different views of
- * the project manager
+ * This class contains the common functionality of the different views of the
+ * Project Manager Component (i.e., the Process view, the Product Explorer, and the
+ * Guides view).
+ *
+ * @author Mario Cervera
  */
 public abstract class ProjectManagerViewPart extends ViewPart {
 
