@@ -19,6 +19,12 @@ import org.eclipse.help.IContextProvider;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeItem;
 
+/*
+* This class triggers a context change whenever a new task is selected in the Process views. This allows the
+* Help view of Eclipse to provide help based on the selected task.
+*
+* @author Mario Cervera
+*/
 public class ProcessContextProvider implements IContextProvider {
 	
 	public IContext getContext(Object target) {
@@ -36,17 +42,27 @@ public class ProcessContextProvider implements IContextProvider {
 				Object element = item.getData();
 				
 				if(element instanceof TaskDescriptor) {
+					
+					// A task is selected ...
+					
 					TaskDescriptor td = (TaskDescriptor) element;
 					Task task = td.getTask();
 					if(task != null) {
 						if(task.eIsProxy()) {
 							task = getTask(task, MethodElements.tasks);
 						}
+						
+						//Obtain the technical fragments associated to the task
+						
 						List<ToolMentor> tools = task.getToolMentors();
 						if(tools != null && tools.size() > 0) {
 							ToolMentor tool = tools.get(0);
 							String toolId = getPropertyValue(tool, "toolId");
 							if(!isTransformation(toolId)) {
+								
+								// Contextual help is associated to the task, use it
+								// as context.
+								
 								context = HelpSystem.getContext(toolId);
 							}
 						}
