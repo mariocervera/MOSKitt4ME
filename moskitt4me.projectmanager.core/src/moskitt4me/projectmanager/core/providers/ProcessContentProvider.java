@@ -24,7 +24,9 @@ import org.eclipse.epf.uma.VariabilityElement;
 import org.eclipse.epf.uma.VariabilityType;
 
 /*
- * This class is in charge of providing content to the Process view
+ * This class provides content to the Process view.
+ *
+ * @author Mario Cervera
  */
 public class ProcessContentProvider extends AdapterFactoryContentProvider {
 	
@@ -42,6 +44,9 @@ public class ProcessContentProvider extends AdapterFactoryContentProvider {
 		capabilityPatternObjects = new ArrayList<MethodElement>();
 	}
 	
+	/*
+	* Root element --> the Delivery Process that is associated to the selected project
+	*/
 	@Override
 	public Object[] getElements(Object object) {
 		
@@ -64,7 +69,7 @@ public class ProcessContentProvider extends AdapterFactoryContentProvider {
 			
 			return true;
 		}
-		else if (object instanceof TaskDescriptor) {
+		else if (object instanceof TaskDescriptor) { // Tasks do not have nested elements
 			
 			return false;
 		}
@@ -72,6 +77,10 @@ public class ProcessContentProvider extends AdapterFactoryContentProvider {
 		return super.hasChildren(object);
 	}
 	
+	/*
+	* This method calculates the children of the Delivery Process (the root element), the
+	* Activities, and the Capability Patterns.
+	*/
 	@Override
 	public Object[] getChildren(Object object) {
 		
