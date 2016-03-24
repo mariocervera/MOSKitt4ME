@@ -11,6 +11,12 @@ import org.eclipse.epf.uma.Guidance;
 import org.eclipse.epf.uma.Task;
 import org.eclipse.epf.uma.TaskDescriptor;
 
+/**
+ * A Content Provider for the Guides view. Shows the elements of type "Guidance" that
+ * are associated (in the method model) to the task that is selected in the Process view.
+ * 
+ * @author Mario Cervera
+ */
 public class GuidesContentProvider extends AdapterFactoryContentProvider {
 
 	public GuidesContentProvider(AdapterFactory adapterFactory) {
