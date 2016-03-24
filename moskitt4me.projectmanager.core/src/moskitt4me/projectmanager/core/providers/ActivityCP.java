@@ -7,6 +7,8 @@ import org.eclipse.epf.uma.UmaPackage;
 import org.eclipse.epf.uma.impl.ActivityImpl;
 
 /*
+* Class for activities contained in capability patterns.
+*
 * @author Mario Cervera
 */
 public class ActivityCP extends ActivityImpl {
