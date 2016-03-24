@@ -29,6 +29,10 @@ import org.eclipse.jface.viewers.ViewerFilter;
  */
 public class DomainsFilter extends ViewerFilter {
 
+	/*
+	* Returns false if the given element must not be shown in the viewer (in this case, the
+	* Product Explorer view), true otherwise.
+	*/
 	@Override
 	public boolean select(Viewer viewer, Object parentElement, Object element) {
 		
@@ -50,6 +54,9 @@ public class DomainsFilter extends ViewerFilter {
 		return true;
 	}
 	
+	/*
+	* Checks whether the given domain contains products.
+	*/
 	private boolean containsProductsToShow(Domain domain) {
 		
 		try {
