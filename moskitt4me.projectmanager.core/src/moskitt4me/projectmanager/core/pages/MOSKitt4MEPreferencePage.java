@@ -7,6 +7,9 @@ import org.eclipse.jface.preference.FileFieldEditor;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
 
+/*
+* @author Mario Cervera
+*/
 public class MOSKitt4MEPreferencePage extends FieldEditorPreferencePage implements
 		IWorkbenchPreferencePage {
 
@@ -19,8 +22,8 @@ public class MOSKitt4MEPreferencePage extends FieldEditorPreferencePage implemen
 		
 		/*
 		 * "ExternalLibraryPath" stores the path of a Method Library that contains
-		 * delivery processes that can be used by the PMC without being necessarily contained
-		 * in the plugin es.cv.gvcase.gvm.configuration
+		 * delivery processes that can be used by the Project Manager Component without
+		 * being necessarily contained in the plugin es.cv.gvcase.gvm.configuration.
 		 */
 		addField(new FileFieldEditor("ExternalLibraryPath", "External Library Path:",
 				getFieldEditorParent()));
