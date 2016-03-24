@@ -6,6 +6,9 @@ import org.eclipse.epf.uma.Activity;
 import org.eclipse.epf.uma.UmaPackage;
 import org.eclipse.epf.uma.impl.ActivityImpl;
 
+/*
+* @author Mario Cervera
+*/
 public class ActivityCP extends ActivityImpl {
 
 	private List<String> cpguids;
