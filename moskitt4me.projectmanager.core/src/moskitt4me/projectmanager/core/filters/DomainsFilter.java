@@ -22,8 +22,10 @@ import org.eclipse.jface.viewers.ViewerFilter;
 
 
 /**
- * This class filters the domains which don't have products to be shown
- * in the Product Explorer view
+ * This class filters the domains that don't have products to be shown
+ * in the Product Explorer view.
+ * 
+ * @author Mario Cervera
  */
 public class DomainsFilter extends ViewerFilter {
 
