@@ -28,7 +28,11 @@ import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
 
-
+/**
+ * A Label Provider for the Process view. Provides labels and iconcs for the graphical elements.
+ * 
+ * @author Mario Cervera
+ */
 public class ProcessLabelProvider extends LabelProvider {
 
 	@Override
