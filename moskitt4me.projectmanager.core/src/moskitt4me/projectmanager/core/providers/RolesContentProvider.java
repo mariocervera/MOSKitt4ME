@@ -15,6 +15,11 @@ import org.eclipse.epf.uma.RoleSetGrouping;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 
+/**
+ * A Content Provider for the Role Selection Dialog.
+ * 
+ * @author Mario Cervera
+ */
 public class RolesContentProvider extends ArrayContentProvider implements
 		ITreeContentProvider {
 
