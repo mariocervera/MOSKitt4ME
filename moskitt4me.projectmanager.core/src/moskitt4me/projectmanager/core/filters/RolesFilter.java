@@ -11,8 +11,17 @@ import org.eclipse.epf.uma.RoleSetGrouping;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 
+/**
+ * A role filter for the Role Selection Dialog.
+ * 
+ * @author Mario Cervera
+ */
 public class RolesFilter extends ViewerFilter {
 
+	/*
+	* Returns false if the given element must not be shown in the viewer (in this case, the
+	* Role Selection Dialog), true otherwise.
+	*/
 	@Override
 	public boolean select(Viewer viewer, Object parentElement, Object element) {
 		
