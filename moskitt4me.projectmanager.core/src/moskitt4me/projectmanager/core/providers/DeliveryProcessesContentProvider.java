@@ -22,6 +22,14 @@ import org.eclipse.epf.uma.ProcessComponent;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 
+/*
+* This content provider fills the graphical component of the MOSKitt4ME Project Creation Wizard.
+* The SPEM 2.0 processes that are shown in this wizard can be obtained from different sources.
+* They can be contributed via an extension point, added via Windows -> Preferences, or contained
+* in the Method Definitions plug-in.
+*
+* @author Mario Cervera
+*/
 public class DeliveryProcessesContentProvider extends ArrayContentProvider implements
 	ITreeContentProvider {
 
