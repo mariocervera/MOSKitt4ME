@@ -16,7 +16,11 @@ import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
 
-
+/**
+ * A Label Provider for the Role Selection Dialog.
+ * 
+ * @author Mario Cervera
+ */
 public class RolesLabelProvider extends LabelProvider {
 
 	@Override
