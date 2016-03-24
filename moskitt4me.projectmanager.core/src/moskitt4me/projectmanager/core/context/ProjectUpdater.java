@@ -129,12 +129,16 @@ public class ProjectUpdater implements ISelectionListener {
 					
 					updateProducts();
 					
+					// Refresh Process view
+					
 					ProcessView processView = getProcessView();
 					if(processView != null) {
 						processView.enableUndoButton();
 						processView.clearContentProvider();
 						processView.getViewer().setInput(Context.selectedProject);
 					}
+					
+					// Refresh Product Explorer view
 					
 					ProductExplorerView productExplorerView = getProductExplorerView();
 					if(productExplorerView != null) {
