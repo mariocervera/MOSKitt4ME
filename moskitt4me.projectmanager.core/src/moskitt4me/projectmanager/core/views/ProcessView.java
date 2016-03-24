@@ -54,6 +54,12 @@ import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.ActionGroup;
 
+/**
+ * The Process view shows the current state of the process instance that is associated to the
+ * project that is selected in the Resource Explorer view.
+ * 
+ * @author Mario Cervera
+ */
 public class ProcessView extends ProjectManagerViewPart {
 
 	public static final String ProcessViewId = "moskitt4me.projectmanager.core.views.processView";
@@ -123,13 +129,17 @@ public class ProcessView extends ProjectManagerViewPart {
 									MethodElements.workProducts, MethodElements.tasks, cpIds);
 
 					if(productCreated) {
+						
 						//Refresh the Product Explorer view
+						
 						ProductExplorerView productExplorer = getProductExplorerView();
 						
 						if (productExplorer != null) {
 							productExplorer.refreshViewer();
 						}
+						
 						//Refresh project
+						
 						try{
 							Context.selectedProject.refreshLocal(IResource.DEPTH_INFINITE,
 									new NullProgressMonitor());
@@ -156,6 +166,10 @@ public class ProcessView extends ProjectManagerViewPart {
 		return null;
 	}
 	
+	/*
+	* Selection change events in the Process view will refresh the Guides view and the state of the
+	* buttons of the Action Bar.
+	*/
 	private class ProcessViewSelectionChangedListener implements ISelectionChangedListener {
 		
 		public void selectionChanged(SelectionChangedEvent event) {
@@ -201,6 +215,9 @@ public class ProcessView extends ProjectManagerViewPart {
 		}
 	}
 	
+	/*
+	 * Handles the enablement of the Undo button. 
+	 */
 	public void enableUndoButton() {
 		
 		UndoAction action = getUndoAction();
@@ -218,6 +235,9 @@ public class ProcessView extends ProjectManagerViewPart {
 		}
 	}
 	
+	/*
+	 * Handles the enablement of the Run buttons (Run Action and Run Repeatable Action). 
+	 */
 	private void enableRunButtons(Object[] selectedObjects) {
 		
 		RunAction runAction = getRunAction();
@@ -368,6 +388,9 @@ public class ProcessView extends ProjectManagerViewPart {
 		return new ProcessViewActionGroup(this.getViewer());
 	}
 	
+	/*
+	* This method creates an object that provides content for the Process view.
+	*/
 	@Override
 	protected IContentProvider createContentProvider() {
 		
@@ -377,12 +400,20 @@ public class ProcessView extends ProjectManagerViewPart {
 		return contentProvider;
 	}
 	
+	/*
+	* This method creates an object that provides labels and icons for the graphical
+	* elements of the Process view (which are provided by the Content Provider).
+	*/
 	@Override
 	protected IBaseLabelProvider createLabelProvider() {
 		
 		return new ProcessLabelProvider();
 	}
-
+	
+	/*
+	* The process filter handles the filtering of elements based on the selected role and the
+	* display mode of the Process view.
+	*/
 	@Override
 	protected ViewerFilter[] createFilters() {
 
