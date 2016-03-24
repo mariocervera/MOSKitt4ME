@@ -18,7 +18,11 @@ import org.eclipse.ui.ide.undo.CreateProjectOperation;
 import org.eclipse.ui.ide.undo.WorkspaceUndoUtil;
 import org.eclipse.ui.wizards.newresource.BasicNewResourceWizard;
 
-
+/**
+ * A wizard that allows the user to create MOSKitt4ME projects.
+ * 
+ * @author Mario Cervera
+ */
 public class NewMOSKitt4MEProjectWizard extends BasicNewResourceWizard
 		implements INewWizard {
 	
@@ -26,6 +30,10 @@ public class NewMOSKitt4MEProjectWizard extends BasicNewResourceWizard
 		setWindowTitle("New MOSKitt4ME Project");
 	}
 	
+	/*
+	* This method is executed when the user clicks the Finish button of the wizard.
+	* This method creates the project.
+	*/
 	@Override
 	public boolean performFinish() {
 	
@@ -59,6 +67,9 @@ public class NewMOSKitt4MEProjectWizard extends BasicNewResourceWizard
 		return true;
 	}
 
+	/*
+	* The MOSKitt4ME Project wizard only contains one page.
+	*/
 	@Override
 	public void addPages() {
 		
