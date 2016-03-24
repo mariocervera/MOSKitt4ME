@@ -6,6 +6,9 @@ import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 
+/**
+ * @author Mario Cervera
+ */
 public class ProcessSelectionProvider implements ISelectionProvider {
 
 	private final ListenerList fSelectionChangedListeners;
