@@ -25,7 +25,13 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.ActionGroup;
 import org.eclipse.ui.ide.IDE;
 
-
+/**
+ * The Product Explorer view shows a hierarchical representation of the method products that
+ * have been created for the project that is selected in the Resource Explorer. This hierarchy is
+ * based on the elements of type "Domain" and "Product", which are defined in the method model.
+ * 
+ * @author Mario Cervera
+ */
 public class ProductExplorerView extends ProjectManagerViewPart {
 
 	public static final String ProductExplorerViewId = "moskitt4me.projectmanager.core.views.productExplorerView";
@@ -38,6 +44,9 @@ public class ProductExplorerView extends ProjectManagerViewPart {
 		this.updateContentDescription();
 	}
 	
+	/*
+	* Double click opens the selected file.
+	*/
 	@Override
 	protected void handleDoubleClick(DoubleClickEvent anEvent) {
 		
