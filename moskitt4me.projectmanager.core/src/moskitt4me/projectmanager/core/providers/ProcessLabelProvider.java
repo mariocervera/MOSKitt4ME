@@ -29,7 +29,13 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
 
 /**
- * A Label Provider for the Process view. Provides labels and iconcs for the graphical elements.
+ * A Label Provider for the Process view. Provides labels and iconcs for the graphical elements. The elements
+ * of a process are shown in different colors depending on their state. Non-executable tasks are displayed in
+ * red, executable tasks are displayed in green, and the tasks that have already been executed are displayed in
+ * blue. The color of the activities (and capability patterns) depends on their nested tasks and subactivities.
+ * An activity (or capability pattern) is shown in blue if and only if all of its tasks and subactivities have
+ * already been executed. On the other hand, the activity is shown in red if and only if all of its tasks and
+ * subactivities are non-executable. Otherwise, the activity is shown in green. 
  * 
  * @author Mario Cervera
  */
