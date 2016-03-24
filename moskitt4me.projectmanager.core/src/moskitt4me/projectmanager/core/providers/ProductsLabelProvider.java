@@ -15,8 +15,10 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.model.WorkbenchLabelProvider;
 
-/*
- * LabelProvider for the Product Explorer View
+/**
+ * A Label Provider for the Product Explorer view. Provides labels and icons for the graphical elements.
+ * 
+ * @author Mario Cervera
  */
 public class ProductsLabelProvider extends LabelProvider {	
 	
