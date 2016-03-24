@@ -7,6 +7,13 @@ import org.eclipse.core.resources.IResourceChangeEvent;
 import org.eclipse.core.resources.IResourceChangeListener;
 import org.eclipse.core.resources.IResourceDelta;
 
+/*
+* A listener that reacts to Resource Change events in the Resource Explorer view. In MOSKitt4ME,
+* when the selected project changes, the process instance that is running in the Activiti Engine
+* must be updated (since every project has a different process instance associated to it).
+*
+* @author Mario Cervera
+*/
 public class MOSKitt4MEResourceChangeListener implements
 		IResourceChangeListener {
 	
