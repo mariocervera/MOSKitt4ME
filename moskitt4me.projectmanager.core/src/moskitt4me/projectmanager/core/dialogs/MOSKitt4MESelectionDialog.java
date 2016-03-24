@@ -23,8 +23,10 @@ import org.eclipse.swt.widgets.Tree;
 import org.eclipse.ui.dialogs.SelectionDialog;
 
 /*
- * This class contains the common functionality of the different 
- * selection dialogs of the project manager
+ * This class contains the common functionality of the different selection dialogs of
+ * the Project Manager Component.
+ *
+ * @author Mario Cervera
  */
 public class MOSKitt4MESelectionDialog extends SelectionDialog {
 
