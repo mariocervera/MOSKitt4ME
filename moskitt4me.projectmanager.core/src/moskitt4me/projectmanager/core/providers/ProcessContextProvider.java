@@ -20,7 +20,7 @@ import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeItem;
 
 /*
-* This class triggers a context change whenever a new task is selected in the Process views. This allows the
+* This class triggers a context change whenever a new task is selected in the Process view. This allows the
 * Help view of Eclipse to provide help based on the selected task.
 *
 * @author Mario Cervera
