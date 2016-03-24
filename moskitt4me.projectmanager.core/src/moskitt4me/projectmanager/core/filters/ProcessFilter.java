@@ -26,8 +26,8 @@ import org.eclipse.jface.viewers.ViewerFilter;
 
 
 /*
- * This class filters elements in the Process View taking into account the selected type
- * of visualization.
+ * This class filters elements in the Process View taking into account the selected 
+ * display mode.
  *
  * @author Mario Cervera
  */
