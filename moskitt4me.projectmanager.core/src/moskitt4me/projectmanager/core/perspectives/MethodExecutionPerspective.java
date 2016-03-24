@@ -6,6 +6,13 @@ import org.eclipse.ui.IPerspectiveFactory;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.views.IViewRegistry;
 
+/**
+ * The Method Execution perspective. When active, the MOSKitt4ME workbench will show the views that
+ * comprise the Project Manager Component: the Resource Explorer, the Process view, the Product Explorer,
+ * and the Help view.
+ * 
+ * @author Mario Cervera
+ */
 public class MethodExecutionPerspective implements IPerspectiveFactory {
 
 	public static final String ID = "moskitt4me.projectmanager.core.perspective";
