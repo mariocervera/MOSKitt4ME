@@ -22,6 +22,11 @@ import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
 
+/**
+ * A Label Provider for the Guides view. Provides labels and icons for the graphical elements.
+ * 
+ * @author Mario Cervera
+ */
 public class GuidesLabelProvider extends LabelProvider {
 
 	@Override
