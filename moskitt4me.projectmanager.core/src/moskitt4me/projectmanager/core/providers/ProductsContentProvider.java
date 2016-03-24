@@ -19,7 +19,9 @@ import org.eclipse.epf.uma.Domain;
 import org.eclipse.epf.uma.WorkProduct;
 
 /*
- * ContentProvider for the Product Explorer View
+ * ContentProvider for the Product Explorer View.
+ *
+ * @author Mario Cervera
  */
 public class ProductsContentProvider extends AdapterFactoryContentProvider {
 	
