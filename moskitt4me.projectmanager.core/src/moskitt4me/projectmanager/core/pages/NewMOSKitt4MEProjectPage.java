@@ -30,6 +30,12 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.widgets.Tree;
 import org.osgi.framework.Bundle;
 
+/*
+* The only page of the New MOSKitt4ME Project Wizard. It allows the user to specify the project
+* name and also to select the process that will be associated to the project.
+*
+* @author Mario Cervera
+*/
 public class NewMOSKitt4MEProjectPage extends WizardPage {
 	
 	private String projectName;
@@ -67,7 +73,9 @@ public class NewMOSKitt4MEProjectPage extends WizardPage {
 		return selectedProcess;
 	}
 	
-	
+	/*
+	* Create the graphical elements (GridLayout)
+	*/
 	public void createControl(Composite parent) {
 
 		Composite newMethodProjectComposite = new Composite(parent, SWT.NULL);
@@ -87,18 +95,18 @@ public class NewMOSKitt4MEProjectPage extends WizardPage {
 	private void createProjectNameGroup(Composite parent) {
 		
 		Composite projectNameGroup = new Composite(parent, SWT.NONE);
-        GridLayout layout = new GridLayout();
-        layout.numColumns = 2;
-        projectNameGroup.setLayout(layout);
-        projectNameGroup.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
-
-        projectNameLabel = new Label(projectNameGroup, SWT.NONE);
-        projectNameLabel.setText("Project Name:");
-
-        projectNameText = new Text(projectNameGroup, SWT.BORDER);
-        GridData data = new GridData(GridData.FILL_HORIZONTAL);
-        projectNameText.setLayoutData(data);
-        projectNameText.addListener(SWT.Modify, projectNameModifyListener);
+	        GridLayout layout = new GridLayout();
+	        layout.numColumns = 2;
+	        projectNameGroup.setLayout(layout);
+	        projectNameGroup.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+	
+	        projectNameLabel = new Label(projectNameGroup, SWT.NONE);
+	        projectNameLabel.setText("Project Name:");
+	
+	        projectNameText = new Text(projectNameGroup, SWT.BORDER);
+	        GridData data = new GridData(GridData.FILL_HORIZONTAL);
+	        projectNameText.setLayoutData(data);
+	        projectNameText.addListener(SWT.Modify, projectNameModifyListener);
 	}
 	
 	private void createProcessesGroup(Composite parent) {
@@ -111,14 +119,14 @@ public class NewMOSKitt4MEProjectPage extends WizardPage {
 		processesLabel = new Label(processesGroup, SWT.NONE);
 		processesLabel.setText("Delivery Processes:");
         
-        Tree tree = new Tree(parent, SWT.BORDER | SWT.SINGLE);
-        GridData data = new GridData(GridData.FILL_BOTH);
-        tree.setLayoutData(data);
-        
-        processesViewer = new TreeViewer(tree);
-        processesViewer.setContentProvider(new DeliveryProcessesContentProvider());
-        processesViewer.setLabelProvider(new ProcessLabelProvider());
-        processesViewer.addSelectionChangedListener(new ISelectionChangedListener() {
+	        Tree tree = new Tree(parent, SWT.BORDER | SWT.SINGLE);
+	        GridData data = new GridData(GridData.FILL_BOTH);
+	        tree.setLayoutData(data);
+	        
+	        processesViewer = new TreeViewer(tree);
+	        processesViewer.setContentProvider(new DeliveryProcessesContentProvider());
+	        processesViewer.setLabelProvider(new ProcessLabelProvider());
+	        processesViewer.addSelectionChangedListener(new ISelectionChangedListener() {
 			
 			public void selectionChanged(SelectionChangedEvent event) {
 				
@@ -147,34 +155,47 @@ public class NewMOSKitt4MEProjectPage extends WizardPage {
 		return (validateName() && validateProcess());
 	}
 	
+	/*
+	* This method ensures that the user specifies a project name and also that this
+	* name is valid.
+	*/
 	private boolean validateName() {
 		
 		IWorkspace workspace = ResourcesPlugin.getWorkspace();
-
-        String pName = projectNameText.getText();
-        
-        if (pName == null || pName.equals("")) {
-        	setErrorMessage("Project name must be specified");
-            return false;
-        }
-
-        IStatus nameStatus = workspace.validateName(pName, IResource.PROJECT);
-        if (!nameStatus.isOK()) {
-            setErrorMessage(nameStatus.getMessage());
-            return false;
-        }
-
-        IProject handle = ResourcesPlugin.getWorkspace().getRoot().getProject(pName);
-        if (handle.exists()) {
-            setErrorMessage("A project with that name already exists in the workspace");
-            return false;
-        }
-
-        setErrorMessage(null);
-        setMessage(null);
-        return true;
+		
+		String pName = projectNameText.getText();
+		
+		if (pName == null || pName.equals("")) {
+			
+			setErrorMessage("Project name must be specified");
+		    	return false;
+		 }
+		
+		IStatus nameStatus = workspace.validateName(pName, IResource.PROJECT);
+		
+		if (!nameStatus.isOK()) {
+			
+		    setErrorMessage(nameStatus.getMessage());
+		    return false;
+		}
+		
+		IProject handle = ResourcesPlugin.getWorkspace().getRoot().getProject(pName);
+		
+		if (handle.exists()) {
+			
+		    setErrorMessage("A project with that name already exists in the workspace");
+		    return false;
+		}
+		
+		setErrorMessage(null);
+		setMessage(null);
+		
+		return true;
 	}
 	
+	/*
+	* This method ensures that the user selects a valid process for the project to be created.
+	*/
 	private boolean validateProcess() {
 		
 		if(selectedProcess == null) {
@@ -187,11 +208,15 @@ public class NewMOSKitt4MEProjectPage extends WizardPage {
 		}
 		else {
 			setErrorMessage(null);
-	        setMessage(null);
-	        return true;
+		        setMessage(null);
+		        return true;
 		}
 	}
 	
+	/*
+	* For a SPEM 2.0 process to be executable, it must have an equivalent (and executable)
+	* BPMN 2.0 representation associated to it.
+	*/
 	private boolean hasBPMNmodel(DeliveryProcess dp) {
 		
 		try {
