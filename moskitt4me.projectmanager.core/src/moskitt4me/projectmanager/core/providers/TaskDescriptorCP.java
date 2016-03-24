@@ -8,6 +8,8 @@ import org.eclipse.epf.uma.impl.TaskDescriptorImpl;
 
 /*
  * Class for Task Descriptors contained in CapabilityPatterns
+ *
+ * @author Mario Cervera
  */
 public class TaskDescriptorCP extends TaskDescriptorImpl {
 
