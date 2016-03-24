@@ -6,6 +6,9 @@ import org.eclipse.epf.uma.CapabilityPattern;
 import org.eclipse.epf.uma.UmaPackage;
 import org.eclipse.epf.uma.impl.CapabilityPatternImpl;
 
+/*
+* @author Mario Cervera
+*/
 public class CapabilityPatternCP extends CapabilityPatternImpl {
 
 	private List<String> cpguids;
