@@ -37,7 +37,7 @@ public class ToolGenerationAction implements IViewActionDelegate {
 		
 		Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
 		
-		// Open a dialog that allows the user to specify destionation folder
+		// Open a dialog that allows the user to specify destination folder
 		// and name of the CASE environment
 		
 		ToolGenerationDialog tgd = new ToolGenerationDialog(shell);
