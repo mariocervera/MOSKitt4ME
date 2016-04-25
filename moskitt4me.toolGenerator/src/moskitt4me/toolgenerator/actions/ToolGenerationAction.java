@@ -21,12 +21,12 @@ import org.eclipse.ui.IViewActionDelegate;
 import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.PlatformUI;
 
-/*
-* This is the main action of the moskitt4me.toolGenerator plug-in. It is in charge of invoking the
-* generation of the CASE environment.
-*
-* @author Mario Cervera
-*/ 
+/**
+ * This is the main action of the moskitt4me.toolGenerator plug-in. It is in charge of invoking the
+ * generation of the CASE environment.
+ *
+ * @author Mario Cervera
+ */ 
 public class ToolGenerationAction implements IViewActionDelegate {
 	
 	public void run(IAction action) {
