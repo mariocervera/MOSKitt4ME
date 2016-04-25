@@ -12,15 +12,15 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
 
-/*
-* This class implements a Job that deletes the Plug-in Projects that have been imported
-* into the workspace during the CASE environment generation process.
-*
-* This Job is executed after the Export Job (which is in charge of the generation of the
-* CASE environment).
-*
-* @author Mario Cervera
-*/
+/**
+ * This class implements a Job that deletes the Plug-in Projects that have been imported
+ * into the workspace during the CASE environment generation process.
+ *
+ * This Job is executed after the Export Job (which is in charge of the generation of the
+ * CASE environment).
+ *
+ * @author Mario Cervera
+ */
 public class DeleteProjectsOperation extends Job {
 
 	private Job exportJob;
