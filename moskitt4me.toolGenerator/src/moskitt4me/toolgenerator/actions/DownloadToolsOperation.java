@@ -31,16 +31,16 @@ import org.osgi.framework.Bundle;
 import com.ibm.icu.text.DecimalFormat;
 import com.ibm.icu.util.StringTokenizer;
 
-/*
-* This class is in charge of generating/downloading/importing into the workspace all the
-* Plug-in Projects that must be included in the CASE environment that will be automatically
-* built to support the method defined using MOSKitt4ME. The generated CASE environment will
-* be an Eclipse reconfiguration that only contains the tools that are strictly necessary to
-* support the method. These tools will be the plug-ins imported into the workspace during
-* the execution of the code that is contained in this class.
-*
-* @author Mario Cervera
-*/
+/**
+ * This class is in charge of generating/downloading/importing into the workspace all the
+ * Plug-in Projects that must be included in the CASE environment that will be automatically
+ * built to support the method defined using MOSKitt4ME. The generated CASE environment will
+ * be an Eclipse reconfiguration that only contains the tools that are strictly necessary to
+ * support the method. These tools will be the plug-ins imported into the workspace during
+ * the execution of the code that is contained in this class.
+ *
+ * @author Mario Cervera
+ */
 public class DownloadToolsOperation implements IRunnableWithProgress {
 
 	private Shell shell;
@@ -233,6 +233,9 @@ public class DownloadToolsOperation implements IRunnableWithProgress {
 		}
 	}
 	
+	/*
+	 * This method imports the plug-ins that are contained in technical fragments into the workspace
+	 */
 	private void importTechnicalFragmentPlugins(String folder,
 			List<IProject> projects, List<IProject> permanentProjects) throws Exception {
 		
@@ -331,6 +334,10 @@ public class DownloadToolsOperation implements IRunnableWithProgress {
 		}
 	}
 	
+	/*
+	 * This method adds files such as window images and preference customization files to the
+	 * plug-in that defines the RCP application (i.e., the CASE environment to be generated)
+	 */
 	private void completeProductDefiningPlugin(String location) throws Exception {
 		
 		String name = TemplatesUtil.definingBundleName();
