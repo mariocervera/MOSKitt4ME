@@ -20,17 +20,21 @@ import org.eclipse.osgi.service.resolver.State;
 import org.eclipse.osgi.util.ManifestElement;
 import org.osgi.framework.Bundle;
 
-/*
-* This class automatically manages all the software dependency issues that arise between
-* plug-ins during the CASE generation process. This is done by accessing the MANIFEST.MF
-* files of the plug-ins.
-*
-* @author Mario Cervera
-*/
+/**
+ * This class automatically manages all the software dependency issues that arise between
+ * plug-ins during the CASE generation process. This is done by accessing the MANIFEST.MF
+ * files of the plug-ins.
+ *
+ * @author Mario Cervera
+ */
 public class DependenciesUtil {
 	
 	private static State state = Platform.getPlatformAdmin().getState();
 	
+	/*
+	 * The only public method of this class. Obtains the software dependencies to be taken into
+	 * consideration during the CASE generation process
+	 */
 	public static List<String> pluginDependencies() {
 		
 		List<String> dependencies = new ArrayList<String>();
@@ -92,6 +96,11 @@ public class DependenciesUtil {
 		}
 	}
 	
+	/*
+	 * This method accesses to the MANIFEST.MF file to obtain the software dependencies
+	 * of the plug-ins. These dependencies are specified by means of the "Require-Bundle"
+	 * and "Import-Package" statements.
+	 */
 	private static List<String> getPluginProjectDependencies(List<String> checkedBundles) {
 		
 		//Add dependencies of Plug-in projects in the workspace
@@ -143,9 +152,10 @@ public class DependenciesUtil {
 		return result;
 	}
 	
+	/*
+	 * This method adds the plug-ins from "org.eclipse.platform" and "org.eclipse.rcp" features
+	 */
 	private static void addMandatoryDependencies(List<String> dependencies) {
-		
-		//Add plugins from "org.eclipse.platform" and "org.eclipse.rcp" features
 		
 		IBundleGroupProvider[] providers = Platform.getBundleGroupProviders();
 		for(IBundleGroupProvider provider : providers) {
@@ -168,6 +178,9 @@ public class DependenciesUtil {
 		}
 	}
 	
+	/*
+	 * This method checks whether a given bundle id represents a workspace project
+	 */
 	private static boolean isWorkspaceProject(String bundleId) {
 		
 		for(IProject pr : GeneratorUtil.projects) {
