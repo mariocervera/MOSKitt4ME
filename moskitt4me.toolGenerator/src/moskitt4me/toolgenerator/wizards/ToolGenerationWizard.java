@@ -143,7 +143,7 @@ public class ToolGenerationWizard extends BaseExportWizard {
 	}
 	
 	/*
-	 * This method returs the .product file. This file contains all the information required
+	 * This method returns the .product file. This file contains all the information required
 	 * to automatically generate the RCP application
 	 */
 	protected IFile getProductFile() {
