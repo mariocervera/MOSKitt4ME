@@ -26,27 +26,34 @@ import org.eclipse.pde.internal.ui.wizards.exports.BaseExportWizard;
 import org.eclipse.pde.internal.ui.wizards.product.SynchronizationOperation;
 import org.eclipse.ui.progress.IProgressConstants;
 
-/*
-* This class is used by the "ToolGenerationAction" only to invoke the functionality that is provided
-* by the Eclipse PDE, which enables the automatic generation of the CASE environment. This environment
-* is an Eclipse RCP product. The wizard is never opened.
-*
-* @author Mario Cervera
-*/
+/**
+ * This class is used by the "ToolGenerationAction" only to invoke the functionality that is provided
+ * by the Eclipse PDE, which enables the automatic generation of the CASE environment. This environment
+ * is an Eclipse RCP product. The wizard is never opened.
+ *
+ * @author Mario Cervera
+ */
 public class ToolGenerationWizard extends BaseExportWizard {
 
 	private static final String STORE_SECTION = "ProductExportWizard"; //$NON-NLS-1$
 	private WorkspaceProductModel fProductModel;
+	
+	//The destination path and product name, which are specified by the MOSKitt4ME user
 	
 	private String destination;
 	private String productRoot;
 	
 	private ProductExportOperation job;
 	
+	/*
+	 * Constructor
+	 */
 	public ToolGenerationWizard(String destination, String productRoot) {
 		
 		this.destination = destination;
 		this.productRoot = productRoot;
+		
+		// Create the destination folder if it does not exist
 		
 		File dest = new File(this.destination);
 		if(!dest.exists()) {
@@ -66,7 +73,11 @@ public class ToolGenerationWizard extends BaseExportWizard {
 	protected String getSettingsSectionName() {
 		return STORE_SECTION;
 	}
-
+	
+	/*
+	 * This method schedules the export job, which is in charge of the generation of the RCP
+	 * application from the .product file
+	 */
 	protected void scheduleExportJob() {
 		FeatureExportInfo info = new FeatureExportInfo();
 		info.toDirectory = true;
@@ -131,6 +142,10 @@ public class ToolGenerationWizard extends BaseExportWizard {
 		return true;
 	}
 	
+	/*
+	 * This method returs the .product file. This file contains all the information required
+	 * to automatically generate the RCP application
+	 */
 	protected IFile getProductFile() {
 
 		String path = "/" + TemplatesUtil.definingBundleName() + "/productConfiguration.product";
