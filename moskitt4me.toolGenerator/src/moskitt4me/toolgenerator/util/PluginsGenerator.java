@@ -6,7 +6,7 @@ import java.util.Map;
 import org.eclipse.emf.mwe.core.WorkflowRunner;
 import org.eclipse.emf.mwe.core.monitor.NullProgressMonitor;
 
-/*
+/**
  * This class invokes the Workflow that launches the Xpand transformations that will
  * generate the plug-ins to be imported into the workspace. These plug-ins are required
  * during the CASE generation process.
@@ -29,6 +29,8 @@ public class PluginsGenerator {
 			String rcpFeatureProjectLocation, String dependenciesFeatureProjectLocation,
 			String mDefFeatureProjectLocation, String tFragmentsFeatureProjectLocation) {
 		
+		// Specify workflow properties
+		
 		oawProperties.put("inputModelFile", libraryXMIPath);
 		oawProperties.put("srcGenPath", rcpPluginProjectLocation);
 		oawProperties.put("srcGenPath2", mDefPluginProjectLocation);
@@ -40,6 +42,8 @@ public class PluginsGenerator {
 		String workFlowFilePath = "/transf/SPEM2ProductDefinition.mwe";
 		
 		WorkflowRunner wr = new WorkflowRunner();
+		
+		// Launch workflow
 		
 		boolean result = wr.run(workFlowFilePath, new NullProgressMonitor(),
 				oawProperties, oawSlotContents);
