@@ -14,7 +14,7 @@ import org.eclipse.epf.uma.Process;
 import org.eclipse.epf.uma.ProcessComponent;
 import org.eclipse.epf.uma.ProcessPackage;
 
-/*
+/**
  * This class provides a method for validating the method library prior to the
  * invokation of the CASE generation process. Constraints:
  * 
@@ -26,6 +26,10 @@ import org.eclipse.epf.uma.ProcessPackage;
  */
 public class LibraryValidator {
 
+	/*
+	 * The only public method of this class. It validates the Method Library that is
+	 * opened in the EPF Composer
+	 */
 	public static void validateLibrary() {
 		
 		MethodLibrary lib = LibraryService.getInstance().getCurrentMethodLibrary();
@@ -67,6 +71,9 @@ public class LibraryValidator {
 		}	
 	}
 
+	/*
+	 * This method checks whether a given Delivery Process has an associated BPMN 2.0 model
+	 */
 	private static boolean hasBPMNmodel(DeliveryProcess dp) {
 
 		String activitiFolder = getActivitiFolder(dp);
@@ -79,6 +86,9 @@ public class LibraryValidator {
 
 	}
 	
+	/*
+	 * Returns the folder that stores the BPMN 2.0 model 
+	 */
 	private static String getActivitiFolder(DeliveryProcess dp) {
 		
 		String activitiFolder = replaceLastSegment(dp.eResource().getURI().toString(), "activiti");
@@ -97,6 +107,9 @@ public class LibraryValidator {
 		return activitiFolder.replaceFirst("file:", "");
 	}
 	
+	/*
+	 * Returns the Method Plug-in that contains a given Delivery Process
+	 */
 	private static MethodPlugin getMethodPlugin(DeliveryProcess dp) {
 		
 		EObject container = dp.eContainer();
