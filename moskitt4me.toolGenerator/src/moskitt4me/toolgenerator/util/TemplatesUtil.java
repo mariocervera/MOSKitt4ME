@@ -12,8 +12,11 @@ import org.eclipse.epf.uma.MethodLibrary;
 import org.eclipse.ui.branding.IProductConstants;
 import org.osgi.framework.Version;
 
-/*
- * This class provides Java extensions for the Xpand templates
+/**
+ * This class provides Java extensions for the Xpand templates. It contains methods that
+ * return information about the MOSKitt4ME platform, so that it can be replicated in the
+ * generated CASE environment. This information includes the product id, name, and version.
+ * Another examples are the "about" text and the path of the splash screen image.
  *
  * @author Mario Cervera
  */
