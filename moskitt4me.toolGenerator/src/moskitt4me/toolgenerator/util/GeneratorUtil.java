@@ -38,9 +38,13 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-/*
-* @author Mario Cervera
-*/
+/**
+ * A set of utility methods for the CASE generator of MOSKitt4ME. These methods
+ * support, among other functionality, the creation/deletion of folders, the
+ * extraction of zip files, and the creation of Plug-in/Feature Projects.
+ *  
+ * @author Mario Cervera
+ */
 public class GeneratorUtil {
 
 	public static List<IProject> projects = new ArrayList<IProject>();
