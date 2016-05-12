@@ -19,7 +19,7 @@ import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.ui.IActionDelegate;
 import org.eclipse.ui.PlatformUI;
 
-/*
+/**
  * This action (which can be executed by means of the popup menu of the delivery processes)
  * allows the user to invoke a Model-to-Model transformation that obtains a BPMN 2.0 model
  * (in terms of the Activiti Designer) from a specific SPEM 2.0 process. The SPEM 2.0 process
@@ -109,6 +109,11 @@ public class OpenBPMN2DiagramAction implements IActionDelegate {
 		}
 	}
 
+	/*
+	 * Listener for the selection changed event. Updates the path of the folder where the output of
+	 * the SPEM-to-BPMN transformation will be stored. This path is calculated based on the delivery
+	 * process that is selected
+	 */
 	public void selectionChanged(IAction action, ISelection selection) {
 		
 		if(selection instanceof StructuredSelection) {
