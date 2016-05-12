@@ -21,10 +21,10 @@ import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.ui.IActionDelegate;
 import org.eclipse.ui.PlatformUI;
 
-/*
+/**
  * This action (which can be executed by means of the popup menu of the SPEM delivery processes)
- * allows the user to delete the BPMN 2.0 diagrams (.activiti files) that have been generated
- * for a specific SPEM 2.0 process.
+ * allows the user to delete the BPMN 2.0 diagrams (that is, the .activiti files) that have been
+ * generated for a specific SPEM 2.0 process.
  *
  * @author Mario Cervera
  */
@@ -92,6 +92,10 @@ public class DeleteBPMN2DiagramAction implements IActionDelegate {
 		
 	}
 
+	/*
+	 * Listener for the selection changed event. Updates the reference to the activiti
+	 * folder when a new delivery process is selected
+	 */
 	public void selectionChanged(IAction action, ISelection selection) {
 
 		if (selection instanceof StructuredSelection) {
