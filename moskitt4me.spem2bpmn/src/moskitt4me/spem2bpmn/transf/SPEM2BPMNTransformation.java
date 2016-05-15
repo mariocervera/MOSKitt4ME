@@ -31,13 +31,13 @@ import org.eclipse.epf.uma.VariabilityType;
 import org.eclipse.epf.uma.WorkBreakdownElement;
 import org.eclipse.epf.uma.WorkOrder;
 
-/*
-* This class implements a Model-to-Model transformation that obtains a BPMN 2.0 representation
-* (in terms of the Activiti Designer) of a SPEM 2.0 delivery process (defined by means of the
-* EPF Composer).
-*
-* @author Mario Cervera
-*/
+/**
+ * This class implements a Model-to-Model transformation that obtains a BPMN 2.0 representation
+ * (in terms of the Activiti Designer) of a SPEM 2.0 delivery process (defined by means of the
+ * EPF Composer).
+ *
+ * @author Mario Cervera
+ */
 public class SPEM2BPMNTransformation {
 
 	/*
