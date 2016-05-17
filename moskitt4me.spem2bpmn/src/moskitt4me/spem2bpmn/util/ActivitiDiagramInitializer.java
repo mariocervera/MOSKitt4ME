@@ -36,7 +36,7 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.FileEditorInput;
 
-/*
+/**
  * This class provides a method for initializing the graphical elements of a (BPMN 2.0)
  * Activiti model (i.e., for generating a BPMN 2.0 diagram from a tree-based process
  * definition).
@@ -67,6 +67,9 @@ public class ActivitiDiagramInitializer {
 		y = Y_INITIAL_VALUE;
 	}
 	
+	/*
+	 * This method generates the BPMN 2.0 diagram
+	 */
 	public static void initializeDiagram(String modelPath) throws Exception {
 		
 		Resource resource = getResource(modelPath); // .activiti file
