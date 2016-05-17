@@ -11,17 +11,20 @@ import org.eclipse.epf.uma.VariabilityType;
 import org.eclipse.epf.uma.WorkBreakdownElement;
 import org.eclipse.epf.uma.WorkOrder;
 
-/*
-* This class checks whether a SPEM 2.0 delivery process is properly defined and can, therefore, be
-* used as input of the SPEM-to-BPMN model transformation.
-*
-* The validator checks the following constraint: precedence relationships must be established between
-* elements within the same parent activity.
-*
-* @author Mario Cervera
-*/
+/**
+ * This class checks whether a SPEM 2.0 delivery process is properly defined and can, therefore, be
+ * used as input of the SPEM-to-BPMN model transformation.
+ *
+ * The validator checks the following constraint: precedence relationships must be established between
+ * elements within the same parent activity.
+ *
+ * @author Mario Cervera
+ */
 public class DeliveryProcessValidator {
 	
+	/*
+	 * This method checks the constrain established by the current validator
+	 */
 	public static String checkPrecedenceRelationships(Activity actv) {
 		
 		String errorMessage = "";
@@ -98,6 +101,9 @@ public class DeliveryProcessValidator {
 		return errorMessage;
 	}
 	
+	/*
+	 * Returns the error message, based on the breakdown elements that generated the error
+	 */
 	private static String getErrorMessage(BreakdownElement elem1, BreakdownElement elem2) {
 		
 		String errorMessage = "Incorrect work flow:\n\n" ;
