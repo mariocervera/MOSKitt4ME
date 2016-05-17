@@ -23,7 +23,7 @@ import org.eclipse.epf.uma.WorkOrder;
 public class DeliveryProcessValidator {
 	
 	/*
-	 * This method checks the constrain established by the current validator
+	 * This method checks the constraint established by the current validator
 	 */
 	public static String checkPrecedenceRelationships(Activity actv) {
 		
