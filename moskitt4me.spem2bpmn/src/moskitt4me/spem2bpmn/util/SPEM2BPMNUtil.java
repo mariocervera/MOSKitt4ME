@@ -22,11 +22,16 @@ import org.eclipse.epf.uma.ProcessPackage;
 import org.eclipse.epf.uma.WorkBreakdownElement;
 import org.eclipse.epf.uma.WorkOrder;
 
-/*
-* @author Mario Cervera
-*/
+/**
+ * This class contains a set of utility methods for the SPEM-to-BPMN model transformation
+ * 
+ * @author Mario Cervera
+ */
 public class SPEM2BPMNUtil {
 
+	/*
+	 * Replaces the last segment of a given URI
+	 */
 	public static String replaceLastSegment(String uri, String newSegment) {
 		
 		StringTokenizer tokenizer = new StringTokenizer(uri, "/");
@@ -41,6 +46,9 @@ public class SPEM2BPMNUtil {
 		 return (newUri + newSegment);
 	}
 	
+	/*
+	 * Returns the Method Plugin that contains a given Delivery Process
+	 */
 	public static MethodPlugin getMethodPlugin(DeliveryProcess dp) {
 		
 		EObject container = dp.eContainer();
@@ -52,6 +60,9 @@ public class SPEM2BPMNUtil {
 		return (MethodPlugin) container;
 	}
 	
+	/*
+	 * Returns the Process Package that contains a given Activity
+	 */
 	public static ProcessPackage getProcessPackage(Activity activity) {
 
 		EObject container = activity.eContainer();
@@ -63,6 +74,9 @@ public class SPEM2BPMNUtil {
 		return (ProcessPackage) container;
 	}
 	
+	/*
+	 * Creates a new XMI resource given the destination folder and the file name
+	 */
 	public static Resource createResource(String folder, String fileName) {
 		
 		XMIResourceFactoryImpl _xmiFac = new XMIResourceFactoryImpl();
@@ -75,6 +89,10 @@ public class SPEM2BPMNUtil {
 		return resource;
 	}
 	
+	/*
+	 * Returns true if a given Work Breakdown Element (i.e., a task or an activity)
+	 * has a predecessor (with respect to execution order)
+	 */
 	public static boolean hasPredecessor(WorkBreakdownElement wbe) {
 		
 		if (wbe.getLinkToPredecessor().size() > 0) {
@@ -93,6 +111,10 @@ public class SPEM2BPMNUtil {
 		}
 	}
 	
+	/*
+	 * Returns true if a given Work Breakdown Element (i.e., a task or an activity)
+	 * has a successor (with respect to execution order)
+	 */
 	public static boolean hasSuccessor(WorkBreakdownElement wbe, EList<EObject> eobjects,
 			String cpId) {
 		
@@ -126,6 +148,9 @@ public class SPEM2BPMNUtil {
 		return false;
 	}
 	
+	/*
+	 * Returns the BPMN 2.0 Flow Node that corresponds to a given SPEM 2.0 Work Breakdown Element
+	 */
 	public static FlowNode getFlowNode(WorkBreakdownElement wbe, EList<EObject> eobjects,
 			String cpId) {
 		
@@ -161,6 +186,9 @@ public class SPEM2BPMNUtil {
 		return null;
 	}
 	
+	/*
+	 * Returns the identifier of the SPEM 2.0 Task that represents a given BPMN 2.0 Activity
+	 */
 	public static String getTaskDescriptorId(org.eclipse.bpmn2.Activity ac) {
 		
 		String tdGuid = "";
