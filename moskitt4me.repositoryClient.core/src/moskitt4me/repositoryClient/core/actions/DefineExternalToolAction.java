@@ -21,15 +21,15 @@ import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.window.Window;
 import org.eclipse.ui.PlatformUI;
 
-/*
-* In a similar way to the class "CreateTechnicalFragmentAction", this class implements an action that
-* enables the creation of technical fragments. The difference is that this class enables the creation of
-* technical fragments of type "External Tool". An external tool is a tool that is not implemented as Eclipse
-* plug-ins, and, therefore, cannot be integrated in the generated CASE environment. This type of fragments
-* only contain textual information about the external tool.
-*
-* @author Mario Cervera
-*/ 
+/**
+ * In a similar way to the class "CreateTechnicalFragmentAction", this class implements an action that
+ * enables the creation of technical fragments. The difference is that this class enables the creation of
+ * technical fragments of type "External Tool". An external tool is a tool that is not implemented as Eclipse
+ * plug-ins, and, therefore, cannot be integrated in the generated CASE environment. This type of fragments
+ * only contain textual information about the external tool.
+ *
+ * @author Mario Cervera
+ */ 
 public class DefineExternalToolAction extends Action {
 
 	@Override
@@ -83,6 +83,9 @@ public class DefineExternalToolAction extends Action {
 		}
 	}
 
+	/*
+	 * This method gets the Repository Location that is selected in the Repositories view
+	 */
 	private RepositoryLocation getSelectedLocation(RepositoriesView repositoriesView) {
 
 		ISelection sel = repositoriesView.getCommonViewer().getSelection();
@@ -94,6 +97,10 @@ public class DefineExternalToolAction extends Action {
 		return null;
 	}
 	
+	/*
+	 * This method creates the RAS file. It is a zip file that contains an XML file
+	 * representing the asset manifest
+	 */
 	private void createRasFile(ExternalToolFragment etf, String assetsDir) {
 		
 		String manifestPath = "";
@@ -132,6 +139,10 @@ public class DefineExternalToolAction extends Action {
 		}
 	}
 	
+	/*
+	 * This method uploads a given technical fragment to the FTP repository that is pointed by the given
+	 * Repository Location and folder
+	 */
 	private void uploadAsset(RepositoryLocation location, String folder, ExternalToolFragment etf) throws Exception {
 		
 		FTPClient client = RepositoryClientUtil.connect(location, false);
