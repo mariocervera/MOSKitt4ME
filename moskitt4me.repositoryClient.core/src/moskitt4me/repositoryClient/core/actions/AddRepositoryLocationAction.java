@@ -14,14 +14,14 @@ import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.window.Window;
 import org.eclipse.ui.PlatformUI;
 
-/*
-* This action allows the user to add a new repository location to the Repositories view. A
-* repository location is a graphical element that points to a FTP repository that contains
-* reusable assets. To create a new repository location, the user needs to specify host,
-repository path, username, and password.
-*
-* @author Mario Cervera
-*/
+/**
+ * This action allows the user to add a new repository location to the Repositories view. A
+ * repository location is a graphical element that points to a FTP repository that contains
+ * reusable assets. To create a new repository location, the user needs to specify host,
+ * repository path, username, and password.
+ *
+ * @author Mario Cervera
+ */
 public class AddRepositoryLocationAction extends Action implements IAction {
 
 	@Override
@@ -30,6 +30,8 @@ public class AddRepositoryLocationAction extends Action implements IAction {
 		RepositoriesView repositoriesView = RepositoryClientUtil.getRepositoriesView();
 		
 		if(repositoriesView != null) {
+			
+			// Create and open the "Add Repository Location" dialog
 			
 			AddRepositoryLocationDialog dialog = new AddRepositoryLocationDialog(
 					repositoriesView.getSite().getShell());
@@ -41,6 +43,9 @@ public class AddRepositoryLocationAction extends Action implements IAction {
 				String password = dialog.getPassword();
 				
 				if(existingLocation(repositoriesView, host, repositoryPath)) {
+					
+					// If the location already exists, show an error
+					
 					MessageDialog.openError(
 							PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
 							"Connection failed",
@@ -51,6 +56,8 @@ public class AddRepositoryLocationAction extends Action implements IAction {
 							host, repositoryPath, user, password);
 					
 					RepositoryClientUtil.setInitialLocationType(location);
+					
+					// Test connection ...
 					
 					FTPClient client = RepositoryClientUtil.connect(location, true);
 					
