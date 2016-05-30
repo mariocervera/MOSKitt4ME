@@ -24,13 +24,13 @@ import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.window.Window;
 import org.eclipse.ui.PlatformUI;
 
-/*
-* This class implementes the creation of technical fragments. A technical fragment contains a tool (for example,
-* a graphical editor or a code generator) implemented as Eclipse plug-ins. These fragments are .zip files that
-* are compliant with the Reusable Asset Specification (RAS) standard.
-*
-* @author Mario Cervera
-*/
+/**
+ * This class implementes the creation of technical fragments. A technical fragment contains a tool (for example,
+ * a graphical editor or a code generator) implemented as Eclipse plug-ins. These fragments are .zip files that
+ * are compliant with the Reusable Asset Specification (RAS) standard.
+ *
+ * @author Mario Cervera
+ */
 public class CreateTechnicalFragmentAction extends Action {
 
 	@Override
