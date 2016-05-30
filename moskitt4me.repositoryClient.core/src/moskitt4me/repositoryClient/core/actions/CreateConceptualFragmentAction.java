@@ -27,12 +27,20 @@ import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.window.Window;
 import org.eclipse.ui.PlatformUI;
 
+/**
+ * This class implementes the creation of conceptual fragments. A conceptual fragment contains a method
+ * part (for example, a task or a role). These fragments are .zip files that are compliant with the
+ * Reusable Asset Specification (RAS) standard.
+ *
+ * @author Mario Cervera
+ */
 public class CreateConceptualFragmentAction extends Action {
 
 	FileOutputStream fos;
 	ZipOutputStream zos;
 	
 	private boolean integrateReferences;
+	
 	@Override
 	public void run() {
 		
