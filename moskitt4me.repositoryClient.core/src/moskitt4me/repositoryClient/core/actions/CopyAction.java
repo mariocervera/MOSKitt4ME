@@ -11,16 +11,19 @@ import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
 
-/*
-* An action that allows the user to copy technical fragments within
-* the "CreateTechnicalFragmentDialog".
-*
-* @author Mario Cervera
-*/
+/**
+ * An action that allows the user to copy technical fragments within the
+ * "Create Technical Fragment Dialog".
+ *
+ * @author Mario Cervera
+ */
 public class CopyAction extends Action {
 
-	private TechnicalFragment technicalFragment;
+	private TechnicalFragment technicalFragment; // The copied fragment
 	
+	/*
+	 * Constructor
+	 */
 	public CopyAction(TechnicalFragment technicalFragment) {
 		
 		this.technicalFragment = technicalFragment;
