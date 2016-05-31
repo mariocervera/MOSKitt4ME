@@ -10,17 +10,19 @@ import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
 
-/*
-* This action allows the user to delete Repository Locations from the Repositories view.
-*
-* @author Mario Cervera
-*/
+/**
+ * This action allows the user to delete Repository Locations from the Repositories view.
+ *
+ * @author Mario Cervera
+ */
 public class DiscardLocationAction extends Action {
 	
 	@Override
 	public void run() {
 		
 		super.run();
+		
+		// Show a dialog that allows the user to confirm the deletion prior to its execution
 		
 		boolean result = MessageDialog.openConfirm(
 				PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
@@ -33,6 +35,9 @@ public class DiscardLocationAction extends Action {
 					.getActiveWorkbenchWindow().getActivePage().getActivePart();
 			
 			if (part instanceof RepositoriesView) {
+				
+				// Get selected Repository Location, delete it, and refresh the Repositories view
+				
 				RepositoriesView rv = (RepositoriesView) part;
 				ISelection selection = rv.getCommonViewer().getSelection();
 				if (selection instanceof StructuredSelection) {
