@@ -10,14 +10,20 @@ import moskitt4me.repositoryClient.core.util.RepositoryClientUtil;
 import moskitt4me.repositoryClient.core.util.RepositoryLocation;
 import moskitt4me.repositoryClient.fragmentIntegration.FragmentIntegration;
 
+/**
+ * This action allows the user to integrate conceptual method fragments (i.e., reusable method parts
+ * such as tasks, roles, or products) into the method under construction.
+ *
+ * @author Mario Cervera
+ */
 public class IntegrateConceptualFragmentAction extends IntegrateFragmentAction {
 
 	String type;
 	
 	protected int performFragmentIntegration(MethodFragmentItemProvider fragment) throws IOException {
 		
-		/*Integration of the elements at the xmi file (representation of a conceptual fragment) 
-		on the selected library*/
+		// Integration of the elements of the XMI file (i.e., the conceptual fragment) into
+		// the selected library
 		
 		RepositoryLocation location = fragment.getLocation();
 		String fileName = fragment.getFileName();
@@ -27,10 +33,9 @@ public class IntegrateConceptualFragmentAction extends IntegrateFragmentAction {
 		Map<String, String> properties = ras.getProperties();
 		type = properties.get("Type");
 		
-		
 		if(!type.equals("Process")){
 			
-			/*Content fragments*/
+			// Content fragments
 			
 			int result = -1;
 				try {
@@ -48,7 +53,7 @@ public class IntegrateConceptualFragmentAction extends IntegrateFragmentAction {
 			
 		}else{
 			
-			/*Process fragments*/
+			// Process fragments
 			
 			int result = -1;
 			
