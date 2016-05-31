@@ -21,15 +21,15 @@ import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.window.Window;
 import org.eclipse.ui.PlatformUI;
 
-/*
-* In a similar way to the class "CreateTechnicalFragmentAction", this class implements an action that
-* enables the creation of technical fragments. The difference is that this class enables the creation of
-* technical fragments of type "Internal Tool". An internal tool is a tool that is already installed in
-* MOSKitt4ME (e.g., Eclipse frameworks such as GMF or EMF). This type of technical fragments do not need
-* to encapsulate the implementation of the tools; only the identifiers of the Eclipse plug-ins.
-*
-* @author Mario Cervera
-*/ 
+/**
+ * In a similar way to the class "CreateTechnicalFragmentAction", this class implements an action that
+ * enables the creation of technical fragments. The difference is that this class enables the creation of
+ * technical fragments of type "Internal Tool". An internal tool is a tool that is already installed in
+ * MOSKitt4ME (e.g., Eclipse frameworks such as GMF or EMF). This type of technical fragments do not need
+ * to encapsulate the implementation of the tools; only the identifiers of the Eclipse plug-ins.
+ *
+ * @author Mario Cervera
+ */ 
 public class DefineInternalToolAction extends Action {
 
 	@Override
@@ -43,6 +43,8 @@ public class DefineInternalToolAction extends Action {
 
 			if (location != null) {
 				
+				//Open the creation dialog
+				
 				DefineInternalToolDialog dialog = new DefineInternalToolDialog(
 						repositoriesView.getSite().getShell());
 				
@@ -55,8 +57,16 @@ public class DefineInternalToolAction extends Action {
 
 					try {
 						tempDir = RepositoryClientUtil.createFolder(eclipseInstallationDirectory + "tmp", 0);
+						
+						// Create the asset as a RAS file
+						
 						createRasFile(result, tempDir);
+						
+						//Upload the asset to the FTP repository
+						
 						uploadAsset(location, tempDir, result);
+						
+						//The repository is now a location for technical (not conceptual) method fragments
 						
 						location.setType("Technical");
 					}
@@ -73,6 +83,9 @@ public class DefineInternalToolAction extends Action {
 		}
 	}
 	
+	/*
+	 * This method gets the Repository Location that is selected in the Repositories view
+	 */
 	private RepositoryLocation getSelectedLocation(RepositoriesView repositoriesView) {
 
 		ISelection sel = repositoriesView.getCommonViewer().getSelection();
@@ -84,6 +97,10 @@ public class DefineInternalToolAction extends Action {
 		return null;
 	}
 	
+	/*
+	 * This method creates the RAS file. It is a zip file that contains an XML file
+	 * representing the asset manifest
+	 */
 	private void createRasFile(InternalToolFragment itf, String assetsDir) {
 		
 		String manifestPath = "";
@@ -122,6 +139,10 @@ public class DefineInternalToolAction extends Action {
 		}
 	}
 	
+	/*
+	 * This method uploads a given Internal Tool Fragment to the FTP repository that is pointed by the given
+	 * Repository Location and folder
+	 */
 	private void uploadAsset(RepositoryLocation location, String folder, InternalToolFragment itf) throws Exception {
 		
 		FTPClient client = RepositoryClientUtil.connect(location, false);
