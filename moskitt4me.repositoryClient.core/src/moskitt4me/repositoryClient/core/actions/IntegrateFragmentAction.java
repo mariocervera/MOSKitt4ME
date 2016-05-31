@@ -12,12 +12,12 @@ import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.ui.PlatformUI;
 
-/*
-* This class provides a superclass for two different actions: Integrate Conceptual Fragment and
-* Integrate Technical Fragment.
-* 
-* @author Mario Cervera
-*/
+/**
+ * This class provides a superclass for two different actions: Integrate Conceptual Fragment and
+ * Integrate Technical Fragment.
+ * 
+ * @author Mario Cervera
+ */
 public abstract class IntegrateFragmentAction extends Action implements IAction {
 
 	protected IntegrateFragmentAction() {
@@ -32,9 +32,15 @@ public abstract class IntegrateFragmentAction extends Action implements IAction 
 		
 		if(repositoriesView != null) {
 
+			// Get the element that is selected in the Repositories view
+			
 			if (repositoriesView.getCommonViewer().getSelection() instanceof StructuredSelection) {
+				
 				Object selection = ((StructuredSelection) repositoriesView
 						.getCommonViewer().getSelection()).getFirstElement();
+				
+				// If the selected element is a method fragment (either a conceptual or a technical
+				// fragment), integrate it.
 				
 				if (selection instanceof MethodFragmentItemProvider) {
 					
@@ -65,7 +71,8 @@ public abstract class IntegrateFragmentAction extends Action implements IAction 
 	}
 	
 	/*
-	* This method must be implemented differently for conceptual fragments and technical fragments
-	*/
+	 * This method is abstract because it must be implemented differently dependeing on whether the fragment is a
+	 * conceptual fragment or a technical fragment
+	 */
 	protected abstract int performFragmentIntegration(MethodFragmentItemProvider fragment) throws IOException;
 }
