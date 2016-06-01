@@ -11,11 +11,11 @@ import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
 
-/*
-* A paste action that can be used within the Create Technical Fragment Dialog.
-*
-* @author Mario Cervera
-*/
+/**
+ * A paste action that can be used within the Create Technical Fragment Dialog.
+ *
+ * @author Mario Cervera
+ */
 public class PasteAction extends Action {
 
 	private CreateTechnicalFragmentDialog dialog;
@@ -46,11 +46,23 @@ public class PasteAction extends Action {
 		if(dialog != null && CreateTechnicalFragmentDialog.clipboard != null) {
 			TechnicalFragment selectedTF = dialog.getSelectedTechnicalFragment();
 			if(selectedTF != null) {
+				
+				// Duplicate the fragment that is stored in the clipboard
+				
 				TechnicalFragment clone = CreateTechnicalFragmentDialog.clipboard.duplicate();
+				
+				// Paste it as a child of the selected fragment
+				
 				clone.setParent(selectedTF);
 				selectedTF.getDependencies().add(clone);
+				
+				// Resolve dependencies tree
+				
 				TechnicalFragment root = dialog.getRootFragment();
 				dialog.resolveTechnicalFragment(root);
+				
+				// Refresh the graphical component
+				
 				dialog.getDependenciesTreeViewer().refresh();
 				dialog.enableOkButton();
 			}			
