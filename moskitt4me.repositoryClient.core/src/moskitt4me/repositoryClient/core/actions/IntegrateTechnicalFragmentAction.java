@@ -102,7 +102,7 @@ public class IntegrateTechnicalFragmentAction extends IntegrateFragmentAction {
 	}
 	
 	/*
-	 * This method returs a Tool Mentor given a tool id and name. If the Tool Mentor does not exist,
+	 * This method returns a Tool Mentor given a tool id and name. If the Tool Mentor does not exist,
 	 * a new one is created.
 	 */
 	private ToolMentor getToolMentor(String toolId, String toolName, String fragmentFileName,
