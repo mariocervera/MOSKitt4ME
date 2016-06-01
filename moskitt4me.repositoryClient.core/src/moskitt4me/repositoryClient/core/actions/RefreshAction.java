@@ -5,11 +5,11 @@ import moskitt4me.repositoryClient.core.views.RepositoriesView;
 
 import org.eclipse.jface.action.Action;
 
-/*
-* A refresh action for the Repositories view.
-*
-* @author Mario Cervera
-*/
+/**
+ * A refresh action for the Repositories view.
+ *
+ * @author Mario Cervera
+ */
 public class RefreshAction extends Action {
 	
 	@Override
