@@ -24,17 +24,18 @@ import org.eclipse.epf.uma.WorkProduct;
 import org.eclipse.jface.window.Window;
 import org.eclipse.ui.PlatformUI;
 
-/*
-* This action allows the user to associate technical fragments with conceptual elements of
-* the method under construction (e.g., tasks, roles, and products).
-*
-* @author Mario Cervera
-*/
+/**
+ * This action allows the user to associate technical fragments (i.e., reusable tools such as
+ * graphical editors or code generators) with conceptual elements of the method under construction
+ * (e.g., tasks, roles, and products).
+ *
+ * @author Mario Cervera
+ */
 public class IntegrateTechnicalFragmentAction extends IntegrateFragmentAction {
 
 	protected int performFragmentIntegration(MethodFragmentItemProvider fragment) {
 		
-		//Obtain an element of the method by means of the ContentElementSelectionDialog
+		// Obtain a conceptual element of the method by means of the ContentElementSelectionDialog
 		
 		ContentElement contentElement = getContentElement();
 		
@@ -47,15 +48,15 @@ public class IntegrateTechnicalFragmentAction extends IntegrateFragmentAction {
 			
 			LibraryModificationHelper helper = new LibraryModificationHelper();
 			
-			//Create an element of type Tool Mentor. Tool Mentor is a SPEM 2.0 primitive. We use
-			//it as a representation of a technical fragment. 
+			// Create an element of type Tool Mentor. Tool Mentor is a SPEM 2.0 primitive.
+			// We use it as a way to represent technical fragments. 
 			
 			ToolMentor tool = getToolMentor(fragment.getToolId(), toolName,
 					fragment.getFileName(), fragment.getLocation(), 
 					fragment.getDescription(), fragment.getType(),
 					parent, helper);
 			
-			//Associate the tool mentor with the selected method element
+			// Associate the tool mentor with the selected method element
 			
 			associateToolWithContentElement(contentElement, tool, fragment, helper);
 			
@@ -67,6 +68,9 @@ public class IntegrateTechnicalFragmentAction extends IntegrateFragmentAction {
 		return 1;
 	}
 	
+	/*
+	 * This method opens a Dialog that allows the user to select a method element.
+	 */
 	private ContentElement getContentElement() {
 		
 		MethodLibrary library = LibraryService.getInstance().getCurrentMethodLibrary();
@@ -97,6 +101,10 @@ public class IntegrateTechnicalFragmentAction extends IntegrateFragmentAction {
 		return null;
 	}
 	
+	/*
+	 * This method returs a Tool Mentor given a tool id and name. If the Tool Mentor does not exist,
+	 * a new one is created.
+	 */
 	private ToolMentor getToolMentor(String toolId, String toolName, String fragmentFileName,
 			RepositoryLocation location, String description, String type,
 			ContentPackage cpackage, LibraryModificationHelper helper) {
@@ -160,6 +168,7 @@ public class IntegrateTechnicalFragmentAction extends IntegrateFragmentAction {
 		tool.getMethodElementProperty().add(prop4);
 		tool.getMethodElementProperty().add(prop5);
 		tool.getMethodElementProperty().add(prop6);
+		
 		if(prop7 != null) {
 			tool.getMethodElementProperty().add(prop7);
 		}
@@ -172,6 +181,9 @@ public class IntegrateTechnicalFragmentAction extends IntegrateFragmentAction {
 		return tool;
 	}
 	
+	/*
+	 * This method associates a Tool Mentor with a Content Element (a task or a product)
+	 */
 	private void associateToolWithContentElement(ContentElement contentElement, ToolMentor tool,
 			MethodFragmentItemProvider fragment, LibraryModificationHelper helper) {
 		
@@ -182,6 +194,8 @@ public class IntegrateTechnicalFragmentAction extends IntegrateFragmentAction {
 					return;
 				}
 			}
+			
+			// Add the tool mentor to the collection of tools of the task
 			
 			helper.getActionManager().doAction(IActionManager.ADD,
 					task, UmaPackage.eINSTANCE.getTask_ToolMentors(),
@@ -222,6 +236,8 @@ public class IntegrateTechnicalFragmentAction extends IntegrateFragmentAction {
 							prop, -1);
 				}
 			}
+			
+			// Add the tool mentor to the collection of tools of the product
 			
 			helper.getActionManager().doAction(IActionManager.ADD,
 					product, UmaPackage.eINSTANCE.getWorkProduct_ToolMentors(),
