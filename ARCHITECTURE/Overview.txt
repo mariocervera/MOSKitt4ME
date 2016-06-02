@@ -1,0 +1,31 @@
+
+The architecture of MOSKitt4ME comprises the following components:
+
+CAME platform (Computer-Aided Method Engineering)
+------------------------------------------------------
+
+- Method Editor: this component allows method engineers to perform the conceptual modeling of methods following the SPEM 2.0 standard.
+
+- Repository Client: this component allows method engineers to connect to FTP repositories of conceptual and technical fragments.
+By means of this client, method engineers can create new fragments and also store, retrieve, and integrate them. A
+conceptual fragment is a reusable method part, such as a role, a product or a task. A technical fragment is a sofware tool,
+such as a graphical editor or a code generator.
+
+- Metatools: the metatools allow method engineers to develop tools for software development. Examples of metatools are
+frameworks for the construction of graphical editors (e.g., the Eclipse Graphical Modeling Framework), or languages for
+the implementation of code generators and Model-to-Model transformations (e.g., Xpand and ATL).
+
+- CASE Generator: this component is in charge of the automatic construction of the CASE platform, which provides customized software
+support for the method that has been defined by means of the CAME platform.
+
+
+CASE platform (Computer-Aided Software Engineering)
+------------------------------------------------------
+
+- Process Engine:  this component supports the execution of the process part of the method that was defined using the method editor.
+
+- Project Manager: this component provides a graphical user interface that assists software engineers during the course of software
+development projects.
+
+
+
