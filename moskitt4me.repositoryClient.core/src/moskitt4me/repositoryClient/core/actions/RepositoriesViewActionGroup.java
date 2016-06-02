@@ -8,16 +8,18 @@ import org.eclipse.ui.actions.ActionGroup;
 import org.eclipse.ui.navigator.CommonViewer;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
-/*
-* This class fills the Action Bars of the Repositories view.
-*
-* @author Mario Cervera
-*/
+/**
+ * This class fills the Action Bar of the Repositories view. The available actions are the following:
+ * integrate conceptual fragment, integrate technical fragment, add repository location, search, and
+ * collapse all.
+ *
+ * @author Mario Cervera
+ */
 public class RepositoriesViewActionGroup extends ActionGroup {
 
 	private final CommonViewer commonViewer;
 	
-	//Actions
+	// Actions
 	
 	private IntegrateFragmentAction integrateConceptualFragmentAction;
 	
