@@ -11,12 +11,13 @@ import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.jface.window.Window;
 import org.eclipse.ui.PlatformUI;
 
-/*
-* This action allows the user to filter the content of the Repositories view according
-* to a set of criteria.
-*
-* @author Mario Cervera
-*/
+/**
+ * This action allows the user to filter the content of the Repositories view according to a set of
+ * criteria. These criteria are based on the properties of the method fragments: type, origin,
+ * objective, input, and output.
+ *
+ * @author Mario Cervera
+ */
 public class SearchAction extends Action implements IAction {
 
 	@Override
