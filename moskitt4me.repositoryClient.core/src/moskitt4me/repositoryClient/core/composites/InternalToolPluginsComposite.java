@@ -30,16 +30,18 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Tree;
 import org.osgi.framework.Bundle;
 
-/*
-* A graphical widget that is used in the Define Internal Tool Dialog. It allows the user to select plug-ins
-* that are installed in MOSKitt4ME and include them in the internal tool.
-*
-* @author Mario Cervera
-*/
+/**
+ * A graphical widget that is used in the Define Internal Tool Dialog. It allows the user to select plug-ins
+ * that are installed in MOSKitt4ME and include them in the internal tool.
+ *
+ * @author Mario Cervera
+ */
 public class InternalToolPluginsComposite extends Composite {
 
 	private List<String> platformPlugins;
 	private List<String> fragmentPlugins;
+	
+	// This group adds a border and title to the graphical widget
 	
 	private Group pluginsGroup;
 	
@@ -64,6 +66,9 @@ public class InternalToolPluginsComposite extends Composite {
 	
 	private DefineInternalToolDialog parentDialog;
 	
+	/*
+	 * Constructor
+	 */
 	public InternalToolPluginsComposite(Composite parent, int style,
 			DefineInternalToolDialog parentDialog) {
 		
@@ -148,6 +153,8 @@ public class InternalToolPluginsComposite extends Composite {
 	        hookListeners();
 	}
 	
+	// Getters
+	
 	public List<String> getFragmentPlugins() {
 		return this.fragmentPlugins;
 	}
@@ -160,6 +167,9 @@ public class InternalToolPluginsComposite extends Composite {
 		return parentDialog;
 	}
 	
+	/*
+	 * This method hooks selection listeners to the Add and Remove buttons
+	 */
 	protected void hookListeners() {
 		
 		addButton.addSelectionListener(new SelectionAdapter() {
@@ -200,6 +210,9 @@ public class InternalToolPluginsComposite extends Composite {
 		});
 	}
 	
+	/*
+	 * This method returns the platform plug-ins that are selected in the widget
+	 */
 	private List<String> getSelectedPlugins() {
 		
 		List<String> result = new ArrayList<String>();
@@ -236,6 +249,10 @@ public class InternalToolPluginsComposite extends Composite {
 		return result;
 	}
 	
+	/*
+	 * This method loads the Eclipse plug-ins that are installed in MOSKitt4ME in order to show them
+	 * in the tree viewer
+	 */
 	private void loadPlatformPlugins() {
 
 		BundleDescription[] descs = Platform.getPlatformAdmin().getState().getBundles();
@@ -253,6 +270,9 @@ public class InternalToolPluginsComposite extends Composite {
 		Collections.sort(this.platformPlugins);
 	}
 	
+	/*
+	 * The Ok button is enabled when all properties of the fragment have been specified
+	 */
 	public void enableOkButton() {
 		
 		if(!getParentDialog().getName().equals("") && !getParentDialog().getName().contains(" ")
