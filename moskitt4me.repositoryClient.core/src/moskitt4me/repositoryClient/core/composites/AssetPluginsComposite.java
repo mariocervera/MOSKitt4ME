@@ -26,15 +26,17 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.ui.model.WorkbenchLabelProvider;
 
-/*
-* A graphical widget that is used in the Edit Technical Fragment Dialog. It allows the user to select
-* Plug-in projects from the MOSKitt4ME workspace and include them in the technical fragment under edition.
-*
-* @author Mario Cervera
-*/
+/**
+ * A graphical widget that is used in the Edit Technical Fragment Dialog. It allows the user to select
+ * Plug-in projects from the MOSKitt4ME workspace and include them in the technical fragment under edition.
+ *
+ * @author Mario Cervera
+ */
 public class AssetPluginsComposite extends Composite {
 
 	private List<IProject> plugins;
+	
+	// This group adds a border and title to the composite
 	
 	private Group pluginsGroup;
 	
@@ -55,6 +57,9 @@ public class AssetPluginsComposite extends Composite {
 	private Button addButton;
 	private Button removeButton;
 	
+	/*
+	 * Constructor
+	 */
 	public AssetPluginsComposite(Composite parent, int style, List<IProject> plugins) {
 		
 		super(parent, style);
@@ -138,6 +143,9 @@ public class AssetPluginsComposite extends Composite {
 		return this.plugins;
 	}
 	
+	/*
+	 * This method adds selection listeners to the Add and Remove buttons
+	 */
 	protected void hookListeners() {
 	
 		addButton.addSelectionListener(new SelectionAdapter() {
