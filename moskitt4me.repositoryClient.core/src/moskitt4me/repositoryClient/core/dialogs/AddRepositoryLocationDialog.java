@@ -14,29 +14,38 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 
-/*
-* A dialog that allows the user to add Repository Locations to the Repositories view. 
-* A repository location is a graphical element that points to a FTP repository that contains
-* reusable assets. To create a new repository location, the user needs to specify host,
-* repository path, username, and password.
-*
-* @author Mario Cervera
-*/
+/**
+ * A dialog that allows the user to add Repository Locations to the Repositories view. 
+ * A repository location is a graphical element that points to a FTP repository that contains
+ * reusable assets. To create a new repository location, the user needs to specify host,
+ * repository path, username, and password.
+ *
+ * @author Mario Cervera
+ */
 public class AddRepositoryLocationDialog extends Dialog {
 
+    // The variables that store the Repository Location properties
+    
     private String host;
     private String repositoryPath;
     private String user;
     private String password;
+    
+    // The Text Boxes
     
     private Text hostText;
     private Text repositoryPathText;
     private Text userText;
     private Text passwordText;
     
+    // The Ok and Cancel buttons
+    
     protected Button okButton;
     protected Button cancelButton;
 
+    /*
+     * Constructor
+     */
     public AddRepositoryLocationDialog(Shell parentShell) {
     	
         super(parentShell);
@@ -46,6 +55,8 @@ public class AddRepositoryLocationDialog extends Dialog {
         this.user = "";
         this.password = "";
     }
+    
+    // Getters
     
     public String getHost() {
     	return host;
@@ -80,6 +91,9 @@ public class AddRepositoryLocationDialog extends Dialog {
                 IDialogConstants.CANCEL_LABEL, false);
     }
 
+    /*
+     * This method creates the graphical components of the Dialog (following a GridLayout)
+     */
     protected Control createDialogArea(Composite parent) {
     	
         Composite composite = (Composite) super.createDialogArea(parent);
@@ -131,6 +145,9 @@ public class AddRepositoryLocationDialog extends Dialog {
 		return SWT.SINGLE | SWT.BORDER;
 	}
 	
+	/*
+	 * This method hooks listeners to the Text Boxes
+	 */
 	protected void hookListeners() {
 		
 		hostText.addModifyListener(new ModifyListener() {
@@ -170,6 +187,9 @@ public class AddRepositoryLocationDialog extends Dialog {
 		});
 	}
 	
+	/*
+	 * The Ok button is enabled when all properties have been specified
+	 */
 	private void enableOkButton() {
 		
 		if(host != null && repositoryPath != null && user != null
