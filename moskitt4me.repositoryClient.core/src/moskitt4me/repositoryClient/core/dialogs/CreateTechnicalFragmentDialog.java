@@ -39,15 +39,19 @@ import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Tree;
 
-/*
-* A dialog for creating technical fragments. It allows the user to specify the fragment content and also to
-* establish its dependencies with other technical fragments.
-*
-* @author Mario Cervera
-*/
+/**
+ * A dialog for creating technical fragments. It allows the user to specify the fragment content and also to
+ * establish its dependencies with other technical fragments.
+ *
+ * @author Mario Cervera
+ */
 public class CreateTechnicalFragmentDialog extends Dialog {
 
-	public static TechnicalFragment clipboard; // for copy and paste ...
+	// A clipboard to support copy and paste
+	
+	public static TechnicalFragment clipboard;
+	
+	// The repository location where the new technical fragment will be stored
 	
 	private RepositoryLocation location;
 	private Shell parentShell;
@@ -73,6 +77,9 @@ public class CreateTechnicalFragmentDialog extends Dialog {
 	
 	private TechnicalFragment result;
 	
+	/*
+	 * Constructor
+	 */
 	public CreateTechnicalFragmentDialog(Shell parentShell, RepositoryLocation location) {
 		
 		super(parentShell);
@@ -92,21 +99,23 @@ public class CreateTechnicalFragmentDialog extends Dialog {
 	protected void configureShell(Shell shell) {
         
 		super.configureShell(shell);
-        
-        shell.setText("Create Technical Fragment");
+		
+		shell.setText("Create Technical Fragment");
 		
 	}
 	
+	/*
+	 * This method creates the Ok and Cancel buttons
+	 */
 	protected void createButtonsForButtonBar(Composite parent) {
-        
-    	okButton= createButton(parent, IDialogConstants.OK_ID,
-                IDialogConstants.OK_LABEL, true);
-        
-    	okButton.setEnabled(false);
-    	
-    	cancelButton = createButton(parent, IDialogConstants.CANCEL_ID,
-                IDialogConstants.CANCEL_LABEL, false);
 		
+		okButton= createButton(parent, IDialogConstants.OK_ID,
+                	IDialogConstants.OK_LABEL, true);
+                
+                okButton.setEnabled(false);
+                
+                cancelButton = createButton(parent, IDialogConstants.CANCEL_ID,
+                	IDialogConstants.CANCEL_LABEL, false);
 	}
 	
 	/*
@@ -168,6 +177,10 @@ public class CreateTechnicalFragmentDialog extends Dialog {
 	        return composite;
 	}
 	
+	/*
+	 * This method creates the contextual menu of the Tree component. It is composed of the
+	 * copy and paste actions
+	 */
 	protected void createContextMenu() {
 		
 		final MenuManager menuMgr = new MenuManager();
@@ -194,6 +207,10 @@ public class CreateTechnicalFragmentDialog extends Dialog {
 	    });
 	}
 	
+	/*
+	 * This method adds event listeners to the Tree component and the Edit, Add Dependency,
+	 * Remove Dependency, and Import buttons
+	 */
 	protected void hookListeners() {
 		
 		dependenciesTreeViewer.addSelectionChangedListener(new ISelectionChangedListener() {
@@ -316,6 +333,9 @@ public class CreateTechnicalFragmentDialog extends Dialog {
 		});
 	}
 	
+	/*
+	 * This method returns the technical fragment that is selected in the Dependencies Tree
+	 */
 	public TechnicalFragment getSelectedTechnicalFragment() {
 		
 		ISelection selection = dependenciesTreeViewer.getSelection();
@@ -329,6 +349,9 @@ public class CreateTechnicalFragmentDialog extends Dialog {
 		return null;
 	}
 	
+	/*
+	 * This method returns the root of the Dependencies Tree
+	 */
 	public TechnicalFragment getRootFragment() {
 		
 		IContentProvider provider = dependenciesTreeViewer.getContentProvider();
@@ -340,6 +363,9 @@ public class CreateTechnicalFragmentDialog extends Dialog {
 		return null;
 	}
 	
+	/*
+	 * The Ok button must be enabled when there are no errors in the depedencies tree
+	 */
 	public void enableOkButton() {
 		
 		TechnicalFragment tf = getRootFragment();
@@ -349,6 +375,10 @@ public class CreateTechnicalFragmentDialog extends Dialog {
 		okButton.setEnabled(enabled);
 	}
 	
+	/*
+	 * The Edit button must be enabled when a (non-imported) technical fragment is selected
+	 * in the depedencies tree.
+	 */
 	public void enableEditButton() {
 		
 		TechnicalFragment selected = getSelectedTechnicalFragment();
@@ -364,6 +394,10 @@ public class CreateTechnicalFragmentDialog extends Dialog {
 		}
 	}
 	
+	/*
+	 * The Add Dependency button must be enabled when a non-resolved technical fragment is selected
+	 * in the depedencies tree.
+	 */
 	public void enableAddButton() {
 		
 		TechnicalFragment selected = getSelectedTechnicalFragment();
@@ -382,6 +416,10 @@ public class CreateTechnicalFragmentDialog extends Dialog {
 		}
 	}
 	
+	/*
+	 * The Remove Dependency button must be enabled when a technical fragment is selected in
+	 * the depedencies tree. This fragment must not be the root or imported.
+	 */
 	public void enableRemoveButton() {
 		
 		TechnicalFragment selected = getSelectedTechnicalFragment();
@@ -401,6 +439,10 @@ public class CreateTechnicalFragmentDialog extends Dialog {
 		}
 	}
 	
+	/*
+	 * The Import button must be enabled when a technical fragment is selected in the depedencies tree.
+	 * The selected fragment must be unresolved.
+	 */
 	public void enableImportButton() {
 		
 		TechnicalFragment selected = getSelectedTechnicalFragment();
@@ -419,6 +461,11 @@ public class CreateTechnicalFragmentDialog extends Dialog {
 		}
 	}
 	
+	/*
+	 * A technical fragment is resolved when all of its properties have been specified and all of its
+	 * software dependencies are resolved (because they are already stored in the repository or will be
+	 * stored alongside the current fragment)
+	 */
 	public void resolveTechnicalFragment(TechnicalFragment tf) {
 		
 		tf.resolve();
