@@ -16,27 +16,36 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.ui.dialogs.SelectionDialog;
 
-/*
-* A dialog that allows the user to select a content element from the method model. 
-* This dialog is used by the Integrate Technical Fragment action.
-*
-* @author Mario Cervera
-*/
+/**
+ * A dialog that allows the user to select a content element from the method model. 
+ * This dialog is used by the Integrate Technical Fragment action.
+ *
+ * @author Mario Cervera
+ */
 public class ContentElementSelectionDialog extends SelectionDialog {
 
+	// Dialog size
+	
 	private int DEFAULT_DIALOG_WIDTH = 400;
 	private int DEFAULT_DIALOG_HEIGHT = 300;
 	private int MIN_DIALOG_WIDTH = 300;
 	private int MIN_DIALOG_HEIGHT = 300;
 
+	// The label and content providers
+	
 	private ILabelProvider labelProvider;
 	private ITreeContentProvider contentProvider;
+	
+	// The main graphical widget (a tree viewer)
 	
 	private Tree contentElementTree;
 	private TreeViewer contentElementTreeViewer;
 	
 	private Object[] objects;
 	
+	/*
+	 * Constructor
+	 */
 	public ContentElementSelectionDialog(Shell parentShell, Object[] objects) {
 		
 		super(parentShell);
@@ -54,6 +63,9 @@ public class ContentElementSelectionDialog extends SelectionDialog {
 		super.configureShell(shell);
 	}
 
+	/*
+	 * This method arranges the graphical components of the Dialog according to a Grid Layout
+	 */
 	protected Control createDialogArea(Composite parent) {
 
 		Composite dialogComposite = (Composite) super.createDialogArea(parent);
