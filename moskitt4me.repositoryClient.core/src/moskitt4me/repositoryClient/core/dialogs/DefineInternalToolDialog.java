@@ -17,16 +17,16 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 
-/*
-* A dialog that allows the user to define internal tools. An internal tool is a tool that is already
-* installed in MOSKitt4ME (e.g., Eclipse frameworks such as GMF or EMF). This type of technical fragments
-* do not need to encapsulate the implementation of the tools; only the identifiers of the Eclipse plug-ins.
-*
-* @author Mario Cervera
-*/
+/**
+ * A dialog that allows the user to define internal tools. An internal tool is a tool that is already
+ * installed in MOSKitt4ME (e.g., Eclipse frameworks such as GMF or EMF). This type of technical fragments
+ * do not need to encapsulate the implementation of the tools; only the identifiers of the Eclipse plug-ins.
+ *
+ * @author Mario Cervera
+ */
 public class DefineInternalToolDialog extends Dialog {
 
-	//Fragment properties (name, origin, objective, etc.)
+	//Fragment properties (name, origin, objective, etc.) and the corresponding Text Fields
 
 	private String name;
 	private Text nameText;
@@ -57,6 +57,9 @@ public class DefineInternalToolDialog extends Dialog {
 	
 	private InternalToolFragment result;
 	
+	/*
+	 * Constructor
+	 */
 	public DefineInternalToolDialog(Shell parentShell) {
 		
 		super(parentShell);
@@ -68,6 +71,8 @@ public class DefineInternalToolDialog extends Dialog {
 		this.output = "";
 		this.description = "";
 	}
+	
+	// Getters
 
 	public String getName() {
 		return name;
@@ -109,6 +114,9 @@ public class DefineInternalToolDialog extends Dialog {
 		
 	}
 	
+	/*
+	 * This method creates the Ok and Cancel buttons
+	 */
 	protected void createButtonsForButtonBar(Composite parent) {
         
     	okButton= createButton(parent, IDialogConstants.OK_ID,
@@ -121,6 +129,9 @@ public class DefineInternalToolDialog extends Dialog {
 		
 	}
 	
+	/*
+	 * Create the graphical elements (Grid layout)
+	 */
 	protected Control createDialogArea(Composite parent) {
 
 		Composite composite = (Composite) super.createDialogArea(parent);
@@ -193,6 +204,9 @@ public class DefineInternalToolDialog extends Dialog {
 	        return composite;
 	}
 	
+	/*
+	 * This method hooks event listeners to the Text Fields
+	 */
 	protected void hookListeners() {
 		
 		nameText.addModifyListener(new ModifyListener() {
@@ -250,6 +264,9 @@ public class DefineInternalToolDialog extends Dialog {
 		});
 	}
 
+	/*
+	 * The Ok button must be enabled when all of the fragment properties have been specified
+	 */
 	public void enableOkButton() {
 	
 		if(!name.equals("") && !name.contains(" ") && !origin.equals("")
