@@ -16,17 +16,17 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 
-/*
-* A dialog that allows the user to define External Tools. An external tool is a tool that is
-* not implemented as Eclipse plug-ins, and, therefore, cannot be integrated in the generated
-* CASE environment. This type of fragments only contain textual information about the external
-* tool.
-*
-* @author Mario Cervera
-*/
+/**
+ * A dialog that allows the user to define External Tools. An external tool is a tool that is
+ * not implemented as Eclipse plug-ins, and, therefore, cannot be integrated in the generated
+ * CASE environment. This type of fragments only contain textual information about the external
+ * tool.
+ *
+ * @author Mario Cervera
+ */
 public class DefineExternalToolDialog extends Dialog {
 	
-	// Fragment properties (name, origin, objective, etc.)
+	// Fragment properties (name, origin, objective, etc.) and the corresponding Text Fields
 	
 	private String name;
 	private Text nameText;
@@ -58,6 +58,9 @@ public class DefineExternalToolDialog extends Dialog {
 	
 	private ExternalToolFragment result;
 	
+	/*
+	 * Constructor
+	 */
 	public DefineExternalToolDialog(Shell parentShell) {
 		
 		super(parentShell);
@@ -75,6 +78,9 @@ public class DefineExternalToolDialog extends Dialog {
 		
 	}
 	
+	/*
+	 * This method creates the Ok and Cancel buttons
+	 */
 	protected void createButtonsForButtonBar(Composite parent) {
         
     	okButton= createButton(parent, IDialogConstants.OK_ID,
@@ -88,8 +94,8 @@ public class DefineExternalToolDialog extends Dialog {
 	}
 	
 	/*
-	* Create the graphical elements (Grid layout)
-	*/
+	 * Create the graphical elements (Grid layout)
+	 */
 	protected Control createDialogArea(Composite parent) {
 
 		Composite composite = (Composite) super.createDialogArea(parent);
@@ -166,6 +172,9 @@ public class DefineExternalToolDialog extends Dialog {
 	        return composite;
 	}
 	
+	/*
+	 * This method hooks event listeners to the Text Fields
+	 */
 	protected void hookListeners() {
 		
 		nameText.addModifyListener(new ModifyListener() {
@@ -232,6 +241,9 @@ public class DefineExternalToolDialog extends Dialog {
 		});
 	}
 	
+	/*
+	 * The Ok button must be enabled when all of the fragment properties have been specified
+	 */
 	private void enableOkButton() {
 		
 		if(!name.equals("") && !name.contains(" ") && !origin.equals("")
