@@ -18,14 +18,14 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 
-/*
-* A dialog to edit the properties of a technical fragment.
-*
-* @author Mario Cervera
-*/
+/**
+ * A dialog to edit the properties of a technical fragment.
+ *
+ * @author Mario Cervera
+ */
 public class EditTechnicalFragmentDialog extends Dialog {
 	
-	// Fragment properties (name, type, origin, etc.)
+	// Fragment properties (name, type, origin, etc.) and the corresponding Text Boxes
 	
 	private String name;
 	private Text nameText;
@@ -48,6 +48,9 @@ public class EditTechnicalFragmentDialog extends Dialog {
 	private List<IProject> plugins;
 	private AssetPluginsComposite assetPluginsComposite;
 	
+	/*
+	 * Constructor
+	 */
 	public EditTechnicalFragmentDialog(Shell parentShell, String name, String type, 
 			String origin, String objective, String input, String output, List<IProject> plugins) {
 		
@@ -61,6 +64,8 @@ public class EditTechnicalFragmentDialog extends Dialog {
 		this.output = output;
 		this.plugins = plugins;
 	}
+	
+	// Getters
 	
 	public String getName() {
 		return name;
@@ -213,6 +218,9 @@ public class EditTechnicalFragmentDialog extends Dialog {
 	        return composite;
 	}
 	
+	/*
+	 * This method hooks an event listener to the ComboBox that stores the fragment type
+	 */
 	protected void hookListeners() {
 		
 		typeCombo.addModifyListener(new ModifyListener() {
