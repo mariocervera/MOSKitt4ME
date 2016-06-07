@@ -29,16 +29,23 @@ import org.eclipse.ui.PlatformUI;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 
-/*
-* A dialog for importing technical fragments into the dependencies tree of another technical fragment.
-* This dialog can be opened within the Create Technical Fragment Dialog.
-*
-* @author Mario Cervera
-*/
+/**
+ * A dialog for importing technical fragments into the dependencies tree of another technical fragment.
+ * This dialog can be opened within the Create Technical Fragment Dialog.
+ *
+ * @author Mario Cervera
+ */
 public class ImportTechnicalFragmentDialog extends Dialog {
 	
+	// The Repository Location that stores the fragments that can be imported
+	
 	private RepositoryLocation location;
+	
+	// The target fragment (to be associated with the imported fragments)
+	
 	private TechnicalFragment parentFragment;
+	
+	// Graphical widgets
 	
 	private Label repositoryAssetsLabel;
 	private Tree repositoryAssetsTree;
@@ -46,6 +53,9 @@ public class ImportTechnicalFragmentDialog extends Dialog {
 	
 	private TechnicalFragment result;
 	
+	/*
+	 * Constructor
+	 */
 	protected ImportTechnicalFragmentDialog(Shell parentShell, 
 			RepositoryLocation location, TechnicalFragment parentFragment) {
 		
@@ -95,6 +105,9 @@ public class ImportTechnicalFragmentDialog extends Dialog {
 	        return composite;
 	}
 	
+	/*
+	 * This method returns the technical fragment that is selected in the Tree Viewer of the Dialog
+	 */
 	private TechnicalFragment getSelectedFragment() {
 		
 		ISelection selection = repositoryAssetsTreeViewer.getSelection();
@@ -137,6 +150,9 @@ public class ImportTechnicalFragmentDialog extends Dialog {
 		}
 	}
 	
+	/*
+	 * This method imports the assets from the repository to the MOSKitt4ME workspace
+	 */
 	private boolean importAsset(TechnicalFragment tf, TechnicalFragment parentFragment) {
 		
 		String tempDir = "";
