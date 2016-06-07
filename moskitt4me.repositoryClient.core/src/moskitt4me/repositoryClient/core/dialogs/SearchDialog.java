@@ -14,19 +14,23 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 
-/*
-* A dialog to filter the content of the Repositories view. The search criteria are the type
-* origin, objective, input, and output of the fragments.
-*
-* @author Mario Cervera
-*/
+/**
+ * A dialog to filter the content of the Repositories view. The search criteria are the type
+ * origin, objective, input, and output of the fragments.
+ *
+ * @author Mario Cervera
+ */
 public class SearchDialog extends Dialog {
 	
+    // The properties of the fragments
+    
     private String type;
     private String origin;
     private String objective;
     private String input;
     private String output;
+    
+    // The Text Boxes
     
     private Text typeText;
     private Text originText;
@@ -34,9 +38,14 @@ public class SearchDialog extends Dialog {
     private Text inputText;
     private Text outputText;
     
+    // The Ok and Cancel buttons
+    
     protected Button okButton;
     protected Button cancelButton;
 
+    /*
+     * Constructor
+     */
     public SearchDialog(Shell parentShell) {
     	
         super(parentShell);
@@ -47,6 +56,8 @@ public class SearchDialog extends Dialog {
         this.input = "";
         this.output = "";
     }
+    
+    // Getters
     
     public String getType() {
     	return type;
@@ -74,6 +85,9 @@ public class SearchDialog extends Dialog {
         shell.setText("Search");
     }
 
+    /*
+     * This method creates the Ok and Cancel buttons
+     */
     protected void createButtonsForButtonBar(Composite parent) {
         
         okButton = createButton(parent, IDialogConstants.OK_ID,
@@ -85,6 +99,9 @@ public class SearchDialog extends Dialog {
                 IDialogConstants.CANCEL_LABEL, false);
     }
 
+    /*
+     * This method creates the graphical components of the Dialog (following a Grid Layout)
+     */
     protected Control createDialogArea(Composite parent) {
     	
         Composite composite = (Composite) super.createDialogArea(parent);
@@ -142,6 +159,9 @@ public class SearchDialog extends Dialog {
 		return SWT.SINGLE | SWT.BORDER;
 	}
 	
+	/*
+	 * This method hooks event listeners to the Text Boxes
+	 */
 	protected void hookListeners() {
 		
 		typeText.addModifyListener(new ModifyListener() {
