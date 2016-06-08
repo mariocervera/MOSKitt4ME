@@ -3,21 +3,26 @@ package moskitt4me.repositoryClient.core.providers;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 
-/*
- * Asset Property Item Providers are Descriptor, Interface, 
- * Origin, Objective, Type, Situation and Intention
+/**
+ * This class represents the method fragment properties that will be displayed in the Repositories view.
+ * This properties are: Type, Origin, Objective, Input, and Output
+ * 
+ * @author Mario Cervera
  */
 public class MethodFragmentPropertyItemProvider extends ItemProviderAdapter {
 
 	/*
 	 * The associated MethodFragmentItemProvider needs to be stored to retrieve the repository 
-	 * location and the file name when calculating the Descriptor and Interface children
+	 * location and the file name
 	 */
 	private MethodFragmentItemProvider methodFragment;
 	
 	private String propertyName;
 	private String propertyValue;
 	
+	/*
+	 * Constructor
+	 */
 	public MethodFragmentPropertyItemProvider(AdapterFactory adapterFactory, 
 			MethodFragmentItemProvider methodFragment, 
 			String propertyName, String propertyValue) {
