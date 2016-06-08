@@ -6,15 +6,20 @@ import moskitt4me.repositoryClient.core.util.TechnicalFragment;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.Viewer;
 
-/*
-* Provides content for the Dependencies Tree of the Create Technical Fragment Dialog.
-*
-* @author Mario Cervera
-*/
+/**
+ * Provides content for the Dependencies Tree of the Create Technical Fragment Dialog.
+ *
+ * @author Mario Cervera
+ */
 public class DependenciesTreeContentProvider implements ITreeContentProvider {
+	
+	// The root fragment of the tree. All of its descendants represent software dependencies
 	
 	TechnicalFragment rootFragment;
 	
+	/*
+	 * Constructor
+	 */
 	public DependenciesTreeContentProvider() {
 		
 		rootFragment = new TechnicalFragment();
@@ -34,6 +39,9 @@ public class DependenciesTreeContentProvider implements ITreeContentProvider {
 	
 	}
 	
+	/*
+	 * Returns the parent of a given technical fragment
+	 */
 	public Object getParent(Object element) {
 		
 		if(element instanceof TechnicalFragment) {
@@ -44,6 +52,10 @@ public class DependenciesTreeContentProvider implements ITreeContentProvider {
 		return null;
 	}
 	
+	/*
+	 * This method returns the root-level element of the Dependencies Tree. In this case, the
+	 * root is the technical fragment that is stored in the variable "rootFragment"
+	 */
 	public Object[] getElements(Object inputElement) {
 		
 		if(inputElement instanceof RepositoryLocation) {
@@ -67,7 +79,8 @@ public class DependenciesTreeContentProvider implements ITreeContentProvider {
 	}
 	
 	/*
-	* Calculates the children of a given element
+	* This method returns the children of a given element. The children of a technical fragment
+	* are its software dependencies
 	*/
 	public Object[] getChildren(Object parentElement) {
 		
