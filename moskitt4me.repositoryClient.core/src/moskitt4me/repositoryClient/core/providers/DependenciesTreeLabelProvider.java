@@ -11,13 +11,16 @@ import org.eclipse.jface.viewers.ColumnLabelProvider;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
 
-/*
-* Provides labels and icons for the elements of the Dependencies Tree of the "Create Technical Fragment Dialog".
-*
-* @author Mario Cervera
-*/
+/**
+ * Provides labels and icons for the elements of the Dependencies Tree of the "Create Technical Fragment Dialog".
+ *
+ * @author Mario Cervera
+ */
 public class DependenciesTreeLabelProvider extends ColumnLabelProvider {
 
+	/*
+	 * This method provides a label for the given element
+	 */
 	@Override
 	public String getText(Object element) {
 		
@@ -29,11 +32,13 @@ public class DependenciesTreeLabelProvider extends ColumnLabelProvider {
 		return super.getText(element);
 	}
 	
+	/*
+	 * This method provides an icon for the given element
+	 */
 	@Override
 	public Image getImage(Object element) {
 
 		try {
-			
 			String imagePath = FileLocator.toFileURL(Platform.getBundle(
 			Activator.PLUGIN_ID).getResource("icons/full/obj16")).getPath();
 			
@@ -60,6 +65,10 @@ public class DependenciesTreeLabelProvider extends ColumnLabelProvider {
 		return super.getImage(element);
 	}
 	
+	/*
+	 * This method returns a tooltip text for unresolved Technical Fragments. This text are the errors
+	 * that must be fixed in order to take the fragment from unresolved to a resolved state
+	 */
 	@Override
 	public String getToolTipText(Object element) {
 		
