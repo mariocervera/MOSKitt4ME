@@ -5,19 +5,23 @@ import moskitt4me.repositoryClient.core.providers.MethodFragmentItemProvider;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 
-/*
-* This filter is applied when search criteria are specified by means of the Search Dialog.
-*
-* @author Mario Cervera
-*/
+/**
+ * This filter is applied when search criteria are specified by means of the Search Dialog.
+ *
+ * @author Mario Cervera
+ */
 public class SearchFilter extends ViewerFilter {
 
+	// The properties of the method fragments (that is, the search criteria)
+	
 	private String type;
 	private String origin;
 	private String objective;
 	private String input;
 	private String output;
     
+    	// Constructors
+    	
     	public SearchFilter() {
 		this("","","","","");
 	}
@@ -30,6 +34,9 @@ public class SearchFilter extends ViewerFilter {
 		this.output = output;
 	}
    
+	/*
+	 * This method calculates, for a given element, whether it must be filtered or not
+	 */
 	@Override
 	public boolean select(Viewer viewer, Object parentElement, Object element) {
 	
