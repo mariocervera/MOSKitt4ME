@@ -5,11 +5,17 @@ import moskitt4me.repositoryClient.core.util.RepositoryLocation;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 
-
+/**
+ * This class represents the method fragments that will be displayed in the Repositories views.
+ *
+ * @author Mario Cervera
+ */
 public class MethodFragmentItemProvider extends ItemProviderAdapter {
 
 	private RepositoryLocation location;
 	private String fileName;
+	
+	// Method fragment properties
 	
 	private String type;
 	private String origin;
@@ -19,6 +25,9 @@ public class MethodFragmentItemProvider extends ItemProviderAdapter {
 	private String toolId;
 	private String description; //Only for external and internal tools
 	
+	/*
+	 * Constructor
+	 */
 	public MethodFragmentItemProvider(AdapterFactory adapterFactory,
 			RepositoryLocation location, String fileName, String type,
 			String origin, String objective, String input, 
@@ -38,6 +47,9 @@ public class MethodFragmentItemProvider extends ItemProviderAdapter {
 		this.description = description;
 	}
 
+	/*
+	 * Constructor
+	 */
 	public MethodFragmentItemProvider(AdapterFactory adapterFactory,
 			RepositoryLocation location, String fileName, String type,
 			String origin, String objective) {
@@ -45,6 +57,8 @@ public class MethodFragmentItemProvider extends ItemProviderAdapter {
 		this(adapterFactory, location, fileName, type, origin, objective, "", "", "" ,"");
 	}
 
+	// Getters
+	
 	public RepositoryLocation getLocation() {
 		return location;
 	}
