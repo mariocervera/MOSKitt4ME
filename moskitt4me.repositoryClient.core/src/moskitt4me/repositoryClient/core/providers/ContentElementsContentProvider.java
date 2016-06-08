@@ -12,18 +12,24 @@ import org.eclipse.epf.uma.MethodPlugin;
 import org.eclipse.epf.uma.Task;
 import org.eclipse.epf.uma.WorkProduct;
 
-/*
-* Provides content for the Content Element Selection Dialog.
-*
-* @author Mario Cervera
-*/
+/**
+ * Provides content for the Tree Viewer of the Content Element Selection Dialog.
+ *
+ * @author Mario Cervera
+ */
 public class ContentElementsContentProvider extends AdapterFactoryContentProvider {
 	
+	/*
+	 * Constructor
+	 */
 	public ContentElementsContentProvider(AdapterFactory adapterFactory) {
 		
 		super(adapterFactory);
 	}
 	
+	/*
+	 * This method returns the root-level elements of the Tree viewer
+	 */
 	public Object[] getElements(Object inputElement) {
 		
 		if(inputElement instanceof Object[]) {
@@ -35,8 +41,8 @@ public class ContentElementsContentProvider extends AdapterFactoryContentProvide
 	}
 	
 	/*
-	* Calculates whether a given element has children
-	*/
+	 * Calculates whether a given element has any children
+	 */
 	public boolean hasChildren(Object element) {
 		
 		if (element instanceof MethodPlugin || element instanceof MethodPackage
@@ -50,8 +56,8 @@ public class ContentElementsContentProvider extends AdapterFactoryContentProvide
 	}
 	
 	/*
-	* Calculates the children of a given element
-	*/
+	 * This method returns the children of a given element
+	 */
 	public Object[] getChildren(Object parentElement) {
 		
 		List<Object> result = new ArrayList<Object>();
@@ -59,6 +65,8 @@ public class ContentElementsContentProvider extends AdapterFactoryContentProvide
 		if(parentElement instanceof  MethodPlugin) {
 			
 			MethodPlugin plugin = (MethodPlugin) parentElement;
+			
+			// The children of Method Plug-ins are Method Packages
 			
 			for(MethodPackage mp : plugin.getMethodPackages()) {
 				if(mp.getName().equals("Content") && mp instanceof ContentPackage) {
@@ -72,6 +80,9 @@ public class ContentElementsContentProvider extends AdapterFactoryContentProvide
 		}
 		else if(parentElement instanceof ContentPackage) {
 			
+			// The children of a Content Package are its subpackages and also the "Tasks" and
+			// "Products" folders
+			
 			ContentPackage cpackage = (ContentPackage) parentElement;
 			
 			result.addAll(cpackage.getChildPackages());
@@ -80,6 +91,9 @@ public class ContentElementsContentProvider extends AdapterFactoryContentProvide
 			result.add(new WorkProductsItemProvider(null, cpackage));
 		}
 		else if(parentElement instanceof TasksItemProvider) {
+			
+			// The children of the "Tasks" folder are the method tasks
+			
 			TasksItemProvider tip = (TasksItemProvider) parentElement;
 			
 			if(tip.getAssociatedPackage() instanceof ContentPackage) {
@@ -93,6 +107,9 @@ public class ContentElementsContentProvider extends AdapterFactoryContentProvide
 			}
 		}
 		else if(parentElement instanceof WorkProductsItemProvider) {
+			
+			// The children of the "Products" folder are the method products
+			
 			WorkProductsItemProvider wpip = (WorkProductsItemProvider) parentElement;
 			
 			if(wpip.getAssociatedPackage() instanceof ContentPackage) {
