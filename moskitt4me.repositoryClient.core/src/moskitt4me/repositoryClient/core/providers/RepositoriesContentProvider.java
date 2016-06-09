@@ -15,20 +15,27 @@ import org.apache.commons.net.ftp.FTPFile;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 
-/*
-* Provides content for the main interface of the Repositories View.
-*
-* @author Mario Cervera
-*/
+/**
+ * Provides content for the main interface of the Repositories View.
+ *
+ * @author Mario Cervera
+ */
 @SuppressWarnings("unchecked")
 public class RepositoriesContentProvider extends AdapterFactoryContentProvider {
 	
+	/*
+	 * Constructor
+	 */
 	public RepositoriesContentProvider(AdapterFactory adapterFactory) {
 		
 		super(adapterFactory);
 	}
 	
-	@Override
+	/*
+	 * This method returns the root-level elements of the Tree viewer (that is, the
+	 * repository locations)
+	 */
+	 @Override
 	public Object[] getElements(Object object) {
 		
 		if(object instanceof List) {
@@ -40,8 +47,8 @@ public class RepositoriesContentProvider extends AdapterFactoryContentProvider {
 	}
 	
 	/*
-	* Calculates whether a given element has children or not
-	*/
+	 * Calculates whether a given element has children or not
+	 */
 	@Override
 	public boolean hasChildren(Object object) {
 		
@@ -61,8 +68,8 @@ public class RepositoriesContentProvider extends AdapterFactoryContentProvider {
 	}
 	
 	/*
-	* Calculates the children of a given element
-	*/
+	 * Calculates the children of a given element
+	 */
 	@Override
 	public Object[] getChildren(Object object) {
 		
@@ -73,10 +80,16 @@ public class RepositoriesContentProvider extends AdapterFactoryContentProvider {
 			FTPClient client = null;
 			
 			try {
+				// Connect to the FTP repository
+				
 				RepositoryLocation location = (RepositoryLocation) object;
 				client = RepositoryClientUtil.connect(location, false);
 				
+				// Retrieve the .zip files (that is, the method fragments)
+				
 				FTPFile[] files = client.listFiles();
+				
+				// For each file ...
 				
 				for(FTPFile file : files) {
 					String fileName = file.getName();
@@ -84,12 +97,16 @@ public class RepositoriesContentProvider extends AdapterFactoryContentProvider {
 						
 						String fragmentDir = "";
 						try {
+							// Download the fragment
+							
 							fragmentDir = RepositoryClientUtil.downloadFragment(location, fileName);
 							
 							RASAssetReader reader = new RASAssetReader(fragmentDir, fileName);
 							Map<String, String> properties = reader.getProperties();
 						
 							String type = properties.get("Type");
+							
+							// Create an element of type technical fragment or conceptual fragment
 							
 							if(RepositoryClientUtil.isTechnicalFragment(type)) {
 								if(!type.equals("Others")) {
@@ -138,7 +155,9 @@ public class RepositoriesContentProvider extends AdapterFactoryContentProvider {
 				}
 			}
 		}
-		else if(object instanceof MethodFragmentItemProvider) { // Children of the method fragments
+		else if(object instanceof MethodFragmentItemProvider) {
+			
+			// Children of the method fragments --> the fragment properties
 			
 			MethodFragmentItemProvider fragment = (MethodFragmentItemProvider) object;
 			
@@ -148,7 +167,9 @@ public class RepositoriesContentProvider extends AdapterFactoryContentProvider {
 				result.add(new MethodFragmentPropertyItemProvider(adapterFactory, fragment, "Interface", ""));
 			}
 		}
-		else if(object instanceof MethodFragmentPropertyItemProvider) { //Children of the method fragment properties
+		else if(object instanceof MethodFragmentPropertyItemProvider) {
+			
+			// Children of the method fragment properties --> subproperties
 			
 			MethodFragmentPropertyItemProvider property = (MethodFragmentPropertyItemProvider) object;
 			MethodFragmentItemProvider fragment = property.getMethodFragment();
