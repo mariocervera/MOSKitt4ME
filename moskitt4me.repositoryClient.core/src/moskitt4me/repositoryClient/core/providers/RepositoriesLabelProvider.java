@@ -12,13 +12,16 @@ import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
 
-/*
-* Provides labels and icons for the graphical elements of the Repositories View.
-*
-* @author Mario Cervera
-*/
+/**
+ * Provides labels and icons for the graphical elements of the Repositories View.
+ *
+ * @author Mario Cervera
+ */
 public class RepositoriesLabelProvider extends LabelProvider {
 
+	/*
+	 * This method provides a label for the given element
+	 */
 	@Override
 	public String getText(Object element) {
 		
@@ -44,6 +47,9 @@ public class RepositoriesLabelProvider extends LabelProvider {
 		return super.getText(element);
 	}
 	
+	/*
+	 * This method provides an icon for the given element
+	 */
 	@Override
 	public Image getImage(Object element) {
 		
