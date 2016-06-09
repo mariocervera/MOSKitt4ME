@@ -10,13 +10,16 @@ import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
 
-/*
-* A label provider for the composite of the "Define Internal Tool Dialog"
-*
-* @author Mario Cervera
-*/
+/**
+ * A label provider for the composite of the "Define Internal Tool Dialog"
+ *
+ * @author Mario Cervera
+ */
 public class PlatformPluginsLabelProvider extends LabelProvider {
 	
+	/*
+	 * This method provides an icon for the given element
+	 */
 	@Override
 	public Image getImage(Object element) {
 		
