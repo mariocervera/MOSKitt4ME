@@ -11,9 +11,17 @@ import org.apache.commons.net.ftp.FTPClient;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 
+/**
+ * A content provider for the "Import Technical Fragment Dialog"
+ *
+ * @author Mario Cervera
+ */
 public class RepositoryAssetsContentProvider extends ArrayContentProvider implements ITreeContentProvider {
 
-	
+	/*
+	 * This method returns the root-level elements of the Tree viewer. These elements are the
+	 * fragments that are stored in the repository location
+	 */
 	public Object[] getElements(Object inputElement) {
 		
 		if(inputElement instanceof RepositoryLocation) {
