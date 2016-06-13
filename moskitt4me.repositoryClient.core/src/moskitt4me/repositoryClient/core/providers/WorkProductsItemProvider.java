@@ -4,9 +4,14 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.epf.uma.MethodPackage;
 
+/**
+ * The "Work Products" element that appears in the Tree Viewer of the "Content Element Selection Dialog"
+ *
+ * @author Mario Cervera
+ */
 public class WorkProductsItemProvider extends ItemProviderAdapter {
 
-private MethodPackage associatedPackage;
+	private MethodPackage associatedPackage;
 	
 	public WorkProductsItemProvider(AdapterFactory adapterFactory,
 			MethodPackage associatedPackage) {
