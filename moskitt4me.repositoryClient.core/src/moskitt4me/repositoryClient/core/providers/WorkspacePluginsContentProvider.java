@@ -13,14 +13,16 @@ import org.eclipse.jdt.core.IJavaModelMarker;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 
-/*
-* A content provider for the composite of the "Define External Tool Dialog".
-*
-* @author Mario Cervera
-*/
+/**
+ * A content provider for the composite of the "Define External Tool Dialog".
+ *
+ * @author Mario Cervera
+ */
 public class WorkspacePluginsContentProvider extends ArrayContentProvider implements ITreeContentProvider {
 
-	
+	/*
+	 * This method returns the root-level elements of the Tree viewer
+	 */
 	public Object[] getElements(Object inputElement) {
 		
 		if(inputElement instanceof List<?>) {
@@ -43,13 +45,17 @@ public class WorkspacePluginsContentProvider extends ArrayContentProvider implem
 		return null;
 	}
 
-	
+	/*
+	 * The elements of the Tree Viewers do not have children
+	 */
 	public boolean hasChildren(Object element) {
 		
 		return false;
 	}
 	
-	
+	/*
+	 * The elements of the Tree Viewers do not have children
+	 */
 	public Object[] getChildren(Object parentElement) {
 		
 		return null;
