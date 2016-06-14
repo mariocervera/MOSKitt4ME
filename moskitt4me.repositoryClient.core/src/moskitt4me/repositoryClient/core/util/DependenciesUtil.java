@@ -14,14 +14,19 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.osgi.util.ManifestElement;
 
-/*
-* This class manages dependencies between Eclipse plug-ins. This functionality is required
-* in the Create Technical Fragment dialog.
-*
-* @author Mario Cervera
-*/ 
+/**
+ * This class manages dependencies between Eclipse plug-ins. This functionality is required
+ * in the Create Technical Fragment dialog.
+ *
+ * @author Mario Cervera
+ */ 
 public class DependenciesUtil {
 	
+	/*
+	 * This method returns the software dependencies of a given Plug-in Project. These
+	 * dependencies are stored in the MANIFEST.MF file of the project (under the "Require-Bundle"
+	 * and "Import-Package" directives)
+	 */
 	public static List<IProject> getDependencies(IProject project) {
 		
 		List<IProject> result = new ArrayList<IProject>();
@@ -70,6 +75,9 @@ public class DependenciesUtil {
 		return result;
 	}
 	
+	/*
+	 * This method returns a Plug-in Project from the workspace (given its name)
+	 */
 	private static IProject getPluginProject(String name) {
 		
 		IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
