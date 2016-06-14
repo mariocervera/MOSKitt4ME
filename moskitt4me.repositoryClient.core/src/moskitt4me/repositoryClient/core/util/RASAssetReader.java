@@ -14,18 +14,23 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 
-/*
-* This class provides functionality for accessing the content of technical fragments, which are stored in a
-* repository as ZIP files according to the Reusable Asset Specification (RAS) standard. 
-*
-* @author Mario Cervera
-*/ 
+/**
+ * This class provides functionality for accessing the content of technical fragments, which are stored in a
+ * repository as ZIP files according to the Reusable Asset Specification (RAS) standard. 
+ *
+ * @author Mario Cervera
+ */ 
 public class RASAssetReader {
+	
+	//The location, file name and type of the asset
 	
 	private String assetFolder;
 	private String assetName;
 	private String asset_type;
 	
+	/*
+	 * Constructor
+	 */
 	public RASAssetReader(String assetFolder, String assetName) {
 		
 		this.assetFolder = assetFolder;
@@ -34,7 +39,7 @@ public class RASAssetReader {
 	}
 	
 	/*
-	* This method reads the fragment properties, which are stored in a manifest document in XML format.
+	* This method reads the fragment properties, which are stored in an XML manifest document
 	*/
 	public Map<String, String> getProperties() {
 		
@@ -53,7 +58,7 @@ public class RASAssetReader {
 			}
 			result.put("Type", asset_type);
 			
-			if(RepositoryClientUtil.isTechnicalFragment(asset_type)){
+			if(RepositoryClientUtil.isTechnicalFragment(asset_type)) { // Technical fragment
 			
 				Node origin = doc.getElementsByTagName("origin").item(0);
 				Node objective = doc.getElementsByTagName("objective").item(0);
@@ -100,6 +105,7 @@ public class RASAssetReader {
 				}
 			}
 			else {
+				// Conceptual fragments
 				
 				Node objective = doc.getElementsByTagName("objective").item(0);
 				Node origin = doc.getElementsByTagName("origin").item(0);
