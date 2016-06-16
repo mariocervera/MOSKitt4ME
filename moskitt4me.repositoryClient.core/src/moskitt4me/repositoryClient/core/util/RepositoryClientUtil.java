@@ -44,8 +44,17 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+/**
+ * A set of utility methods for the repository client of MOSKitt4ME
+ *
+ * @author Mario Cervera
+ */ 
 public class RepositoryClientUtil {
 
+	/*
+	 * This method establishes a connection with a given FTP repository location.
+	 * The method uses a client that is provided by the Apache Commons project
+	 */
 	public static FTPClient connect(RepositoryLocation location, boolean showErrors) {
 		
 		FTPClient client = new FTPClient();
@@ -81,6 +90,9 @@ public class RepositoryClientUtil {
 		return client;
 	}
 	
+	/*
+	 * This method disconnects the repository client from the repository
+	 */
 	public static void disconnect(FTPClient client) {
 		
 		try {
@@ -91,6 +103,9 @@ public class RepositoryClientUtil {
 		}
 	}
 	
+	/*
+	 * This method creates a folder in a given path.
+	 */
 	public static String createFolder(String path, int index) {
 
 		String newPath = path + index;
@@ -108,6 +123,9 @@ public class RepositoryClientUtil {
 		return createdFolderPath;
 	}
 	
+	/*
+	 * This method removes a folder (given the java.io.File object that points to it)
+	 */
 	public static void removeFolder(File f) {
 
 		if (f.isDirectory()) {
@@ -123,6 +141,11 @@ public class RepositoryClientUtil {
 		f.delete();
 	}
 	
+	/*
+	 * This method downloads a method fragment (that is, a .ras.zip file) from a repository.
+	 * The fragment is stored in a temporal folder
+	 * Input: the repository location and the name of the file that stores the fragment
+	 */
 	public static String downloadFragment(RepositoryLocation location,
 			String fileName) throws IOException {
 		
@@ -152,6 +175,11 @@ public class RepositoryClientUtil {
 		return tempDir;
 	}
 	
+	/*
+	 * This method downloads a method fragment (that is, a .ras.zip file) from a repository.
+	 * Input: the repository location, the name of the file that stores the fragment, and
+	 * the target directory
+	 */
 	public static void downloadFragment(RepositoryLocation location,
 			String fileName, String folder) throws IOException {
 		
@@ -172,6 +200,9 @@ public class RepositoryClientUtil {
 		}
 	}
 	
+	/*
+	 * This method returns whether a given fragment type corresponds to a technical fragment
+	 */
 	public static boolean isTechnicalFragment(String type) {
 		
 		return (type.equals("Graphical Editor") || type.equals("Meta-Model") ||
@@ -180,6 +211,10 @@ public class RepositoryClientUtil {
 				type.equals("Internal Tool") || type.equals("Others"));
 	}
 	
+	/*
+	 * This method extracts the content of a given zip file. This funcionality is used
+	 * to extract the content of method fragments
+	 */
 	public static void extractZipFile(String folder, String zipName)
 			throws Exception {
 
@@ -226,6 +261,10 @@ public class RepositoryClientUtil {
 		zipFile.close();
 	}
 	
+	/*
+	 * This method adds a new entry (file) to a zip file. This functionality is used to add content to
+	 * method fragments
+	 */
 	public static void addFileToZip(File file, ZipOutputStream zos) throws Exception {
 		
 		zos.putNextEntry(new ZipEntry(file.getName()));
@@ -245,6 +284,10 @@ public class RepositoryClientUtil {
 		bis.close();
 	}
 	
+	/*
+	 * This method adds a new entry (folder) to a zip file. This functionality is used to add content to
+	 * method fragments
+	 */
 	public static void addFolderToZip(File folder, String parentFolder, ZipOutputStream zos) throws Exception {
 		
 	    for (File file : folder.listFiles()) {
@@ -274,6 +317,9 @@ public class RepositoryClientUtil {
 	    }
 	}
 	
+	/*
+	 * This method duplicates a folder by copying it into a new location
+	 */
 	public static void copyDirectory(File sourceLocation, File targetLocation) throws Exception {
 
 		if (sourceLocation.isDirectory()) {
@@ -301,6 +347,9 @@ public class RepositoryClientUtil {
 	    }
 	}
 	
+	/*
+	 * This method returns the Repositories View of MOSKitt4ME
+	 */
 	public static RepositoriesView getRepositoriesView() {
 		
 		try {
@@ -318,6 +367,10 @@ public class RepositoryClientUtil {
 		return null;
 	}
 	
+	/*
+	 * This method creates a Feature Project grouping the plug-ins that are contained in a
+	 * given technical fragment
+	 */
 	public static IProject createFeatureProject(TechnicalFragment tf) throws Exception {
 		
 		String featureName = tf.getName() + ".feature";
@@ -409,6 +462,10 @@ public class RepositoryClientUtil {
 		}
 	}
 	
+	/*
+	 * This method creates the rasset.xml file of a given technical fragment. This file represent the manifest
+	 * file of the fragment: it stores the fragment properties and its dependencies with other technical fragments
+	 */
 	public static String createRassetXMLFile(TechnicalFragment tf, String folder) throws Exception {
 		
 		String manifestPath = folder + "/rasset.xml";
@@ -461,6 +518,9 @@ public class RepositoryClientUtil {
 		return manifestPath;
 	}
 	
+	/*
+	 * This method returns the id of the tool stored in a technical fragment.
+	 */
 	private static String getToolId(TechnicalFragment tf) {
 		
 		String type = tf.getType();
@@ -552,6 +612,9 @@ public class RepositoryClientUtil {
 		return document;
 	}
 	
+	/*
+	 * This method returns a Plug-in Project given its name
+	 */
 	public static IProject getPluginProject(String projectName) {
 		
 		List<IProject> plugins = getPluginProjects();
@@ -564,6 +627,9 @@ public class RepositoryClientUtil {
 		return null;
 	}
 	
+	/*
+	 * This method returns the Plug-in Projects of the MOSKitt4ME workspace
+	 */
 	private static List<IProject> getPluginProjects() {
 		
 		List<IProject> pluginProjects = new ArrayList<IProject>();
@@ -584,6 +650,9 @@ public class RepositoryClientUtil {
 		return pluginProjects;
 	}
 	
+	/*
+	 * This method takes a set of projects from a source path and imports them in the MOSKitt4ME workspace
+	 */
 	public static IProject importProjectIntoWorkspace(String path) throws Exception {
 		
 		IProjectDescription description = null;
@@ -609,6 +678,10 @@ public class RepositoryClientUtil {
 		return null;
 	}
 	
+	/*
+	 * This method reads a rasset.xml file and loads the information into a technical fragment object (tf).
+	 * It returns the dependencies of the technical fragment.
+	 */
 	public static List<TechnicalFragment> parseRassetXML(String path, TechnicalFragment tf) {
 		
 		List<TechnicalFragment> dependencies = new ArrayList<TechnicalFragment>();
