@@ -1,21 +1,30 @@
 package moskitt4me.repositoryClient.core.util;
 
-/*
-* A class for repository locations. A repository location points to a FTP repository that, in the
-* context of MOSKitt4ME, contains reusable assets that are stored as ZIP files according to the
-* Reusable Asset Specification (RAS) standard.
-*
-*  @author Mario Cervera
-*/
+/**
+ * A repository location points to a FTP repository that, in the context of MOSKitt4ME, contains reusable
+ * assets that are stored as ZIP files according to the Reusable Asset Specification (RAS) standard.
+ *
+ *  @author Mario Cervera
+ */
 public class RepositoryLocation {
 
+	// The properties that uniquely identify a repository location are: host and repository path
+	
 	private String host;
 	private String repositoryPath;
+	
+	// User credentials
+	
 	private String user;
     	private String password;
-
-    	private String type; //Empty, Conceptual, or Technical
+    	
+    	// Type of repository location (based on the method fragments that it contains):
+    	// Empty, Conceptual, or Technical
+    	
+    	private String type;
     
+    	// Constructors
+    	
     	public RepositoryLocation() {
     	
 	    	this.host = "";
@@ -36,6 +45,8 @@ public class RepositoryLocation {
 		
 		this.type = "";
 	}
+	
+	// Getters and setters
     
 	public void setHost(String host) {
 		this.host = host;
