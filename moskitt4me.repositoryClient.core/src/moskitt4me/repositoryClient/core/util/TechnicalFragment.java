@@ -8,15 +8,17 @@ import java.util.Set;
 
 import org.eclipse.core.resources.IProject;
 
-/*
-* A class for technical fragments. 
-*
-* Subclasses: ExternalToolFragment and InternalToolFragment.
-*
-* @author Mario Cervera
-*/
+/**
+ * A class for technical fragments. 
+ *
+ * Subclasses: ExternalToolFragment and InternalToolFragment.
+ *
+ * @author Mario Cervera
+ */
 public class TechnicalFragment {
 
+	// Technical fragment properties: name, type, origin, objective, input, and output
+	
 	private String name;
 	private String type;
 	private String origin;
@@ -24,16 +26,26 @@ public class TechnicalFragment {
 	private String input;
 	private String output;
 	
+	// Eclipse plug-ins that are encapsulated in the technical fragment
+	
 	private List<IProject> plugins;
+	
+	// Does the fragment contain errors (e.g., empty name or unresolved dependencies) ?
 	
 	private boolean isResolved;
 	private String errors;
 	
+	// Software dependencies
+	
 	private List<TechnicalFragment> dependencies = new ArrayList<TechnicalFragment>();
 	private TechnicalFragment parent;
 	
+	// Has the fragment been imported from another repository
+	
 	boolean isImported;
 
+	// Constructors
+	
 	public TechnicalFragment() {
 		
 		this.isResolved = false;
@@ -53,6 +65,8 @@ public class TechnicalFragment {
 		this.input = input;
 		this.output = output;
 	}
+	
+	// Getters and setters
 	
 	public String getName() {
 		return name;
@@ -147,10 +161,10 @@ public class TechnicalFragment {
 	}
 	
 	/*
-	* Calculates whether the fragment contains errors. This is necessary in the "Create Technical Fragment Dialog".
-	* An error may be, for example, that the user has not specified the fragment name or a software dependency
-	* is unsatisfied.
-	*/
+	 * Calculates whether the fragment contains errors. This is necessary in the "Create Technical Fragment Dialog".
+	 * An error may be, for example, that the user has not specified the fragment name or a software dependency
+	 * is unsatisfied.
+	 */
 	public void resolve() {
 		
 		boolean resolved = true;
@@ -241,17 +255,17 @@ public class TechnicalFragment {
 	}
 	
 	/*
-	* Checks whether the fragment is of type "Others" (i.e., it is not of one of the 
-	* types supported by MOSKitt4ME).
-	*/
+	 * Checks whether the fragment is of type "Others" (i.e., it is not of one of the 
+	 * types supported by MOSKitt4ME).
+	 */
 	private boolean isOthers() {
 		
 		return (this.type != null && this.type.equals("Others"));
 	}
 	
 	/*
-	* Duplicates the fragment. Useful for copy & paste.
-	*/
+	 * Duplicates the fragment. Useful for the copy & paste functionality
+	 */
 	public TechnicalFragment duplicate() {
 		
 		TechnicalFragment clone = new TechnicalFragment();
