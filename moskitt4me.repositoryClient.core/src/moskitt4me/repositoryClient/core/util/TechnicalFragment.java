@@ -40,7 +40,7 @@ public class TechnicalFragment {
 	private List<TechnicalFragment> dependencies = new ArrayList<TechnicalFragment>();
 	private TechnicalFragment parent;
 	
-	// Has the fragment been imported from another repository
+	// Has the fragment been imported from another repository?
 	
 	boolean isImported;
 
