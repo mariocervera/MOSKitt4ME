@@ -16,25 +16,37 @@ import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.browser.IWebBrowser;
 
-/*
-* This class offers a set of methods that enable the execution of the method tasks. The performance
-* of these tasks will vary depending on their output products.
-*
-* @author Mario Cervera
-*/
+/**
+ * This class offers a set of methods that enable the execution of the method tasks. The performance
+ * of these tasks will vary depending on the nature of the output products.
+ *
+ * @author Mario Cervera
+ */
 public class ProductSupport {
 
+	/*
+	 * This method invokes the execution of a specific method task
+	 */
 	public static boolean launchTask(TaskDescriptor td, IProject project,
 			List<WorkProduct> products, List<Task> tasks, List<String> cpIds) {
 		
 		boolean productCreated = false;
 		
 		if (ProductSupportUtil.isAutomatic(td, tasks)) {
+			
+			// Automatic tasks involve the execution of a model-to-model or model-to-text
+			// transformation
+			
 			productCreated = performAutomaticTask(td, project, products, tasks, cpIds);
 		}
 		else {
+			// Manual tasks are performed by the MOSKitt4ME user (using a tool such as a
+			// graphical editor)
+			
 			productCreated = performManualTask(td, project, products, cpIds);
 		}
+		
+		// Repeatable tasks can be executed multiple times ...
 		
 		if(productCreated && td.getIsRepeatable() &&
 				ProductSupportUtil.isRestarted(td.getGuid(), cpIds, project)) {
@@ -58,10 +70,15 @@ public class ProductSupport {
 			if(task.eIsProxy()) {
 				task = ProductSupportUtil.getTask(task, tasks);
 			}
+			
+			// Get the tool (technical fragment) associated to the task
+			
 			List<ToolMentor> tools = task.getToolMentors();
 			if(tools != null && tools.size() > 0) {
 				ToolMentor tool = tools.get(0);
 				String toolId = ProductSupportUtil.getPropertyValue(tool, "toolId");
+				
+				// If the tool is a URL, open a browser
 				
 				if(ProductSupportUtil.isURL(toolId)) {
 					try {
@@ -74,6 +91,9 @@ public class ProductSupport {
 					}
 				}
 				else if(ProductSupportUtil.isTransformation(toolId)) {
+					
+					// If the tool is a model transformation, launch it
+					
 					if(generateOutputProduct(td, products, project, toolId, cpIds)) {
 						return true;
 					}
