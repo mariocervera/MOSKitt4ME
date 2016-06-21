@@ -58,9 +58,9 @@ public class ProductSupport {
 	}
 	
 	/*
-	* In the case of automatic tasks, the output products are obtained automatically by means
-	* of a model transformation (either M2T or M2M).
-	*/
+	 * In the case of automatic tasks, the output products are obtained automatically by means
+	 * of a model transformation (either M2T or M2M).
+	 */
 	private static boolean performAutomaticTask(TaskDescriptor td, IProject project,
 			List<WorkProduct> products, List<Task> tasks, List<String> cpIds) {
 		
@@ -105,8 +105,8 @@ public class ProductSupport {
 	}
 	 
 	 /*
-	 * Manual tasks are carried out by means of tools such as graphical or tree-based editors.
-	 */
+	  * Manual tasks are carried out by means of tools such as graphical or tree-based editors.
+	  */
 	private static boolean performManualTask(TaskDescriptor td, IProject project,
 			List<WorkProduct> products, List<String> cpIds) {
 		
