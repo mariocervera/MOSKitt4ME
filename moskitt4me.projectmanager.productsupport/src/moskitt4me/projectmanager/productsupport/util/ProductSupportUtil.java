@@ -42,17 +42,17 @@ import org.eclipse.ui.wizards.IWizardDescriptor;
 
 import es.cv.gvcase.trmanager.ui.TransformationUIManager;
 
-/*
-* A class that provides a set of methods that facilitate the implementation of the thrid phase
-* of the Method Engineering lifecycle (i.e., the phase of method execution).
-*
-* @author Mario Cervera
-*/
+/**
+ * A class that provides a set of methods that facilitate the implementation of the third phase
+ * of the Method Engineering lifecycle (i.e., the phase of method execution).
+ *
+ * @author Mario Cervera
+ */
 public class ProductSupportUtil {
 
 	/*
-	* Checks whether a given task is automatic.
-	*/
+	 * Checks whether a given task is automatic. Automatic tasks are associated to model transformations
+	 */
 	public static boolean isAutomatic(TaskDescriptor td, List<Task> tasks) {
 		
 		if (td != null) {
@@ -77,8 +77,8 @@ public class ProductSupportUtil {
 	}
 	
 	/*
-	* Checks whether a given product has already been created.
-	*/
+	 * Checks whether a given method product has already been created in a given project
+	 */
 	public static boolean existsProduct(WorkProduct product, IProject project) {
 		
 		boolean exists = false;
@@ -125,6 +125,9 @@ public class ProductSupportUtil {
 		}
 	}
 	
+	/*
+	 * This method checks whether a given resource has already been stored in the "methodProperties.txt" file
+	 */
 	private static boolean alreadyStored(String resourcePath, WorkProduct product, IProject project) {
 
 		boolean exists = false;
@@ -169,9 +172,9 @@ public class ProductSupportUtil {
 	}
 	
 	/*
-	* Invokes the execution of a model transformation. This method uses the Transformation 
-	* Manager of the MOSKitt tool.
-	*/
+	 * Invokes the execution of a model transformation. This method uses the Transformation 
+	 * Manager of MOSKitt
+	 */
 	public static boolean launchTransformation(String transfId, IProject project,
 			WorkProduct product) {
 		
@@ -198,8 +201,8 @@ public class ProductSupportUtil {
 	}
 	
 	/*
-	* Opens the wizard that enables the creation of a given product.
-	*/
+	 * Opens the wizard that enables the creation of a given product.
+	 */
 	public static boolean launchWizard(String wizardId, IProject project,
 			WorkProduct product) {
 		
@@ -274,6 +277,9 @@ public class ProductSupportUtil {
 		return dialog.open();
 	}
 	
+	/*
+	 * Opens the editor that enables the manipulation of a given file
+	 */
 	public static void openFile(IFile file) {
 		 
 		IWorkbenchPage page = PlatformUI.getWorkbench()
@@ -287,6 +293,9 @@ public class ProductSupportUtil {
 		}
 	}
 	
+	/*
+	 * This method stores a given resource in the "methodProperties.txt" file
+	 */
 	private static void storeProduct(String resourcePath, WorkProduct product, IProject project) {
 		
 		if(resourcePath.startsWith("/" + project.getName() + "/.method/") ||
@@ -342,6 +351,10 @@ public class ProductSupportUtil {
 		}
 	}
 	
+	/* 
+	 * A listener that stores resources in the "methodProperties.txt" file whenever 
+	 * the resources are created
+	 */
 	private static class ResourceChangeListener implements IResourceChangeListener {
 
 		private IProject project;
@@ -414,6 +427,9 @@ public class ProductSupportUtil {
 		return result;
 	}
 	
+	/*
+	 * This method returns the value of a given MethodProperty for a given MethodElement
+	 */
 	public static String getPropertyValue(MethodElement me, String name) {
 		
 		List<MethodElementProperty> props = me.getMethodElementProperty();
@@ -516,6 +532,9 @@ public class ProductSupportUtil {
 		}
 	}
 	
+	/*
+	 * This method checks whether a given tool ID corresponds to an Eclipse Creation Wizard
+	 */
 	public static boolean isCreationWizard(String id) {
 		
 		if(id == null || id.equals("")) {
@@ -546,6 +565,9 @@ public class ProductSupportUtil {
 		return (id.startsWith("http://") || id.startsWith("https://"));
 	}
 	
+	/*
+	 * This method checks whether a given tool ID corresponds to a model transformation
+	 */
 	public static boolean isTransformation(String id) {
 		
 		IConfigurationElement[] configurations = Platform
