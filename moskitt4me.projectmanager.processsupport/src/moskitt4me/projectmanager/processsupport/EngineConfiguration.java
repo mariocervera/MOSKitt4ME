@@ -6,7 +6,7 @@ import java.io.FileWriter;
 
 import org.eclipse.core.runtime.Platform;
 
-/*
+/**
  * In order to create an Activiti Engine instance, a configuration file (activiti.cfg.xml)
  * must be created. This class provides methods for creating this file and deleting it.
  * 
