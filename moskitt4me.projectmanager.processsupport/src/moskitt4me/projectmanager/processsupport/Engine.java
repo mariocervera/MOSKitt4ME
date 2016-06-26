@@ -30,7 +30,7 @@ import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.ui.PlatformUI;
 import org.osgi.framework.Bundle;
 
-/*
+/**
  * This class implements a facade that facilitates the access to the API of the
  * Activiti process engine. This facade offers a set of convenient methods that
  * implement commonly recurring tasks that involve the use of the engine in
@@ -41,21 +41,21 @@ import org.osgi.framework.Bundle;
 public class Engine {
 
 	/*
-	* Each project has a different instance of the engine associated to it.
-	*/
+	 * Each active project has a different engine instance associated to it
+	 */
 	private static Map<IProject, ProcessEngine> engines = new HashMap<IProject, ProcessEngine>();
 	
 	/*
-	* To support capability patterns.
-	*/
+	 * To support capability patterns
+	 */
 	private static Map<String, String> mapProcessInstanceToCpId = new HashMap<String, String>();
 	
 	/*
-	 * This method sets up the engine.
+	 * This method sets up the process engine
 	 */
 	public static void setUp(DeliveryProcess dp, IProject project) throws Exception {
 		
-		// Process engine construction (uses configuration file)
+		// Process engine construction (through configuration file)
 		
 		ProcessEngine activitiEngine = engines.get(project);
 		
@@ -132,15 +132,15 @@ public class Engine {
 			}
 		}
 		
-		// Fill "mapProcessInstanceToCpId" map.
+		// Fill "mapProcessInstanceToCpId" map
 		
 		mapProcessInstanceToCpId.clear();
 		EngineUtil.fillPatternInstances(mapProcessInstanceToCpId, project);
 	}
 	
 	/*
-	 * This method returns whether a task is executable or not given its id
-	 * and the id of the current process instance
+	 * This method returns whether a task is executable or not given its id and the id of the
+	 * current process instance
 	 */
 	public static boolean isExecutable(String taskId, String processInstanceId, IProject project) {
 		
@@ -248,6 +248,10 @@ public class Engine {
 		}
 	}
 	
+	/*
+	 * This method returns (in the context of a given project) the id of the process instance that
+	 * matches a given process key
+	 */
 	public static String getProcessInstanceIdFromProcessKey(String key, IProject project) {
 		
 		ProcessEngine activitiEngine = engines.get(project);
@@ -266,7 +270,7 @@ public class Engine {
 	}
 	
 	/*
-	 * This method returns the tasks that can be executed
+	 * This method returns the tasks that can be executed; that is, the tasks whose state is "executable"
 	 */
 	private static List<Task> getCurrentTasks(IProject project) {
 		
@@ -291,9 +295,9 @@ public class Engine {
 	}
 	
 	/*
-	* To deploy a process model in the Activiti engine, a business archive (.bar) must be created.
-	* A BAR file is a ZIP file that encapsulates the process model.
-	*/
+	 * To deploy a process model in the Activiti engine, a business archive (.bar) must be created.
+	 * A BAR file is a ZIP file that encapsulates the process model.
+	 */
 	private static void createBusinessArchive(String activitiFolder, 
 			String barFilePath, List<String> guids) throws Exception {
 
