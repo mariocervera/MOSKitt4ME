@@ -159,7 +159,7 @@ public class EngineUtil {
 	}
 	
 	/*
-	 * This method accesses the "executedTasks.txt" file and retrives the ids of the tasks that have
+	 * This method accesses the "executedTasks.txt" file and retrieves the ids of the tasks that have
 	 * been executed in the context of a given project
 	 */
 	public static List<Map<String, List<List<String>>>> getExecutedTaskIds(IProject project) {
@@ -210,7 +210,7 @@ public class EngineUtil {
 	}
 	
 	/*
-	 * This method checks whether a given tasks has been executed in the context of a given project
+	 * This method checks whether a given task has been executed in the context of a given project
 	 */
 	public static boolean hasBeenExecuted(String taskId,
 			List<String> cpIds, IProject project) {
