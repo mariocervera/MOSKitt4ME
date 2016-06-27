@@ -16,12 +16,14 @@ import org.activiti.engine.history.HistoricActivityInstance;
 import org.activiti.engine.runtime.ProcessInstance;
 import org.eclipse.core.resources.IProject;
 
-/*
-* A class that provides a set of methods that facilitate the implementation of the third phase
-* of the Method Engineering lifecycle (i.e., the phase of method execution).
-*
-* @author Mario Cervera
-*/
+/**
+ * A class that provides a set of utility methods that facilitate the implementation of the
+ * third phase of the Method Engineering lifecycle (i.e., the phase of method execution). The
+ * methods that are provided in this class are mainly used by the Process view of the Project
+ * Manager Component of MOSKitt4ME
+ *
+ * @author Mario Cervera
+ */
 public class EngineUtil {
 
 	public static void fillPatternInstances(Map<String, String> mapProcessInstanceToCpId,
@@ -78,6 +80,9 @@ public class EngineUtil {
 		}
 	}
 	
+	/*
+	 * This method stores a given task id in the "executedTasks.txt" file
+	 */
 	public static void storeExecutedTaskId(IProject project,
 			List<String> patternId, String taskId) {
 		
@@ -129,6 +134,10 @@ public class EngineUtil {
 		}
 	}
 
+	/*
+	 * This method returns false if the given project is in its initial state (that is, no task
+	 * has been executed); true otherwise
+	 */
 	public static boolean hasExecutedTasks(IProject project) {
 		
 		String dir = project.getLocation().toString() + "/.method/";
@@ -149,6 +158,10 @@ public class EngineUtil {
 		}
 	}
 	
+	/*
+	 * This method accesses the "executedTasks.txt" file and retrives the ids of the tasks that have
+	 * been executed in the context of a given project
+	 */
 	public static List<Map<String, List<List<String>>>> getExecutedTaskIds(IProject project) {
 		
 		String dir = project.getLocation().toString() + "/.method/";
@@ -196,6 +209,9 @@ public class EngineUtil {
 		}
 	}
 	
+	/*
+	 * This method checks whether a given tasks has been executed in the context of a given project
+	 */
 	public static boolean hasBeenExecuted(String taskId,
 			List<String> cpIds, IProject project) {
 		
