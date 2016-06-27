@@ -46,20 +46,23 @@ import org.eclipse.epf.uma.VariabilityType;
 import org.eclipse.epf.uma.WorkProduct;
 import org.osgi.framework.Bundle;
 
-/*
-* This class facilitates the access to the elements of the method model during the method execution.
-* To do this, this class loads the method elements in memory and offers a set of convenient methods
-* for accessing them. For example, this class offers methods for:
-*
-* - Obtaining the graphical ID of a given element.
-* - Obtaining the work products that are not contained in any category or domain.
-* - Checking whether a given role is in charge of the performance of a given task.
-* - etc.
-*
-* @author Mario Cervera
-*/
+/**
+ * This class facilitates the access to the elements of the method model during the method execution.
+ * To do this, this class loads the method elements in memory and offers a set of convenient methods
+ * for accessing them. For example, this class offers methods for:
+ *
+ * - Obtaining the graphical ID of a given element.
+ * - Obtaining the work products that are not contained in any category or domain.
+ * - Checking whether a given role is in charge of the performance of a given task.
+ * - etc.
+ *
+ * @author Mario Cervera
+ */
 public class MethodElements {
 	
+	/*
+	 * The delivery process that is currently under execution
+	 */
 	public static DeliveryProcess loadedDeliveryProcess;
 	
 	private static List<MethodPlugin> methodPlugins = new ArrayList<MethodPlugin>();
@@ -97,8 +100,8 @@ public class MethodElements {
 	private static Map<String, URI> mapCpGuidToURI = new HashMap<String,URI>();
 	
 	/*
-	* Loads the method model in memory
-	*/
+	 * Loads the method model in memory
+	 */
 	public static void loadMethodDefinition(DeliveryProcess dp) {
 		
 		if(dp == null) {
@@ -142,8 +145,8 @@ public class MethodElements {
 	
 	private static MethodPlugin getMethodPlugin(org.eclipse.epf.uma.Process p) {
 		
-		//First of all, load the plugin.xmi file
-		//Then, retrieve the Method Plugin
+		// First of all, load the plugin.xmi file
+		// Then, retrieve the Method Plugin
 		
 		XMIResourceFactoryImpl _xmiFac = new XMIResourceFactoryImpl();
 
@@ -197,6 +200,9 @@ public class MethodElements {
 		return null;
 	}
 	
+	/*
+	 * This method loads the Content Elements (tasks, roles, products, Domains, etc.)
+	 */
 	private static void initializeContentElements(MethodPlugin mp) {
 		
 		TreeIterator<EObject> it = mp.eAllContents();
@@ -231,6 +237,9 @@ public class MethodElements {
 		}
 	}
 	
+	/*
+	 * This method returns the parent Process Component of a given Process
+	 */
 	private static ProcessComponent getProcessComponent(org.eclipse.epf.uma.Process p) {
 		
 		EObject container = p.eContainer();
@@ -242,6 +251,9 @@ public class MethodElements {
 		return (ProcessComponent) container;
 	}
 	
+	/*
+	 * Loads the Task Descriptors of a given Process Component
+	 */
 	private static void initializeTaskDescriptors(ProcessComponent processComponent) {
 		
 		TreeIterator<EObject> it = processComponent.eAllContents();
@@ -292,6 +304,9 @@ public class MethodElements {
 		}
 	}
 	
+	/*
+	 * Loads the Role Descriptors of a given Process Component
+	 */
 	private static void initializeRoleDescriptors(ProcessComponent processComponent) {
 
 		TreeIterator<EObject> it = processComponent.eAllContents();
@@ -341,6 +356,9 @@ public class MethodElements {
 		}
 	}
 	
+	/*
+	 * Loads the User Tasks of the BPMN 2.0 model that is associated to the SPEM 2.0 model
+	 */
 	private static void initializeUserTasks(DeliveryProcess dp) {
 		
 		try {
@@ -442,8 +460,8 @@ public class MethodElements {
 	}
 	
 	/*
-	* Gets the work products that do not belong to any domain
-	*/
+	 * Gets the work products that do not belong to any domain
+	 */
 	public static List<WorkProduct> getUncategorizedWorkProducts() {
 		
 		List<WorkProduct> result = new ArrayList<WorkProduct>();
@@ -468,8 +486,8 @@ public class MethodElements {
 	}
 	
 	/*
-	* Checks whether a given work product is contained in a given domain
-	*/
+	 * Checks whether a given work product is contained in a given domain
+	 */
 	private static boolean isContainedInDomain(Domain d, WorkProduct wp) {
 		
 		if(d.getWorkProducts().contains(wp)) {
@@ -484,8 +502,8 @@ public class MethodElements {
 	}
 	
 	/*
-	* Checks whether a given role is in charge of the performance of a given task
-	*/
+	 * Checks whether a given role is in charge of the performance of a given task
+	 */
 	public static boolean performs(RoleDescriptor rd, TaskDescriptor td) {
 		
 		if(containsRole(td.getPerformedPrimarilyBy(), rd) ||
@@ -525,6 +543,9 @@ public class MethodElements {
 		return false;
 	}
 	
+	/*
+	 * Returns a Delivery Process given the URI of the method model
+	 */
 	public static DeliveryProcess getDeliveryProcess(String uri) {
 		
 		if(uri == null || uri.equals("")) {
@@ -609,6 +630,9 @@ public class MethodElements {
 		return null;
 	}
 	
+	/*
+	 * This method clears all the lists that contain method elements
+	 */
 	private static void clearLists() {
 		
 		methodPlugins.clear();
@@ -694,6 +718,9 @@ public class MethodElements {
 		}
 	}
 	
+	/*
+	 * This method loads in the Library view the Method Library that contains a given Delivery Process
+	 */
 	private static void loadCurrentMethodLibrary(DeliveryProcess dp) {
 		
 		MethodLibrary ml = null;
@@ -733,6 +760,9 @@ public class MethodElements {
 		}
 	}
 	
+	/*
+	 * This method loads in the Library view a Method Library given its URI
+	 */
 	private static MethodLibrary loadMethodLibrary(URI uri) {
 		
 		XMIResourceFactoryImpl _xmiFac = new XMIResourceFactoryImpl();
