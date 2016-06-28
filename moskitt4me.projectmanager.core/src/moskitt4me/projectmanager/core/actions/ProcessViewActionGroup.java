@@ -4,7 +4,7 @@ import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.ui.IActionBars;
 
-/*
+/**
  * This class defines the actions that appear in the Action Bar of the Process view
  * and are not common to all the other views in the Project Manager Component.
  *
@@ -12,6 +12,8 @@ import org.eclipse.ui.IActionBars;
  */
 public class ProcessViewActionGroup extends ProjectManagerActionGroup {
 
+	// Actions
+	
 	private AllTasksAction allTasksAction;
 	private RoleSelectionAction roleSelectionAction;
 	private UndoAction undoAction;
@@ -19,6 +21,9 @@ public class ProcessViewActionGroup extends ProjectManagerActionGroup {
 	private RunAction runAction;
 	private HelpAction helpAction;
 	
+	/*
+	 * Constructor
+	 */
 	public ProcessViewActionGroup(TreeViewer viewer) {
 		
 		super(viewer);
