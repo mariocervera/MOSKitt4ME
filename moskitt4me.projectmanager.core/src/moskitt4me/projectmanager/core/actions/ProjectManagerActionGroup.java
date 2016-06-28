@@ -9,7 +9,7 @@ import org.eclipse.ui.actions.ActionGroup;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 
-/*
+/**
  * This class defines the actions that appear in the Action Bar of all the views
  * of the Project Manager Component.
  *
@@ -23,6 +23,9 @@ public class ProjectManagerActionGroup extends ActionGroup {
 	
 	private CollapseAllAction collapseAllAction;
 	
+	/*
+	 * Constructor
+	 */
 	public ProjectManagerActionGroup(TreeViewer viewer) {
 		
 		super();
