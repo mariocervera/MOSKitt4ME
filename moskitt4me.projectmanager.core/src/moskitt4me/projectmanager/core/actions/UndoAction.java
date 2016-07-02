@@ -16,16 +16,19 @@ import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.PlatformUI;
 
-/*
-* The Undo Action (which is shown as a button in the Action Bar of the Process view) allows the
-* user to go back in the process execution. When the Undo Action is invoked, the last task that
-* was set as "executed" is set as "non-executed"; thus, the process instance returns to its
-* previous state.
-*
-* @author Mario Cervera
-*/
+/**
+ * The Undo Action (which is shown as a button in the Action Bar of the Process view) allows the
+ * user to go back in the process execution. When the Undo Action is invoked, the last tasks that
+ * were set as "executed" are set as "non-executed"; thus, the process instance returns to its
+ * previous state.
+ *
+ * @author Mario Cervera
+ */
 public class UndoAction extends Action implements IAction {
 	
+	/*
+	 * Constructor
+	 */
 	public UndoAction() {
 		
 		// Initially, the Undo Action is disabled
