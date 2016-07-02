@@ -26,17 +26,23 @@ import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.PlatformUI;
 
-/*
-* The Run Repeatable Action (which is shown as a button in the Action Bar of the Process view) allows the
-* user to execute a Task that is defined as repetable in the method model. Unlike the Run Action, the task
-* will not be marked as "executed"; therefore, it will be possible to execute the task more than once.
-*
-* @author Mario Cervera
-*/
+/**
+ * The Run Repeatable Action (which is shown as a button in the Action Bar of the Process view) allows the
+ * user to execute a Task that is defined as repetable in the method model. Unlike the Run Action, the task
+ * will not be marked as "executed"; therefore, it will be possible to execute the task more than once.
+ *
+ * @author Mario Cervera
+ */
 public class RunRepeatableAction extends Action implements IAction {
 
+	/*
+	 * Constructor
+	 */
 	public RunRepeatableAction() {
 
+		// The action is initially disabled
+		// It is enabled when an executable (and repeatable) task is selected
+		
 		setEnabled(false);
 		setId("RunRepeatableAction");
 	}
@@ -44,6 +50,8 @@ public class RunRepeatableAction extends Action implements IAction {
 	@Override
 	public void run() {
 
+		// Get the Process view
+		
 		IViewPart viewPart = PlatformUI.getWorkbench()
 				.getActiveWorkbenchWindow().getActivePage().findView(
 						ProcessView.ProcessViewId);
@@ -52,12 +60,17 @@ public class RunRepeatableAction extends Action implements IAction {
 
 			ProcessView processView = (ProcessView) viewPart;
 
+			// Get the selected elements
+			
 			if (processView.getViewer().getSelection() instanceof StructuredSelection) {
 				
 				StructuredSelection selection = (StructuredSelection) processView
 						.getViewer().getSelection();
 				
 				Object[] selectedObjects = selection.toArray();
+				
+				// For each of the selected elements ... execute the element
+				// and set the action as disabled
 				
 				for(int i = 0; i < selectedObjects.length; i++) {
 					if (selectedObjects[i] instanceof TaskDescriptor) {
