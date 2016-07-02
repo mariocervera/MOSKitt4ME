@@ -28,18 +28,24 @@ import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.PlatformUI;
 
-/*
-* The Run Action (which is shown as a button in the Action Bar of the Process view) allows the
-* user to set a Task or an Activity as executed. When a Task or Activity is set as executed, the
-* Project Manager Component notifies the Activiti Engine, which takes the process instance to its
-* next state.
-*
-* @author Mario Cervera
-*/
+/**
+ * The Run Action (which is shown as a button in the Action Bar of the Process view) allows the
+ * user to set a Task or an Activity as executed. When a Task or Activity is set as executed, the
+ * Project Manager Component notifies the Activiti Engine, which takes the process instance to its
+ * next state.
+ *
+ * @author Mario Cervera
+ */
 public class RunAction extends Action implements IAction {
 
+	/*
+	 * Constructor
+	 */
 	public RunAction() {
 
+		// The action is initially disabled
+		// It is enabled when an executable task/activity is selected
+		
 		setEnabled(false);
 		setId("RunAction");
 	}
@@ -120,8 +126,8 @@ public class RunAction extends Action implements IAction {
 	}
 	
 	/*
-	* This method sets a given task as executed by communicating with the Activiti Engine
-	*/
+	 * This method sets a given task as executed by communicating with the Activiti Engine
+	 */
 	private boolean executeTask(TaskDescriptor td, List<String> cpIds) {
 		
 		if(Context.isPerformedByCurrentRole(td)) {
@@ -148,10 +154,10 @@ public class RunAction extends Action implements IAction {
 	}
 	
 	/*
-	* This method executes a given Activity. This execution involves setting as executed
-	* all the nested tasks. For executing the nested activities, this method invokes itself
-	* recursively.
-	*/
+	 * This method executes a given Activity. This execution involves setting as executed
+	 * all the nested tasks. For executing the nested activities, this method invokes itself
+	 * recursively.
+	 */
 	private boolean executeActivity(Activity actv, List<String> cpIds) {
 		
 		boolean taskExecuted = false;
