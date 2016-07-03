@@ -22,30 +22,30 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.ui.dialogs.SelectionDialog;
 
-/*
+/**
  * This class contains the common functionality of different selection dialogs of
- * the Project Manager Component.
+ * the Project Manager Component
  *
  * @author Mario Cervera
  */
 public class MOSKitt4MESelectionDialog extends SelectionDialog {
 
-	/**
+	/*
 	 * The default width of a dialog
 	 */
 	private int DEFAULT_DIALOG_WIDTH = 400;
 
-	/**
+	/*
 	 * The default height of a dialog
 	 */
 	private int DEFAULT_DIALOG_HEIGHT = 300;
 
-	/**
+	/*
 	 * The minimum width of a dialog
 	 */
 	private int MIN_DIALOG_WIDTH = 300;
 
-	/**
+	/*
 	 * The minimum height of a dialog
 	 */
 	private int MIN_DIALOG_HEIGHT = 300;
@@ -68,6 +68,9 @@ public class MOSKitt4MESelectionDialog extends SelectionDialog {
 	 */
 	private List<EClass> enablementTypes;
 	
+	/*
+	 * Constructor
+	 */
 	public MOSKitt4MESelectionDialog(Shell parentShell, String title,
 			String message, Object[] objects, int treeStyle) {
 		
@@ -88,6 +91,9 @@ public class MOSKitt4MESelectionDialog extends SelectionDialog {
 		super.configureShell(shell);
 	}
 
+	/*
+	 * This method creates the graphical components of the dialog (following a Grid Layout)
+	 */
 	protected Control createDialogArea(Composite parent) {
 		
 		Composite dialogComposite = (Composite) super.createDialogArea(parent);
@@ -113,6 +119,8 @@ public class MOSKitt4MESelectionDialog extends SelectionDialog {
 		treeViewer.setSorter(null);
 		treeViewer.setInput(this.objects);
 		
+		// Add a selection changed listener to the Tree Viewer
+		
 		treeViewer.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			@SuppressWarnings("unchecked")
@@ -121,6 +129,8 @@ public class MOSKitt4MESelectionDialog extends SelectionDialog {
 				if (event.getSelection() instanceof StructuredSelection) {
 					
 					StructuredSelection sel = (StructuredSelection) event.getSelection();
+					
+					// The selected objects determine the enablement of the OK button
 					
 					if (sel.size() <= 0) {
 						getOkButton().setEnabled(false);
@@ -136,7 +146,8 @@ public class MOSKitt4MESelectionDialog extends SelectionDialog {
 					else {
 						Iterator it = sel.iterator();
 
-						// Look for an object which is not instance of any enablement type
+						// Look for an object that is not instance of any enablement type
+						
 						boolean found = false;
 
 						while (it.hasNext() && !found) {
