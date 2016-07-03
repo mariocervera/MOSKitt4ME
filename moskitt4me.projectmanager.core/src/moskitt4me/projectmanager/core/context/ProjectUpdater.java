@@ -38,13 +38,13 @@ import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
 
-/*
-* A listener that reacts to Selection Change events in the Resource Explorer view. In MOSKitt4ME,
-* when the selected project changes, the process instance that is running in the Activiti Engine
-* must be updated (since every project has a different process instance associated to it).
-*
-* @author Mario Cervera
-*/
+/**
+ * A listener that reacts to Selection Change events in the Resource Explorer view. In MOSKitt4ME,
+ * when the selected project changes, the process instance that is running in the Activiti Engine
+ * must be updated (since every project has a different process instance associated to it).
+ *
+ * @author Mario Cervera
+ */
 public class ProjectUpdater implements ISelectionListener {
 
 	public void selectionChanged(IWorkbenchPart part, ISelection selection) {
@@ -149,6 +149,9 @@ public class ProjectUpdater implements ISelectionListener {
 		}
 	}
 	
+	/*
+	 * This method updates the context variable that stores the id of the current process instance
+	 */
 	private void updateProcessInstanceId() {
 			
 		String id = Engine.getProcessInstanceIdFromProcessKey(MethodElements.processKey,
@@ -165,6 +168,9 @@ public class ProjectUpdater implements ISelectionListener {
 		}
 	}
 	
+	/*
+	 * This method returns the view part that represents the Process view
+	 */
 	private ProcessView getProcessView() {
 		
 		try {
@@ -182,6 +188,9 @@ public class ProjectUpdater implements ISelectionListener {
 		return null;
 	}
 	
+	/*
+	 * This method returns the view part that represents the Product Explorer view
+	 */
 	private ProductExplorerView getProductExplorerView() {
 		
 		try {
@@ -199,6 +208,10 @@ public class ProjectUpdater implements ISelectionListener {
 		return null;
 	}
 	
+	/*
+	 * This method returns true if the given project is not in its initial state (that is, at least one task
+	 * has been executed); false otherwise
+	 */
 	private boolean isStarted(IProject project) {
 		
 		try {
