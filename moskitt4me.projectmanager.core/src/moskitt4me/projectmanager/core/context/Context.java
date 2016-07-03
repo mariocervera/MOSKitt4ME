@@ -15,13 +15,13 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.epf.uma.RoleDescriptor;
 import org.eclipse.epf.uma.TaskDescriptor;
 
-/*
-* This class provides variables and methods that store and manipulate contextual information, such as
-* the project that is selected in the Project Manager Component and the identifier of the running
-* process instance.
-*
-* @author Mario Cervera
-*/
+/**
+ * This class provides variables and methods that store and manipulate contextual information, such as
+ * the project that is selected in the Project Manager Component and the identifier of the running
+ * process instance.
+ *
+ * @author Mario Cervera
+ */
 public class Context {
 
 	/*
@@ -30,24 +30,31 @@ public class Context {
 	public static List<RoleDescriptor> currentRoles = new ArrayList<RoleDescriptor>();
 	
 	/*
-	 * The project of the element selected in the MOSKitt Explorer view.
+	 * The project of the element selected in the MOSKitt Explorer view
 	 */
 	public static IProject selectedProject;
 	
 	/*
-	 * The id of the running instance of the process associated to the project
+	 * The id of the running instance of the process that is associated to the selected project
 	 */
 	public static String processInstanceId;
 	
 	/*
-	 * This enumeration establishes the types of visualization of the Process view
+	 * This enumeration establishes the types of visualization of the Process view (display mode)
 	 */
 	public enum ProcessVisualization { NEXTTASKS, ALLTASKS };
 	
+	/*
+	 * The current display mode of the Process view
+	 */
 	public static ProcessVisualization currentProcessVisualization = ProcessVisualization.NEXTTASKS;
 	
 	public static MOSKitt4MEResourceChangeListener resourceListener;
 	
+	/*
+	 * This method checks whether a given role is part of the roles that apply for the current
+	 * Process view filter
+	 */
 	public static boolean isContainedInCurrentRoles(RoleDescriptor rd) {
 		
 		for(RoleDescriptor rd2 : currentRoles) {
@@ -61,6 +68,9 @@ public class Context {
 		return false;
 	}
 	
+	/*
+	 * This method returns the URI of the process model that is associated to a given project
+	 */
 	public static String getProcessModelURI(IProject project) {
 		
 		try {
@@ -127,6 +137,10 @@ public class Context {
 		}
 	}
 	
+	/*
+	 * This method checks whether a given task is performed by one of the roles that are selected
+	 * to filter the Process view
+	 */
 	public static boolean isPerformedByCurrentRole(TaskDescriptor td) {
 		
 		if(Context.currentRoles == null || Context.currentRoles.size() == 0) {
