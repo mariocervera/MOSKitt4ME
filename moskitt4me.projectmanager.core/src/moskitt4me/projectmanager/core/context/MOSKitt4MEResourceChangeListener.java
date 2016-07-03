@@ -7,11 +7,11 @@ import org.eclipse.core.resources.IResourceChangeEvent;
 import org.eclipse.core.resources.IResourceChangeListener;
 import org.eclipse.core.resources.IResourceDelta;
 
-/*
-* A Resource Change listener to properly handle renaming actions.
-*
-* @author Mario Cervera
-*/
+/**
+ * A Resource Change listener to properly handle renaming actions
+ *
+ * @author Mario Cervera
+ */
 public class MOSKitt4MEResourceChangeListener implements
 		IResourceChangeListener {
 	
