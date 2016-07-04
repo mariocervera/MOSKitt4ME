@@ -25,18 +25,18 @@ import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 
 
-/*
+/**
  * This class filters elements in the Process View taking into account the selected 
- * display mode.
+ * display mode. The display mode is changed by means of the "All Tasks" toggle button
  *
  * @author Mario Cervera
  */
 public class ProcessFilter extends ViewerFilter {
 	
 	/*
-	* Returns false if the given element must not be shown in the viewer (in this case, the
-	* Process view), true otherwise.
-	*/
+	 * Returns false if the given element must not be shown in the viewer (in this case, the
+	 * Process view); true otherwise
+	 */
 	@Override
 	public boolean select(Viewer viewer, Object parentElement, Object element) {
 		
@@ -82,8 +82,8 @@ public class ProcessFilter extends ViewerFilter {
 	}
 	
 	/*
-	* An activity must be shown if it contains tasks that must be shown.
-	*/
+	 * An activity must be shown if it contains tasks that must be shown
+	 */
 	private boolean containsTaskToShow(Activity actv, List<String> cpIds) {
 		
 		boolean containsVisibleTask = false;
@@ -139,11 +139,13 @@ public class ProcessFilter extends ViewerFilter {
 	}
 	
 	/*
-	* This method checks whether a given task must be shown (according to the selected display mode).
-	*/
+	 * This method checks whether a given task must be shown (according to the selected display mode)
+	 */
 	private boolean mustShowTaskDescriptor(TaskDescriptor td, List<String> cpIds) {
 		
 		if (Context.currentProcessVisualization == ProcessVisualization.NEXTTASKS) {
+			
+			// Show only the executable tasks that are assigned to the selected roles
 			
 			String activitiTaskId = MethodElements.getActivitiTaskId(td);
 			String processInstanceId = "";
@@ -163,6 +165,8 @@ public class ProcessFilter extends ViewerFilter {
 		}
 		else if(Context.currentProcessVisualization == ProcessVisualization.ALLTASKS) {
 			
+			// Show all tasks that are assigned to the selected roles
+			
 			return assignedToCurrentRole(td);
 		}
 		
@@ -170,9 +174,9 @@ public class ProcessFilter extends ViewerFilter {
 	}
 	
 	/*
-	* In order for a task to be shown, it must also be assigned to at least one of the roles
-	* that are selected (if any).
-	*/
+	 * In order for a task to be shown, it must also be assigned to at least one of the roles
+	 * that are selected by the user (if any)
+	 */
 	private boolean assignedToCurrentRole(TaskDescriptor td) {
 		
 		if(Context.currentRoles.size() == 0) {
