@@ -22,17 +22,17 @@ import org.eclipse.jface.viewers.ViewerFilter;
 
 
 /**
- * This class filters the domains that don't have products to be shown
- * in the Product Explorer view.
+ * This class filters the domains that do not have products to be shown
+ * in the Product Explorer view
  * 
  * @author Mario Cervera
  */
 public class DomainsFilter extends ViewerFilter {
 
 	/*
-	* Returns false if the given element must not be shown in the viewer (in this case, the
-	* Product Explorer view), true otherwise.
-	*/
+	 * Returns false if the given element must not be shown in the viewer (in this case, the
+	 * Product Explorer view); true otherwise
+	 */
 	@Override
 	public boolean select(Viewer viewer, Object parentElement, Object element) {
 		
@@ -55,8 +55,8 @@ public class DomainsFilter extends ViewerFilter {
 	}
 	
 	/*
-	* Checks whether the given domain contains products.
-	*/
+	 * Checks whether the given domain contains products
+	 */
 	private boolean containsProductsToShow(Domain domain) {
 		
 		try {
@@ -92,7 +92,10 @@ public class DomainsFilter extends ViewerFilter {
 		return false;
 	}
 	
-
+	/*
+	 * Checks whether a given product must be filtered according to the roles selected
+	 * by the user
+	 */
 	private boolean assignedToCurrentRoles(WorkProduct product) {
 
 		if (Context.currentRoles.size() == 0) {
