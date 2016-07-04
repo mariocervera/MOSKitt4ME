@@ -12,16 +12,17 @@ import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 
 /**
- * A role filter for the Role Selection Dialog.
+ * A role filter for the Role Selection Dialog. Role Set Groupings and Role Sets that do not
+ * contain Roles are filtered
  * 
  * @author Mario Cervera
  */
 public class RolesFilter extends ViewerFilter {
 
 	/*
-	* Returns false if the given element must not be shown in the viewer (in this case, the
-	* Role Selection Dialog), true otherwise.
-	*/
+	 * Returns false if the given element must not be shown in the viewer (in this case, the
+	 * Role Selection Dialog); true otherwise.
+	 */
 	@Override
 	public boolean select(Viewer viewer, Object parentElement, Object element) {
 		
