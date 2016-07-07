@@ -30,13 +30,15 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.widgets.Tree;
 import org.osgi.framework.Bundle;
 
-/*
-* The only page of the New MOSKitt4ME Project Wizard. It allows the user to specify the project
-* name and also to select the process that will be associated to the project.
-*
-* @author Mario Cervera
-*/
+/**
+ * The only page of the New MOSKitt4ME Project Wizard. It allows the user to specify the project
+ * name and also to select the process that will be associated to the project
+ *
+ * @author Mario Cervera
+ */
 public class NewMOSKitt4MEProjectPage extends WizardPage {
+	
+	// Project name and associated process
 	
 	private String projectName;
 	private DeliveryProcess selectedProcess;
@@ -56,14 +58,22 @@ public class NewMOSKitt4MEProjectPage extends WizardPage {
 			
 			projectName = projectNameText.getText();
 			
+			// Check whether the input data is correct
+			// In this case, set the page as completed
+			
 			setPageComplete(validatePage());
 		}
 	};
 	
+	/*
+	 * Constructor
+	 */
 	public NewMOSKitt4MEProjectPage(String pageName) {
 		
 		super(pageName);
 	}
+
+	// Getters
 
 	public String getProjectName() {
 		return projectName;
@@ -74,8 +84,8 @@ public class NewMOSKitt4MEProjectPage extends WizardPage {
 	}
 	
 	/*
-	* Create the graphical elements (GridLayout)
-	*/
+	 * Create the graphical elements (GridLayout)
+	 */
 	public void createControl(Composite parent) {
 
 		Composite newMethodProjectComposite = new Composite(parent, SWT.NULL);
@@ -92,6 +102,9 @@ public class NewMOSKitt4MEProjectPage extends WizardPage {
 		setControl(newMethodProjectComposite);
 	}
 
+	/*
+	 * This method creates the part of the GUI that allows the user to set the project name
+	 */
 	private void createProjectNameGroup(Composite parent) {
 		
 		Composite projectNameGroup = new Composite(parent, SWT.NONE);
@@ -109,6 +122,10 @@ public class NewMOSKitt4MEProjectPage extends WizardPage {
 	        projectNameText.addListener(SWT.Modify, projectNameModifyListener);
 	}
 	
+	/*
+	 * This method creates the part of the GUI that allows the user to select the process
+	 * that will be associated to the project
+	 */
 	private void createProcessesGroup(Composite parent) {
 		
 		Composite processesGroup = new Composite(parent, SWT.NONE);
@@ -150,15 +167,18 @@ public class NewMOSKitt4MEProjectPage extends WizardPage {
         processesViewer.setInput("random string"); //Just to invoke content provider
 	}
 	
+	/*
+	 * The page is valid when the user has set both the project name and process
+	 */
 	protected boolean validatePage() {
 
 		return (validateName() && validateProcess());
 	}
 	
 	/*
-	* This method ensures that the user specifies a project name and also that this
-	* name is valid.
-	*/
+	 * This method ensures that the user specifies a project name and also that this
+	 * name is valid
+	 */
 	private boolean validateName() {
 		
 		IWorkspace workspace = ResourcesPlugin.getWorkspace();
@@ -194,8 +214,8 @@ public class NewMOSKitt4MEProjectPage extends WizardPage {
 	}
 	
 	/*
-	* This method ensures that the user selects a valid process for the project to be created.
-	*/
+	 * This method ensures that the user selects a valid process for the project to be created
+	 */
 	private boolean validateProcess() {
 		
 		if(selectedProcess == null) {
@@ -214,9 +234,9 @@ public class NewMOSKitt4MEProjectPage extends WizardPage {
 	}
 	
 	/*
-	* For a SPEM 2.0 process to be executable, it must have an equivalent (and executable)
-	* BPMN 2.0 representation associated to it.
-	*/
+	 * For a SPEM 2.0 process to be executable, it must have an equivalent (and executable)
+	 * BPMN 2.0 representation associated to it
+	 */
 	private boolean hasBPMNmodel(DeliveryProcess dp) {
 		
 		try {
