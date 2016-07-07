@@ -7,9 +7,9 @@ import org.eclipse.jface.preference.FileFieldEditor;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
 
-/*
-* @author Mario Cervera
-*/
+/**
+ * @author Mario Cervera
+ */
 public class MOSKitt4MEPreferencePage extends FieldEditorPreferencePage implements
 		IWorkbenchPreferencePage {
 
