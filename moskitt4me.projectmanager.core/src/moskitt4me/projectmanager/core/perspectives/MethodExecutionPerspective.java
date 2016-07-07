@@ -9,7 +9,7 @@ import org.eclipse.ui.views.IViewRegistry;
 /**
  * The Method Execution perspective. When active, the MOSKitt4ME workbench will show the views that
  * comprise the Project Manager Component: the Resource Explorer, the Process view, the Product Explorer,
- * and the Help view.
+ * and the Help view
  * 
  * @author Mario Cervera
  */
@@ -17,6 +17,10 @@ public class MethodExecutionPerspective implements IPerspectiveFactory {
 
 	public static final String ID = "moskitt4me.projectmanager.core.perspective";
 	
+	/*
+	 * This method creates the views that comprise the Method Execution Perspective and establishes
+	 * how they are arranged in the MOSKitt4ME GUI
+	 */
 	public void createInitialLayout(IPageLayout layout) {
 
 		String editorArea = layout.getEditorArea();
@@ -51,7 +55,9 @@ public class MethodExecutionPerspective implements IPerspectiveFactory {
 		bottomRight.addPlaceholder("org.eclipse.help.ui.HelpView");
 	}
 	
-
+	/*
+	 * This method checks whether a given view exists in the MOSKitt4ME platform
+	 */
 	private boolean existsView(String viewId) {
 
 		IViewRegistry registry = PlatformUI.getWorkbench().getViewRegistry();
