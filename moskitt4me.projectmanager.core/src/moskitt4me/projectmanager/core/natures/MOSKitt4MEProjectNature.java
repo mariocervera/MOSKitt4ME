@@ -11,14 +11,14 @@ import org.eclipse.core.runtime.CoreException;
  */
 public class MOSKitt4MEProjectNature implements IProjectNature {
 
-	/** The project. */
+	/** The project */
     	
     	private IProject project;
 	
 	/*
-	* (non-Javadoc)
-	* @see org.eclipse.core.resources.IProjectNature#configure()
-	*/
+	 * (non-Javadoc)
+	 * @see org.eclipse.core.resources.IProjectNature#configure()
+	 */
 	public void configure() throws CoreException {
 
 	}
