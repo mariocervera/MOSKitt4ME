@@ -41,6 +41,9 @@ import org.eclipse.swt.widgets.Display;
  */
 public class ProcessLabelProvider extends LabelProvider {
 
+	/*
+	 * This method returns the textual label of a given element
+	 */
 	@Override
 	public String getText(Object element) {
 		
@@ -71,6 +74,9 @@ public class ProcessLabelProvider extends LabelProvider {
 		return super.getText(element);
 	}
 	
+	/*
+	 * This method returns an icon for a given element
+	 */
 	@Override
 	public Image getImage(Object element) {
 		
