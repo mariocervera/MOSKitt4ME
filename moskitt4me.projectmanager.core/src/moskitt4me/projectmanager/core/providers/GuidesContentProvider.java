@@ -19,11 +19,17 @@ import org.eclipse.epf.uma.TaskDescriptor;
  */
 public class GuidesContentProvider extends AdapterFactoryContentProvider {
 
+	/*
+	 * Constructor
+	 */
 	public GuidesContentProvider(AdapterFactory adapterFactory) {
 		
 		super(adapterFactory);
 	}
 
+	/*
+	 * Returns the root elements (the method tasks)
+	 */
 	@Override
 	public Object[] getElements(Object object) {
 		
@@ -43,6 +49,9 @@ public class GuidesContentProvider extends AdapterFactoryContentProvider {
 		return super.getElements(object);
 	}
 	
+	/*
+	 * This method returns true if the given element has children
+	 */
 	@Override
 	public boolean hasChildren(Object object) {
 	
@@ -56,12 +65,17 @@ public class GuidesContentProvider extends AdapterFactoryContentProvider {
 		return super.hasChildren(object);
 	}
 	
+	/*
+	 * Returns the children of a given element
+	 */
 	@Override
 	public Object[] getChildren(Object object) {
 		
 		if(object instanceof Task) {
 			
 			Task t = (Task) object;
+			
+			// The children of a method tasks are its associated guidelines
 			
 			List<Guidance> guides = new ArrayList<Guidance>();
 			
