@@ -22,17 +22,20 @@ import org.eclipse.epf.uma.ProcessComponent;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 
-/*
-* This content provider fills the graphical component of the MOSKitt4ME Project Creation Wizard.
-* The SPEM 2.0 processes that are shown in this wizard can be obtained from different sources.
-* They can be contributed via an extension point, added via Windows -> Preferences, or contained
-* in the Method Definitions plug-in.
-*
-* @author Mario Cervera
-*/
+/**
+ * This content provider fills the graphical component of the MOSKitt4ME Project Creation Wizard.
+ * The SPEM 2.0 processes that are shown in this wizard can be obtained from different sources.
+ * They can be contributed via an extension point (added via Windows -> Preferences) or contained
+ * in the Method Definitions plug-in
+ *
+ * @author Mario Cervera
+ */
 public class DeliveryProcessesContentProvider extends ArrayContentProvider implements
 	ITreeContentProvider {
 
+	/*
+	 * Returns the root elements (method libraries)
+	 */
 	@Override
 	public Object[] getElements(Object inputElement) {
 		
@@ -78,8 +81,11 @@ public class DeliveryProcessesContentProvider extends ArrayContentProvider imple
 		
 		return null;
 	}
-
 	
+	/*
+	 * This method returns whether a given element has children. In the MOSKitt4ME project
+	 * creation wizard, only the method libraries contain children (the delivery processes)
+	 */
 	public boolean hasChildren(Object element) {
 		
 		if(element instanceof MethodLibrary) {
@@ -90,6 +96,10 @@ public class DeliveryProcessesContentProvider extends ArrayContentProvider imple
 		}
 	}
 	
+	/*
+	 * This method returns the children of a given element. In the MOSKitt4ME project
+	 * creation wizard, only the method libraries have children (the delivery processes)
+	 */
 	public Object[] getChildren(Object parentElement) {
 		
 		List<Object> children = new ArrayList<Object>();
@@ -113,6 +123,9 @@ public class DeliveryProcessesContentProvider extends ArrayContentProvider imple
 		return children.toArray();
 	}
 	
+	/*
+	 * Returns a MethodLibrary object given the id of the containing plug-in and the library path
+	 */
 	private MethodLibrary loadMethodLibrary(String pluginId, String relativeLibraryPath) {
 		
 		URI uri = URI.createPlatformPluginURI("/" + pluginId + "/" + relativeLibraryPath , false);
