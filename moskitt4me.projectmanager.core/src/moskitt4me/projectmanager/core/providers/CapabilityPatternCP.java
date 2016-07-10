@@ -6,22 +6,25 @@ import org.eclipse.epf.uma.CapabilityPattern;
 import org.eclipse.epf.uma.UmaPackage;
 import org.eclipse.epf.uma.impl.CapabilityPatternImpl;
 
-/*
-* Class for capability patterns contained in capability patterns.
-* 
-* @author Mario Cervera
-*/
+/**
+ * Class for capability patterns contained in capability patterns
+ * 
+ * @author Mario Cervera
+ */
 public class CapabilityPatternCP extends CapabilityPatternImpl {
 
 	private List<String> cpguids;
 	private String cpname;
 	
+	/*
+	 * Constructor
+	 */
 	public CapabilityPatternCP(List<String> cpguids, String cpname, CapabilityPattern cp) {
 		
 		this.cpguids = cpguids;
 		this.cpname = cpname;
 		
-		//Clone the Capability Pattern
+		// Clone the Capability Pattern
 		
 		this.eSet(UmaPackage.eINSTANCE.getActivity_BreakdownElements(), cp.getBreakdownElements());
 		this.eSet(UmaPackage.eINSTANCE.getMethodElement_BriefDescription(), cp.getBriefDescription());
@@ -69,6 +72,8 @@ public class CapabilityPatternCP extends CapabilityPatternImpl {
 		this.eSet(UmaPackage.eINSTANCE.getVariabilityElement_VariabilityBasedOnElement(), cp.getVariabilityBasedOnElement());
 		this.eSet(UmaPackage.eINSTANCE.getVariabilityElement_VariabilityType(), cp.getVariabilityType());
 	}
+	
+	// Getters
 	
 	public List<String> getCpGuids() {
 		return cpguids;
