@@ -6,16 +6,19 @@ import org.eclipse.epf.uma.Activity;
 import org.eclipse.epf.uma.UmaPackage;
 import org.eclipse.epf.uma.impl.ActivityImpl;
 
-/*
-* Class for activities contained in capability patterns.
-*
-* @author Mario Cervera
-*/
+/**
+ * Class for activities contained in capability patterns.
+ *
+ * @author Mario Cervera
+ */
 public class ActivityCP extends ActivityImpl {
 
 	private List<String> cpguids;
 	private String cpname;
 	
+	/*
+	 * Constructor
+	 */
 	public ActivityCP(List<String> cpguids, String cpname, Activity actv) {
 		
 		this.cpguids = cpguids;
@@ -66,6 +69,8 @@ public class ActivityCP extends ActivityImpl {
 		this.eSet(UmaPackage.eINSTANCE.getVariabilityElement_VariabilityBasedOnElement(), actv.getVariabilityBasedOnElement());
 		this.eSet(UmaPackage.eINSTANCE.getVariabilityElement_VariabilityType(), actv.getVariabilityType());
 	}
+	
+	// Getters
 	
 	public List<String> getCpGuids() {
 		return cpguids;
