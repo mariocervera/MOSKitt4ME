@@ -19,12 +19,12 @@ import org.eclipse.help.IContextProvider;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeItem;
 
-/*
-* This class triggers a context change whenever a new task is selected in the Process view. This allows the
-* Help view of Eclipse to provide help based on the selected task.
-*
-* @author Mario Cervera
-*/
+/**
+ * This class triggers a context change whenever a new task is selected in the Process view. This allows the
+ * Help view of Eclipse to provide help based on the selected task
+ *
+ * @author Mario Cervera
+ */
 public class ProcessContextProvider implements IContextProvider {
 	
 	public IContext getContext(Object target) {
@@ -61,7 +61,7 @@ public class ProcessContextProvider implements IContextProvider {
 							if(!isTransformation(toolId)) {
 								
 								// Contextual help is associated to the task, use it
-								// as context.
+								// as context
 								
 								context = HelpSystem.getContext(toolId);
 							}
@@ -102,6 +102,11 @@ public class ProcessContextProvider implements IContextProvider {
 		return "";
 	}
 	
+	/*
+	 * It is necessary to check whether the technical fragment associated to the task is
+	 * of type Transformation. This is because the technical fragments of this type do not contain
+	 * guidance
+	 */
 	private static boolean isTransformation(String id) {
 		
 		IConfigurationElement[] configurations = Platform
