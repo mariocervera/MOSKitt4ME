@@ -29,8 +29,13 @@ import org.eclipse.swt.widgets.Display;
  */
 public class GuidesLabelProvider extends LabelProvider {
 
+	/*
+	 * This method returns the textual label of a given element
+	 */
 	@Override
 	public String getText(Object element) {
+		
+		// The names of the elements of type Task and Guidance are their labels
 		
 		if(element instanceof Task) {
 			Task t = (Task) element;
@@ -44,6 +49,9 @@ public class GuidesLabelProvider extends LabelProvider {
 		return super.getText(element);
 	}
 	
+	/*
+	 * This method returns an icon for a given element
+	 */
 	@Override
 	public Image getImage(Object element) {
 		
