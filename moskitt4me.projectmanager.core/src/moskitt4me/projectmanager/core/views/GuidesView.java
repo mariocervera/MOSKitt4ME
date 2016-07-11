@@ -34,6 +34,11 @@ public class GuidesView extends ProjectManagerViewPart {
 
 	public static final String GuidesViewId = "moskitt4me.projectmanager.core.views.guidesView";
 	
+	/*
+	 * This method adds a Selection Changed listener to the Guides view. When the selected guide
+	 * changes, the Content view is refreshed (if it is opened). The Content view displays the
+	 * HTML content page associated to the selected guide.
+	 */
 	@Override
 	public void createPartControl(Composite parent) {
 		
@@ -61,6 +66,10 @@ public class GuidesView extends ProjectManagerViewPart {
 		}
 	}
 	
+	/*
+	 * Double-click events force the opening of the Content view in order to display the HTML
+	 * content of the selected guide
+	 */
 	@Override
 	protected void handleDoubleClick(DoubleClickEvent anEvent) {
 		
@@ -83,6 +92,9 @@ public class GuidesView extends ProjectManagerViewPart {
 		}
 	}
 	
+	/*
+	 * This method opens the Content view
+	 */
 	private void displayContentView() {
 
 		IWorkbenchPage page = PlatformUI.getWorkbench()
