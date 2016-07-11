@@ -17,12 +17,15 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
 
 /**
- * A Label Provider for the Role Selection Dialog.
+ * A Label Provider for the Role Selection Dialog
  * 
  * @author Mario Cervera
  */
 public class RolesLabelProvider extends LabelProvider {
 
+	/*
+	 * This method returns the textual label of a given element
+	 */
 	@Override
 	public String getText(Object element) {
 		
@@ -54,6 +57,9 @@ public class RolesLabelProvider extends LabelProvider {
 		return super.getText(element);
 	}
 	
+	/*
+	 * This method returns an icon for a given element
+	 */
 	@Override
 	public Image getImage(Object element) {
 		
