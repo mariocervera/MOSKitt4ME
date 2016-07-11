@@ -16,12 +16,15 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.model.WorkbenchLabelProvider;
 
 /**
- * A Label Provider for the Product Explorer view. Provides labels and icons for the graphical elements.
+ * A Label Provider for the Product Explorer view
  * 
  * @author Mario Cervera
  */
 public class ProductsLabelProvider extends LabelProvider {	
 	
+	/*
+	 * This method returns the textual label of a given element
+	 */
 	@Override
 	public String getText(Object element) {
 		
@@ -52,11 +55,13 @@ public class ProductsLabelProvider extends LabelProvider {
 		return super.getText(element);
 	}
 	
+	/*
+	 * This method returns an icon for a given element
+	 */
 	@Override
 	public Image getImage(Object element) {
 		
 		try {
-			
 			String imagePath = FileLocator.toFileURL(Platform.getBundle(
 			Activator.PLUGIN_ID).getResource("icons/full/obj16")).getPath();
 			
