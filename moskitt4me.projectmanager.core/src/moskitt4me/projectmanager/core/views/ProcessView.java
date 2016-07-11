@@ -56,7 +56,7 @@ import org.eclipse.ui.actions.ActionGroup;
 
 /**
  * The Process view shows the current state of the process instance that is associated to the
- * project that is selected in the Resource Explorer view.
+ * project that is selected in the Resource Explorer view
  * 
  * @author Mario Cervera
  */
@@ -78,12 +78,12 @@ public class ProcessView extends ProjectManagerViewPart {
 			getViewer().addSelectionChangedListener(new ProcessViewSelectionChangedListener());
 		}
 		
-		//Register SelectionProvider so that selection changes in the view site
-		//trigger a context change. This is needed for dynamic help.
+		// Register SelectionProvider so that selection changes in the view site
+		// trigger a context change. This is needed for dynamic help
 		
 		getSite().setSelectionProvider(selectionProvider);
 		
-		//When the selected project changes, the Project Manager must be notified
+		// When the selected project changes, the Project Manager must be notified
 		
 		getSite().getWorkbenchWindow().getSelectionService()
 				.addSelectionListener(new ProjectUpdater());
@@ -92,7 +92,7 @@ public class ProcessView extends ProjectManagerViewPart {
 	}
 	
 	/*
-	 * Double Click in the Process view is used to invoke task execution
+	 * Double-click events in the Process view trigger the execution of the selected task
 	 */
 	@Override
 	protected void handleDoubleClick(DoubleClickEvent anEvent) {
@@ -104,6 +104,8 @@ public class ProcessView extends ProjectManagerViewPart {
 			StructuredSelection selection = (StructuredSelection) anEvent.getSelection();
 			
 			if(selection.getFirstElement() instanceof TaskDescriptor) {
+				
+				// Get the selected task
 				
 				TaskDescriptor td = (TaskDescriptor) selection.getFirstElement();
 				
@@ -122,15 +124,19 @@ public class ProcessView extends ProjectManagerViewPart {
 					cpIds.add("dp");
 				}
 				
+				// If the task is executable ...
+				
 				if (Engine.isExecutable(activitiTaskId, 
 						processInstanceId, Context.selectedProject)) {
+					
+					// Invoke the task execution
 					
 					boolean productCreated = ProductSupport.launchTask(td, Context.selectedProject,
 									MethodElements.workProducts, MethodElements.tasks, cpIds);
 
 					if(productCreated) {
 						
-						//Refresh the Product Explorer view
+						// Refresh the Product Explorer view
 						
 						ProductExplorerView productExplorer = getProductExplorerView();
 						
@@ -138,7 +144,7 @@ public class ProcessView extends ProjectManagerViewPart {
 							productExplorer.refreshViewer();
 						}
 						
-						//Refresh project
+						// Refresh project
 						
 						try{
 							Context.selectedProject.refreshLocal(IResource.DEPTH_INFINITE,
@@ -153,6 +159,9 @@ public class ProcessView extends ProjectManagerViewPart {
 		}
 	}
 	
+	/*
+	 * This method returns the Product Explorer view
+	 */
 	private ProductExplorerView getProductExplorerView() {
 		
 		IViewPart viewPart = PlatformUI.getWorkbench()
@@ -167,9 +176,9 @@ public class ProcessView extends ProjectManagerViewPart {
 	}
 	
 	/*
-	* Selection change events in the Process view will refresh the Guides view and the state of the
-	* buttons of the Action Bar.
-	*/
+	 * Selection change events in the Process view refresh the Guides view and the state of the
+	 * buttons of the Action Bar
+	 */
 	private class ProcessViewSelectionChangedListener implements ISelectionChangedListener {
 		
 		public void selectionChanged(SelectionChangedEvent event) {
@@ -190,8 +199,8 @@ public class ProcessView extends ProjectManagerViewPart {
 				
 				enableRunButtons(selectedObjects);
 				
-				//Trigger selection changed in the view site so a context change is notified.
-				//This is needed for dynamic help.
+				// Trigger selection changed in the view site so a context change is notified.
+				// This is needed for dynamic help.
 				
 				selectionProvider.setSelection(event.getSelection());
 			}
@@ -216,7 +225,8 @@ public class ProcessView extends ProjectManagerViewPart {
 	}
 	
 	/*
-	 * Handles the enablement of the Undo button. 
+	 * Handles the enablement of the Undo button. The Undo button must be enabled when the process
+	 * instance associated to the selected project is not in its initial state
 	 */
 	public void enableUndoButton() {
 		
@@ -343,6 +353,8 @@ public class ProcessView extends ProjectManagerViewPart {
 		runRepeatableAction.setEnabled(enabledRunRepeatable);
 	}
 	
+	// Getter methods for the Process view actions
+	
 	private UndoAction getUndoAction() {
 		
 		for(IContributionItem item : this.getViewSite().getActionBars().getToolBarManager().getItems()) {
@@ -389,8 +401,8 @@ public class ProcessView extends ProjectManagerViewPart {
 	}
 	
 	/*
-	* This method creates an object that provides content for the Process view.
-	*/
+	 * This method creates an object that provides content for the Process view
+	 */
 	@Override
 	protected IContentProvider createContentProvider() {
 		
@@ -401,9 +413,9 @@ public class ProcessView extends ProjectManagerViewPart {
 	}
 	
 	/*
-	* This method creates an object that provides labels and icons for the graphical
-	* elements of the Process view (which are provided by the Content Provider).
-	*/
+	 * This method creates an object that provides labels and icons for the graphical
+	 * elements of the Process view (which are provided by the Content Provider)
+	 */
 	@Override
 	protected IBaseLabelProvider createLabelProvider() {
 		
@@ -411,9 +423,9 @@ public class ProcessView extends ProjectManagerViewPart {
 	}
 	
 	/*
-	* The process filter handles the filtering of elements based on the selected role and the
-	* display mode of the Process view.
-	*/
+	 * The process filter handles the filtering of elements based on the selected role and the
+	 * display mode of the Process view
+	 */
 	@Override
 	protected ViewerFilter[] createFilters() {
 
@@ -423,6 +435,10 @@ public class ProcessView extends ProjectManagerViewPart {
 		return filters;
 	}
 
+	/*
+	 * The process sorter is in charge of the ordering of the elements that are displayed in
+	 * the Process view (so that they appear in the same order as specified in the method model)
+	 */
 	@Override
 	protected ViewerSorter createSorter() {
 		
