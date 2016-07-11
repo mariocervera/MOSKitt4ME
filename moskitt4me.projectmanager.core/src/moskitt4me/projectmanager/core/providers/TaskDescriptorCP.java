@@ -6,8 +6,8 @@ import org.eclipse.epf.uma.TaskDescriptor;
 import org.eclipse.epf.uma.UmaPackage;
 import org.eclipse.epf.uma.impl.TaskDescriptorImpl;
 
-/*
- * Class for Task Descriptors contained in CapabilityPatterns
+/**
+ * Class for Task Descriptors contained in Capability Patterns
  *
  * @author Mario Cervera
  */
@@ -16,6 +16,9 @@ public class TaskDescriptorCP extends TaskDescriptorImpl {
 	private List<String> cpguids;
 	private String cpname;
 	
+	/*
+	 * Constructor
+	 */
 	public TaskDescriptorCP(List<String> cpguids, String cpname, TaskDescriptor td) {
 		
 		this.cpguids = cpguids;
@@ -77,6 +80,8 @@ public class TaskDescriptorCP extends TaskDescriptorImpl {
 		this.eSet(UmaPackage.eINSTANCE.getBreakdownElement_Templates(), td.getTemplates());
 		this.eSet(UmaPackage.eINSTANCE.getBreakdownElement_Toolmentor(), td.getToolmentor());
 	}
+	
+	// Getters
 	
 	public List<String> getCpGuids() {
 		return cpguids;
