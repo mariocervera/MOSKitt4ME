@@ -16,13 +16,16 @@ import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 
 /**
- * A Content Provider for the Role Selection Dialog.
+ * A Content Provider for the Role Selection Dialog
  * 
  * @author Mario Cervera
  */
 public class RolesContentProvider extends ArrayContentProvider implements
 		ITreeContentProvider {
 
+	/*
+	 * Returns the root elements: Role Set Groupings, Role Sets, and Roles
+	 */
 	@Override
 	public Object[] getElements(Object inputElement) {
 		
@@ -54,6 +57,9 @@ public class RolesContentProvider extends ArrayContentProvider implements
 		return super.getElements(inputElement);
 	}
 	
+	/*
+	 * This method returns true if the given element has children
+	 */
 	public boolean hasChildren(Object element) {
 		
 		if(element instanceof RoleDescriptor ||
@@ -69,6 +75,9 @@ public class RolesContentProvider extends ArrayContentProvider implements
 		return null;
 	}
 	
+	/*
+	 * Returns the children of a given element
+	 */
 	public Object[] getChildren(Object parentElement) {
 		
 		if(parentElement instanceof RoleSetGrouping) {
