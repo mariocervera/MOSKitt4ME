@@ -8,12 +8,16 @@ import org.eclipse.jface.viewers.ViewerSorter;
 
 /**
  * A sorter for the Process view. It ensures that the elements of the process instances are
- * shown in appropriate order.
+ * shown in appropriate order: the same order that is specified in the method model
  * 
  * @author Mario Cervera
  */
 public class ProcessSorter extends ViewerSorter {
 
+	/*
+	 * This method returns 0 if "e1" and "e2" are equal, -1 if "e1" must appear
+	 * first in sorted order, and 1 otherwise
+	 */
 	@Override
 	public int compare(Viewer viewer, Object e1, Object e2) {
 		
