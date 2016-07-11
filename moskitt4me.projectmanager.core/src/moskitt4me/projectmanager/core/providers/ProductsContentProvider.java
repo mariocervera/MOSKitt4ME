@@ -18,18 +18,24 @@ import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 import org.eclipse.epf.uma.Domain;
 import org.eclipse.epf.uma.WorkProduct;
 
-/*
- * ContentProvider for the Product Explorer View.
+/**
+ * A Content Provider for the Product Explorer View
  *
  * @author Mario Cervera
  */
 public class ProductsContentProvider extends AdapterFactoryContentProvider {
 	
+	/*
+	 * Constructor
+	 */
 	public ProductsContentProvider(AdapterFactory adapterFactory) {
 		
 		super(adapterFactory);
 	}
 	
+	/*
+	 * Returns the root element of the Product Explorer view
+	 */
 	@Override
 	public Object[] getElements(Object object) {
 		
@@ -43,6 +49,9 @@ public class ProductsContentProvider extends AdapterFactoryContentProvider {
 		return super.getElements(object);
 	}
 	
+	/*
+	 * This method returns true if the given element has children
+	 */
 	@Override
 	public boolean hasChildren(Object object) {
 			
@@ -56,6 +65,9 @@ public class ProductsContentProvider extends AdapterFactoryContentProvider {
 		return false;
 	}
 	
+	/*
+	 * Returns the children of a given element
+	 */
 	@Override
 	public Object[] getChildren(Object object) {
 		
