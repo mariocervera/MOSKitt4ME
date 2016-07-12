@@ -19,25 +19,31 @@ import org.eclipse.ui.ide.undo.WorkspaceUndoUtil;
 import org.eclipse.ui.wizards.newresource.BasicNewResourceWizard;
 
 /**
- * A wizard that allows the user to create MOSKitt4ME projects.
+ * A wizard that allows the user to create MOSKitt4ME projects
  * 
  * @author Mario Cervera
  */
 public class NewMOSKitt4MEProjectWizard extends BasicNewResourceWizard
 		implements INewWizard {
 	
+	/*
+	 * Constructor
+	 */
 	public NewMOSKitt4MEProjectWizard() {
+		
 		setWindowTitle("New MOSKitt4ME Project");
 	}
 	
 	/*
-	* This method is executed when the user clicks the Finish button of the wizard.
-	* This method creates the project.
-	*/
+	 * This method is executed when the user clicks the Finish button of the wizard.
+	 * This method creates a MOSKitt4ME project.
+	 */
 	@Override
 	public boolean performFinish() {
 	
 		try {
+			// Set the project name and description
+			
 			String projectName = getProjectName();
 
 			IProjectDescription description = ResourcesPlugin.getWorkspace()
@@ -52,7 +58,11 @@ public class NewMOSKitt4MEProjectWizard extends BasicNewResourceWizard
 			newNatures[natures.length] = "moskitt4me.projectmanager.core.natures.MOSKitt4MEProjectNature";
 			description.setNatureIds(newNatures);
 
+			// Create the project
+			
 			IProject newProject = createProject(description);
+			
+			// Associate the selected delivery process to the new project
 			
 			DeliveryProcess process = getSelectedDeliveryProcess();
 			
@@ -68,8 +78,8 @@ public class NewMOSKitt4MEProjectWizard extends BasicNewResourceWizard
 	}
 
 	/*
-	* The MOSKitt4ME Project wizard only contains one page.
-	*/
+	 * The MOSKitt4ME Project wizard only contains one page
+	 */
 	@Override
 	public void addPages() {
 		
@@ -79,6 +89,9 @@ public class NewMOSKitt4MEProjectWizard extends BasicNewResourceWizard
 		this.addPage(page);
 	}
 	
+	/*
+	 * Returns the delivery process that is selected by the user
+	 */
 	private DeliveryProcess getSelectedDeliveryProcess() {
 		
 		for(IWizardPage page: this.getPages()) {
@@ -90,6 +103,9 @@ public class NewMOSKitt4MEProjectWizard extends BasicNewResourceWizard
 		return null;
 	}
 	
+	/*
+	 * Returns the project name that is specified by the user
+	 */
 	private String getProjectName() {
 		
 		for(IWizardPage page: this.getPages()) {
