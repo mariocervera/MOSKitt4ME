@@ -16,10 +16,10 @@ import org.eclipse.swt.widgets.Menu;
 import org.eclipse.ui.actions.ActionGroup;
 import org.eclipse.ui.part.ViewPart;
 
-/*
+/**
  * This class contains the common functionality of the different views of the
  * Project Manager Component (i.e., the Process view, the Product Explorer, and the
- * Guides view).
+ * Guides view)
  *
  * @author Mario Cervera
  */
@@ -33,6 +33,10 @@ public abstract class ProjectManagerViewPart extends ViewPart {
 	public void createPartControl(Composite parent) {
 		
 		treeViewer = new TreeViewer(parent, getTreeStyle());
+		
+		// The content providers, filters, etc. must be provided by the subclasses.
+		// Therefore, the methods createContentProvider, createFilters, etc. are abstract.
+		
 		treeViewer.setContentProvider(createContentProvider());
 		treeViewer.setFilters(createFilters());
 		treeViewer.setLabelProvider(createLabelProvider());
@@ -57,6 +61,9 @@ public abstract class ProjectManagerViewPart extends ViewPart {
 		
 	}
 	
+	/*
+	 * Adds a double-click event listener, which is intented to be overriden by the subclasses
+	 */
 	protected void initListeners() {
 
 		treeViewer.addDoubleClickListener(new IDoubleClickListener() {
