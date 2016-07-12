@@ -45,8 +45,8 @@ public class ProductExplorerView extends ProjectManagerViewPart {
 	}
 	
 	/*
-	* Double click opens the selected file.
-	*/
+	 * Double-click events open the selected file
+	 */
 	@Override
 	protected void handleDoubleClick(DoubleClickEvent anEvent) {
 		
@@ -55,6 +55,8 @@ public class ProductExplorerView extends ProjectManagerViewPart {
 		if(anEvent.getSelection() instanceof StructuredSelection) {
 			
 			StructuredSelection selection = (StructuredSelection) anEvent.getSelection();
+			
+			// If the selected element is a file, open it
 			
 			if(selection.getFirstElement() instanceof IFile) {
 				
@@ -65,6 +67,9 @@ public class ProductExplorerView extends ProjectManagerViewPart {
 		}
 	}
 	
+	/*
+	 * This method opens the default editor that supports the edition of the given file
+	 */
 	private void openFile(IFile file) {
 		 
 		if (file.exists()) {
@@ -80,6 +85,9 @@ public class ProductExplorerView extends ProjectManagerViewPart {
 		    }
 		}
 	}
+	
+	// The following methods create the actions, content provider, label provider, filters,
+	// and sorters of the Product Explorer view
 	
 	@Override
 	protected ActionGroup createActionGroup() {
@@ -115,6 +123,11 @@ public class ProductExplorerView extends ProjectManagerViewPart {
 		return null;
 	}
 	
+	/*
+	 * This method updates the content description of the Product Explorer view. This description is
+	 * shown as a textual label on the top part of the view and it informs the user about the roles
+	 * that are currently selected (which establish a filter for the view)
+	 */
 	public void updateContentDescription() {
 		
 		String description = "Selected roles:";
