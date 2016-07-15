@@ -1,6 +1,6 @@
 # MOSKitt4ME
 
-This repository contains the Eclipse plug-ins that implement the MOSKitt4ME tool. MOSKitt4ME is the result of five years of research in the field of Software Development Method Engineering. Thanks to this intensive research, MOSKitt4ME embodies a Computer-Aided Method Engineering (CAME) environment that offers various unique characteristics. Most notably, MOSKitt4ME supports the design of software development methods (in terms of the SPEM 2.0 standard) and also the semi-automatic construction of tools (e.g., graphical editors and code generators) that facilitate the execution of the methods in specific projects. To support method execution, MOSKitt4ME offers an integrated environment that is built upon a workflow engine: Activiti.
+This repository contains the Eclipse plug-ins that implement the MOSKitt4ME tool. MOSKitt4ME is the result of five years of intensive research in the field of Software Development Method Engineering. The result of these efforts is a Computer-Aided Method Engineering (CAME) environment that offers various unique characteristics. Most notably, MOSKitt4ME supports the design of software development methods (in terms of the SPEM 2.0 standard) and also the semi-automatic construction of tools (e.g., graphical editors and code generators) that facilitate the execution of the methods in specific projects. To support method execution, MOSKitt4ME offers an integrated environment that is built upon a workflow engine: Activiti.
 
 The following playlist offers a brief introduction (slides + screencasts) to the MOSKitt4ME environment:
 
@@ -10,9 +10,9 @@ A more extensive description of the tool can be found in Chapter 5 of my PhD the
 
 https://riunet.upv.es/handle/10251/53931
 
-MOSKitt4ME website (installation instructions, user manual, and list of publications):
+A user manual (including installation instructions) can be found in:
 
-http://users.dsic.upv.es/~mcervera/moskitt4me/
+https://www.dropbox.com/s/pljbqcyc7vqdols/MOSKitt4ME_UserManual.pdf?dl=0
 
 Alternatively, a pre-configured Windows version of MOSKitt4ME can be downloaded from:
 
