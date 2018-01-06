@@ -20,4 +20,4 @@ https://www.dropbox.com/s/vtrtaqyeya9bpcl/MOSKitt4ME.zip?dl=0
 
 This version of MOSKitt4ME includes the Method Library that is used in the screencasts as an example ("ISDLibrary"). To open this library in MOSKitt4ME: File -> Open -> Method Library. The reusable assets that are used in the screencasts can be downloaded from:
 
-https://www.dropbox.com/s/rt14kw0hp861dug/Assets.zip?dl=0
+https://www.dropbox.com/s/k0l308cmvwilsl9/Assets.zip?dl=0
